@@ -7,7 +7,7 @@ $sql = "CREATE TABLE user(
 		user_lname varchar(50),
 		user_gender varchar(6), --male/female
 		user_phone int(20),
-		user_bday varchar(8), --19970527
+		user_DOB varchar(8), --19970527
 		user_type varchar(8) NOT NULL, --customer/staff/admin
 		rest_id int DEFAULT -1,
 		user_password varchar(50) NOT NULL)
