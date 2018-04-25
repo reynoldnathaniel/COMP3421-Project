@@ -1,0 +1,1 @@
+<?php $con=mysqli_connect("mysql.comp.polyu.edu.hk","16097128d","oymddttq","16097128d");?>
