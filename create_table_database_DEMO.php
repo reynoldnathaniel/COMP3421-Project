@@ -1,6 +1,6 @@
 <?php
 include("connection.php");
-$sql = "CREATE TABLE user(
+$sql = "CREATE TABLE users(
 		user_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 		user_email varchar(50) NOT NULL, --also accountname
 		user_fname varchar(50),
