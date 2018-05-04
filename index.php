@@ -47,6 +47,13 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
 
+
+
+<!-- SelectPicker  -->
+<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -65,25 +72,32 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="index.html">Tour</a></div>
+							<div id="colorlib-logo"><a href="index.html">LovEat</a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
 								<li class="active"><a href="index.html">Home</a></li>
 								<li class="has-dropdown">
-									<a href="tours.html">Tours</a>
+									<a href="#">About US</a>
 									<ul class="dropdown">
-										<li><a href="#">Destination</a></li>
-										<li><a href="#">Cruises</a></li>
-										<li><a href="#">Hotels</a></li>
-										<li><a href="#">Booking</a></li>
+										<li><a href="#">LovEat</a></li>
+										<li><a href="#">Contact</a></li>
 									</ul>
 								</li>
-								<li><a href="hotels.html">Hotels</a></li>
-								<li><a href="services.html">Services</a></li>
-								<li><a href="blog.html">Blog</a></li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li class="has-dropdown">
+									<a href="#">Booking</a>
+									<ul class="dropdown">
+										<li><a href="hotels.php">Restaurant</a></li>
+										<li><a href="#">News</a></li>
+									</ul>
+								</li>
+								<li class="has-dropdown">
+									<a href="#">Account</a>
+									<ul class="dropdown">
+										<li><a href="loginPage.php">Login</a></li>
+										<li><a href="registrationPage.php">Register</a></li>
+									</ul>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -93,53 +107,53 @@
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(images/img_bg_1.jpg);">
+			   	<li style="background-image: url(images/bg_1.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
-				   					<h2>2 Days Tour</h2>
-				   					<h1>Amazing Maldives Tour</h1>
+				   					<h2>Best Table Reservations System in Hong Kong</h2>
+				   					<h1>LovEat</h1>
 				   				</div>
 				   			</div>
 				   		</div>
 			   		</div>
 			   	</li>
-			   	<li style="background-image: url(images/img_bg_2.jpg);">
+			   	<li style="background-image: url(images/bg_2.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
-				   					<h2>10 Days Cruises</h2>
-				   					<h1>From Greece to Spain</h1>
+				   					<h2>Enjoy</h2>
+				   					<h1>Amazing Testing Tour</h1>
 				   				</div>
 				   			</div>
 				   		</div>
 			   		</div>
 			   	</li>
-			   	<li style="background-image: url(images/img_bg_5.jpg);">
+			   	<li style="background-image: url(images/bg_5.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluids">
 			   			<div class="row">
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
-				   					<h2>Explore our most tavel agency</h2>
-				   					<h1>Our Travel Agency</h1>
+				   					<h2>Explore our most loved restaurants</h2>
+				   					<h1>Search Your New Favorite </h1>
 				   				</div>
 				   			</div>
 				   		</div>
 			   		</div>
 			   	</li>
-			   	<li style="background-image: url(images/img_bg_4.jpg);">
+			   	<li style="background-image: url(images/bg_4.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
-				   					<h2>Experience the</h2>
-				   					<h1>Best Trip Ever</h1>
+				   					<h2>Taste the</h2>
+				   					<h1>Best Food Ever</h1>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -154,43 +168,34 @@
 					<div class="search-wrap">
 						<div class="container">
 							<ul class="nav nav-tabs">
-								<li class="active"><a data-toggle="tab" href="#flight"><i class="flaticon-plane"></i> Flight</a></li>
-								<li><a data-toggle="tab" href="#hotel"><i class="flaticon-resort"></i> Hotel</a></li>
-								<li><a data-toggle="tab" href="#car"><i class="flaticon-car"></i> Car Rent</a></li>
-								<li><a data-toggle="tab" href="#cruises"><i class="flaticon-boat"></i> Cruises</a></li>
+								<li class="active"><a data-toggle="tab" href="#flight"><i class="flaticon-food-1"></i> By Cuisine & location</a></li>
+								
+								<li><a data-toggle="tab" href="#hotel"><i class="flaticon-restaurant"></i> By Restaurant</a></li>
+								
 							</ul>
 						</div>
+
 						<div class="tab-content">
 							<div id="flight" class="tab-pane fade in active">
 								<form method="post" class="colorlib-form">
 				              	<div class="row">
-				              	 <div class="col-md-3">
-				              	 	<div class="form-group">
-				                    <label for="date">Where:</label>
-				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Search Location">
-				                    </div>
-				                  </div>
+				              	 <div class="col-md-2">
+				              	 	<div class="booknow">
+				              	 		<h2>Book Now</h2>
+					              	 	<span>Best Restaurant</span>
+				              	 	</div>
 				              	 </div>
-				                <div class="col-md-2">
-				                  <div class="form-group">
-				                    <label for="date">Check-in:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <div class="form-group">
-				                    <label for="date">Check-out:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-				                    </div>
-				                  </div>
-				                </div>
 				                <div class="col-md-3">
+				                  <div class="form-group">
+				                    <label for="date">Date:</label>
+				                    <div class="form-field">
+				                      <i class="icon icon-calendar2"></i>
+				                      <input type="text" id="date" class="form-control date" placeholder="Booking date">
+				                    </div>
+				                  </div>
+				                </div>
+				 
+				                <div class="col-md-2">
 				                  <div class="form-group">
 				                    <label for="guests">Guest</label>
 				                    <div class="form-field">
@@ -205,8 +210,46 @@
 				                    </div>
 				                  </div>
 				                </div>
+
 				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Flights" class="btn btn-primary btn-block">
+				                  <div class="form-group">
+				                    <label for="guests">Any Cuisine</label>
+				                    <div class="form-field">
+				                      <i class="icon icon-arrow-down3"></i>
+				                      <select name="category" id="category" class="form-control">
+				                        <option value="#">japanese</option>
+				                        <option value="#">bbq</option>
+				                        <option value="#">american</option>
+				                        <option value="#">bar</option>
+				                        <option value="#">european</option>
+				                        <option value="#">italian</option>
+				                        <option value="#">thai</option>
+				                        <option value="#">dessert</option>
+				                      </select>
+				                    </div>
+				                  </div>
+				                </div>
+
+				                <div class="col-md-2">
+				                  <div class="form-group">
+				                    <label for="guests">Any Location</label>
+				                    <div class="form-field">
+				                      <i class="icon icon-arrow-down3"></i>
+				                      <select name="category" id="category" class="form-control">
+
+				                        <option value="#">central</option>
+				                        <option value="#">hung hom</option>
+				                        <option value="#">tsim sha tsui</option>
+				                        <option value="#">wan chai</option>
+				                        <option value="#">soho</option>
+				                        <option value="#">north point</option>
+				                      </select>
+				                    </div>
+				                  </div>
+				                </div>
+
+				                <div class="col-md-1">
+				                  <input type="submit" name="submit" id="submit" value="Search" class="btn  ">
 				                </div>
 				              </div>
 				            </form>
@@ -217,27 +260,19 @@
 				              	 <div class="col-md-2">
 				              	 	<div class="booknow">
 				              	 		<h2>Book Now</h2>
-					              	 	<span>Best Price Online</span>
+					              	 	<span>Best Restaurant</span>
 				              	 	</div>
 				              	 </div>
 				                <div class="col-md-3">
 				                  <div class="form-group">
-				                    <label for="date">Check-in:</label>
+				                    <label for="date">Date:</label>
 				                    <div class="form-field">
 				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
+				                      <input type="text" id="date" class="form-control date" placeholder="Booking date">
 				                    </div>
 				                  </div>
 				                </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="date">Check-out:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-				                    </div>
-				                  </div>
-				                </div>
+				 
 				                <div class="col-md-2">
 				                  <div class="form-group">
 				                    <label for="guests">Guest</label>
@@ -253,241 +288,220 @@
 				                    </div>
 				                  </div>
 				                </div>
-				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Hotel" class="btn btn-primary btn-block">
-				                </div>
-				              </div>
-				            </form>
-						   </div>
-						   <div id="car" class="tab-pane fade">
-						   	<form method="post" class="colorlib-form">
-				              	<div class="row">
-				              	 <div class="col-md-4">
-				              	 	<div class="form-group">
-				                    <label for="date">Where:</label>
-				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Search Location">
-				                    </div>
-				                  </div>
-				              	 </div>
+
 				                <div class="col-md-3">
 				                  <div class="form-group">
-				                    <label for="date">Start Date:</label>
+				                    <label for="guests">Search Restaurant</label>
 				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="date">Return Date:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Car" class="btn btn-primary btn-block">
-				                </div>
-				              </div>
-				            </form>
-						   </div>
-						   <div id="cruises" class="tab-pane fade">
-						      <form method="post" class="colorlib-form">
-				              	<div class="row">
-				              	 <div class="col-md-4">
-				              	 	<div class="form-group">
-				                    <label for="date">Where:</label>
-				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Search Location">
-				                    </div>
-				                  </div>
-				              	 </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="date">Start Date:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="guests">Categories</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-arrow-down3"></i>
-				                      <select name="category" id="category" class="form-control">
-				                        <option value="#">Suite</option>
-				                        <option value="#">Super Deluxe</option>
-				                        <option value="#">Balcony</option>
-				                        <option value="#">Economy</option>
-				                        <option value="#">Luxury</option>
+				                      <i class="icon icon-search"></i>
+				                      <select class="selectpicker" title="Search Restaurant" data-live-search="true"">
+				                        <option value="#">example1</option>
+				                        <option value="#">example2</option>
+				                        <option value="#">example3</option>
+				                        <option value="#">example4</option>
+				                        <option value="#">example5</option>
+				                        <option value="#">example6</option>
+				                        <option value="#">example7</option>
+				                        <option value="#">example8</option>
+				                        <option value="#">example9</option>
+				                        <option value="#">example10</option>
+				                        <option value="#">example11</option>
 				                      </select>
 				                    </div>
 				                  </div>
 				                </div>
-				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Cruises" class="btn btn-primary btn-block">
+				                <div class="col-md-1">
+				                  <input type="submit" name="submit" id="submit" value="Search" class="btn  ">
 				                </div>
 				              </div>
 				            </form>
 						   </div>
+						   
+						   
 			         </div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div id="colorlib-services">
-			<div class="container">
-				<div class="row no-gutters">
-					<div class="col-md-3 animate-box text-center aside-stretch">
-						<div class="services">
-							<span class="icon">
-								<i class="flaticon-around"></i>
-							</span>
-							<h3>Amazing Travel</h3>
-							<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-						</div>
-					</div>
-					<div class="col-md-3 animate-box text-center">
-						<div class="services">
-							<span class="icon">
-								<i class="flaticon-boat"></i>
-							</span>
-							<h3>Our Cruises</h3>
-							<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-						</div>
-					</div>
-					<div class="col-md-3 animate-box text-center">
-						<div class="services">
-							<span class="icon">
-								<i class="flaticon-car"></i>
-							</span>
-							<h3>Book Your Trip</h3>
-							<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-						</div>
-					</div>
-					<div class="col-md-3 animate-box text-center">
-						<div class="services">
-							<span class="icon">
-								<i class="flaticon-postcard"></i>
-							</span>
-							<h3>Nice Support</h3>
-							<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<div class="colorlib-tour colorlib-light-grey">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>Popular Destination</h2>
-						<p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<h2>Popular Restaurants</h2>
+						<p>Check out the most popular restaurants in Hong Kong right now.</p>
+						<span style = "font-size: 18px;" class="flaticon-food-3"></span>
 					</div>
 				</div>
 			</div>
 			<div class="tour-wrap">
 				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/tour-1.jpg);">
+					<div class="tour-img" style="background-image: url(images/enoteca-1.jpg);">
 					</div>
 					<span class="desc">
 						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Athens, Greece</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
+						<h2>Enoteca</h2>
+						<span class="city">Italian</span>
+						<span class="price">Soho</span>
 					</span>
 				</a>
 				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/tour-2.jpg);">
+					<div class="tour-img" style="background-image: url(images/grand-3.jpg);">
 					</div>
 					<span class="desc">
 						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Thailand</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
+						<h2>Grand Central Bar & Grill</h2>
+						<span class="city">European</span>
+						<span class="price">Tsim sha tsui</span>
 					</span>
 				</a>
 				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/tour-3.jpg);">
+					<div class="tour-img" style="background-image: url(images/sawali-2.jpg);">
 					</div>
 					<span class="desc">
 						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Philippines</h2>
-						<span class="city">Lipa, Philippines</span>
-						<span class="price">$450</span>
+						<h2>Sawali</h2>
+						<span class="city">Thai</span>
+						<span class="price">Wan Chai</span>
 					</span>
 				</a>
 				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/tour-4.jpg);">
+					<div class="tour-img" style="background-image: url(images/lobster-1.jpg);">
 					</div>
 					<span class="desc">
 						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Greece</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
+						<h2>Lobster Central</h2>
+						<span class="city">American</span>
+						<span class="price">Central</span>
 					</span>
 				</a>
 				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/tour-5.jpg);">
+					<div class="tour-img" style="background-image: url(images/grom-1.jpg);">
 					</div>
 					<span class="desc">
 						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Greece</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
+						<h2>Grom</h2>
+						<span class="city">Dessert</span>
+						<span class="price">Central</span>
 					</span>
 				</a>
 				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/tour-6.jpg);">
+					<div class="tour-img" style="background-image: url(images/roku-1.jpg);">
 					</div>
 					<span class="desc">
 						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Greece</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
+						<h2>Roku Japanese Restaurant Teppanyaki + Robatayaki</h2>
+						<span class="city">Japanese</span>
+						<span class="price">Tsim sha tsui</span>
 					</span>
 				</a>
 				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/tour-7.jpg);">
+					<div class="tour-img" style="background-image: url(images/meokbang-2.jpg);">
 					</div>
 					<span class="desc">
 						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Greece</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
+						<h2>MeokBang Korean BBQ</h2>
+						<span class="city">bbq</span>
+						<span class="price">Tsim sha tsui</span>
 					</span>
 				</a>
 				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/tour-8.jpg);">
+					<div class="tour-img" style="background-image: url(images/senzuru-1.jpg);">
 					</div>
 					<span class="desc">
 						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Greece</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
+						<h2>Senzuru Japanese Restaurant</h2>
+						<span class="city">Japanese</span>
+						<span class="price">Hung Hom</span>
 					</span>
 				</a>
 			</div>
 		</div>
 
 
+		
+
+
+		<div id="colorlib-hotel">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
+						<h2>Recommended New Restaurants</h2>
+						<p>Check out brand-new Restaurant from Hong Kong.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 animate-box">
+						<div class="owl-carousel">
+							<div class="item">
+								<div class="hotel-entry">
+									<a href="hotels.html" class="hotel-img" style="background-image: url(images/newyork-6.jpg);">
+										<p class="price"><span>American</span><small> /casual dining</small></p>
+									</a>
+									<div class="desc">
+										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
+										<h3><a href="#">New York Diner</a></h3>
+										<span class="place">shop 1-2, g/f, island lodge, 180 java road, north point</span>
+										<p>New York Diner at North Point’s Java Road offers an authentic American diner setting. Menu highlights include slow-cooked Spanish roast baby pig, risotto in Boletus cream sauce and 10oz grilled Australian black angus ribeye steak.</p>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="hotel-entry">
+									<a href="hotels.html" class="hotel-img" style="background-image: url(images/supabowl-1.jpg);">
+										<p class="price"><span>Dessert</span><small> /organic</small></p>
+									</a>
+									<div class="desc">
+										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
+										<h3><a href="#">Supabowl</a></h3>
+										<span class="place">Shop A1, G/F, 4 Swatow Street, Wan Chai</span>
+										<p>Supabowl serves acai based smoothie bowls. Made from the best stuff in the world! Supabowl is all about superfoods and more. Eat Healthy, Eat Beautiful, Made for Hong Kong!</p>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="hotel-entry">
+									<a href="hotels.html" class="hotel-img" style="background-image: url(images/uncle-1.jpg);">
+										<p class="price"><span>Italian</span><small> /pizza</small></p>
+									</a>
+									<div class="desc">
+										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
+										<h3><a href="#">Uncle Pizza, Pasta & Grill</a></h3>
+										<span class="place">g/f, 25 elgin street, soho, central</span>
+										<p>Recently opened in October 2017, this new pizza joint serves appetising Italian pies with an Asian twist. Uncle Pizza, Pasta & Grill has must-try options like Uncle Rajeev Pizza, risotto with garlic herbs tomato sauce topped with king prawns, linguine with clam and chilli in white wine fish broth.</p>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="hotel-entry">
+									<a href="hotels.html" class="hotel-img" style="background-image: url(images/hancham-1.jpg);">
+										<p class="price"><span>Korean BBQ</span><small> /modern</small></p>
+									</a>
+									<div class="desc">
+										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
+										<h3><a href="#">Hancham Korean BBQ Restaurant</a></h3>
+										<span class="place">shop 43, ug/f, empire centre, 68 mody road, tsim sha tsui</span>
+										<p> Ideal for catching up with friends or refuelling before hitting up the area’s many shops, Hancham has mouthwatering fare like spicy skirt meat, seafood pancake and marinated short ribs – all good options for a hearty BBQ meal.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div id="colorlib-blog">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>Recent Blog</h2>
-						<p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<h2>Recent News</h2>
+						<p>Find out the recent news.</p>
 					</div>
 				</div>
 				<div class="blog-flex">
-					<div class="f-entry-img" style="background-image: url(images/blog-3.jpg);">
+					<div class="f-entry-img" style="background-image: url(images/dimsum.jpg);">
 					</div>
 					<div class="blog-entry aside-stretch-right">
 						<div class="row">
@@ -513,7 +527,7 @@
 							</div>
 							<div class="col-md-12 animate-box">
 								<a href="blog.html" class="blog-post">
-									<span class="img" style="background-image: url(images/blog-4.jpg);"></span>
+									<span class="img" style="background-image: url(images/blog-3.jpg);"></span>
 									<div class="desc">
 										<span class="date">Feb 22, 2018</span>
 										<h3>Our Secret Island Boat Tour Is just for You</h3>
@@ -527,118 +541,13 @@
 			</div>
 		</div>
 
-		<div id="colorlib-intro" class="intro-img" style="background-image: url(images/cover-img-1.jpg);" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 animate-box">
-						<div class="intro-desc">
-							<div class="text-salebox">
-								<div class="text-lefts">
-									<div class="sale-box">
-										<div class="sale-box-top">
-											<h2 class="number">45</h2>
-											<span class="sup-1">%</span>
-											<span class="sup-2">Off</span>
-										</div>
-										<h2 class="text-sale">Sale</h2>
-									</div>
-								</div>
-								<div class="text-rights">
-									<h3 class="title">Just hurry up limited offer!</h3>
-									<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-									<p><a href="#" class="btn btn-primary">Book Now</a> <a href="#" class="btn btn-primary btn-outline">Read more</a></p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 animate-box">
-						<div class="video-wrap">
-							<div class="video colorlib-video" style="background-image: url(images/img_bg_2.jpg);">
-								<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-video"></i></a>
-								<div class="video-overlay"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div id="colorlib-hotel">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>Recommended Hotels</h2>
-						<p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 animate-box">
-						<div class="owl-carousel">
-							<div class="item">
-								<div class="hotel-entry">
-									<a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-1.jpg);">
-										<p class="price"><span>$120</span><small> /night</small></p>
-									</a>
-									<div class="desc">
-										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-										<h3><a href="#">Hotel Edison</a></h3>
-										<span class="place">New York, USA</span>
-										<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="hotel-entry">
-									<a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-2.jpg);">
-										<p class="price"><span>$120</span><small> /night</small></p>
-									</a>
-									<div class="desc">
-										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-										<h3><a href="#">Hotel Edison</a></h3>
-										<span class="place">New York, USA</span>
-										<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="hotel-entry">
-									<a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-3.jpg);">
-										<p class="price"><span>$120</span><small> /night</small></p>
-									</a>
-									<div class="desc">
-										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-										<h3><a href="#">Hotel Edison</a></h3>
-										<span class="place">New York, USA</span>
-										<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="hotel-entry">
-									<a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-4.jpg);">
-										<p class="price"><span>$120</span><small> /night</small></p>
-									</a>
-									<div class="desc">
-										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-										<h3><a href="#">Hotel Edison</a></h3>
-										<span class="place">New York, USA</span>
-										<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<div id="colorlib-testimony" class="colorlib-light-grey">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>Our Satisfied Guests says</h2>
-						<p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<h2>Recommended restaurants by our Guests</h2>
+						<p>Check out the real comments about restaurants.</p>
 					</div>
 				</div>
 				<div class="row">
@@ -680,181 +589,9 @@
 			</div>
 		</div>
 
-		<div class="colorlib-tour">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>Most Popular Travel Countries</h2>
-						<p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="f-tour">
-							<div class="row row-pb-md">
-								<div class="col-md-6">
-									<div class="row">
-										<div class="col-md-6 animate-box">
-											<a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-1.jpg);">
-												<div class="desc">
-													<h3>Rome - 5 Days</h3>
-													<p class="price"><span>$120</span> <small>/ person</small></p>
-												</div>
-											</a>
-										</div>
-										<div class="col-md-6 animate-box">
-											<a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-2.jpg);">
-												<div class="desc">
-													<h3>Rome - 5 Days</h3>
-													<p class="price"><span>$120</span> <small>/ person</small></p>
-												</div>
-											</a>
-										</div>
-										<div class="col-md-6 animate-box">
-											<a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-3.jpg);">
-												<div class="desc">
-													<h3>Rome - 5 Days</h3>
-													<p class="price"><span>$120</span> <small>/ person</small></p>
-												</div>
-											</a>
-										</div>
-										<div class="col-md-6 animate-box">
-											<a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-4.jpg);">
-												<div class="desc">
-													<h3>Rome - 5 Days</h3>
-													<p class="price"><span>$120</span> <small>/ person</small></p>
-												</div>
-											</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 animate-box">
-									<div class="desc">
-										<div class="row">
-											<div class="col-md-12">
-												<h3>Italy, Europe</h3>
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p><br>
-											</div>
-											<div class="col-md-12">
-												<h4>Best Tours City</h4>
-												<div class="row">
-													<div class="col-md-4 col-sm-4 col-xs-4">
-														<ul>
-															<li><a href="#">Rome</a></li>
-															<li><a href="#">Milan</a></li>
-															<li><a href="#">Genoa</a></li>
-															<li><a href="#">Verona</a></li>
-														</ul>
-													</div>
-													<div class="col-md-4 col-sm-4 col-xs-4">
-														<ul>
-															<li><a href="#">Venice</a></li>
-															<li><a href="#">Bologna</a></li>
-															<li><a href="#">Trieste</a></li>
-															<li><a href="#">Florence</a></li>
-														</ul>
-													</div>
-													<div class="col-md-4 col-sm-4 col-xs-4">
-														<ul>
-															<li><a href="#">Palermo</a></li>
-															<li><a href="#">Siena</a></li>
-															<li><a href="#">San Marino</a></li>
-															<li><a href="#">Naples</a></li>
-														</ul>
-													</div>
-												</div>
-												<p><a href="tours.html" class="btn btn-primary">View All Places</a></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+	
 
-						<div class="f-tour">
-							<div class="row">
-								<div class="col-md-6 col-md-push-6">
-									<div class="row">
-										<div class="col-md-6 animate-box">
-											<a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-5.jpg);">
-												<div class="desc">
-													<h3>Rome - 5 Days</h3>
-													<p class="price"><span>$120</span> <small>/ person</small></p>
-												</div>
-											</a>
-										</div>
-										<div class="col-md-6 animate-box">
-											<a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-6.jpg);">
-												<div class="desc">
-													<h3>Rome - 5 Days</h3>
-													<p class="price"><span>$120</span> <small>/ person</small></p>
-												</div>
-											</a>
-										</div>
-										<div class="col-md-6 animate-box">
-											<a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-7.jpg);">
-												<div class="desc">
-													<h3>Rome - 5 Days</h3>
-													<p class="price"><span>$120</span> <small>/ person</small></p>
-												</div>
-											</a>
-										</div>
-										<div class="col-md-6 animate-box">
-											<a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-8.jpg);">
-												<div class="desc">
-													<h3>Rome - 5 Days</h3>
-													<p class="price"><span>$120</span> <small>/ person</small></p>
-												</div>
-											</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 animate-box col-md-pull-6 text-right">
-									<div class="desc">
-										<div class="row">
-											<div class="col-md-12">
-												<h3>Athens, Greece</h3>
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p><br>
-											</div>
-											<div class="col-md-12">
-												<h4>Best Tours City</h4>
-												<div class="row">
-													<div class="col-md-4 col-sm-4 col-xs-4">
-														<ul>
-															<li><a href="#">Rome</a></li>
-															<li><a href="#">Milan</a></li>
-															<li><a href="#">Genoa</a></li>
-															<li><a href="#">Verona</a></li>
-														</ul>
-													</div>
-													<div class="col-md-4 col-sm-4 col-xs-4">
-														<ul>
-															<li><a href="#">Venice</a></li>
-															<li><a href="#">Bologna</a></li>
-															<li><a href="#">Trieste</a></li>
-															<li><a href="#">Florence</a></li>
-														</ul>
-													</div>
-													<div class="col-md-4 col-sm-4 col-xs-4">
-														<ul>
-															<li><a href="#">Palermo</a></li>
-															<li><a href="#">Siena</a></li>
-															<li><a href="#">San Marino</a></li>
-															<li><a href="#">Naples</a></li>
-														</ul>
-													</div>
-												</div>
-												<p><a href="tours.html" class="btn btn-primary">View All Places</a></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+
 
 	
 		<div id="colorlib-subscribe" style="background-image: url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
@@ -863,7 +600,7 @@
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
 						<h2>Sign Up for a Newsletter</h2>
-						<p>Sign up for our mailing list to get latest updates and offers.</p>
+						<p>Sign up for our mailing list to get latest updates.</p>
 						<form class="form-inline qbstp-header-subscribe">
 							<div class="row">
 								<div class="col-md-12 col-md-offset-0">
@@ -883,8 +620,8 @@
 			<div class="container">
 				<div class="row row-pb-md">
 					<div class="col-md-3 colorlib-widget">
-						<h4>Tour Agency</h4>
-						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+						<h4>LovEat</h4>
+						<p>Dine at Top Restaurants in HK. Make an Instant Reservation with LovEat, the top hong kong restaurant reservation system.</p>
 						<p>
 							<ul class="colorlib-social-icons">
 								<li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -894,60 +631,19 @@
 							</ul>
 						</p>
 					</div>
-					<div class="col-md-2 colorlib-widget">
-						<h4>Book Now</h4>
-						<p>
-							<ul class="colorlib-footer-links">
-								<li><a href="#">Flight</a></li>
-								<li><a href="#">Hotels</a></li>
-								<li><a href="#">Tour</a></li>
-								<li><a href="#">Car Rent</a></li>
-								<li><a href="#">Beach &amp; Resorts</a></li>
-								<li><a href="#">Cruises</a></li>
-							</ul>
-						</p>
-					</div>
-					<div class="col-md-2 colorlib-widget">
-						<h4>Top Deals</h4>
-						<p>
-							<ul class="colorlib-footer-links">
-								<li><a href="#">Edina Hotel</a></li>
-								<li><a href="#">Quality Suites</a></li>
-								<li><a href="#">The Hotel Zephyr</a></li>
-								<li><a href="#">Da Vinci Villa</a></li>
-								<li><a href="#">Hotel Epikk</a></li>
-							</ul>
-						</p>
-					</div>
-					<div class="col-md-2">
-						<h4>Blog Post</h4>
-						<ul class="colorlib-footer-links">
-							<li><a href="#">The Ultimate Packing List For Female Travelers</a></li>
-							<li><a href="#">How These 5 People Found The Path to Their Dream Trip</a></li>
-							<li><a href="#">A Definitive Guide to the Best Dining and Drinking Venues in the City</a></li>
-						</ul>
-					</div>
+					
 
 					<div class="col-md-3 col-md-push-1">
 						<h4>Contact Information</h4>
 						<ul class="colorlib-footer-links">
-							<li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
-							<li><a href="tel://1234567920">+ 1235 2355 98</a></li>
-							<li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-							<li><a href="#">yoursite.com</a></li>
+							<li>11 Yuk Choi Rd, Hung Hom</li>
+							<li><a href="tel://1234567920">+852 12341234</a></li>
+							<li><a href="mailto:info@yoursite.com">info@loveat.com</a></li>
+							<li><a href="#">loveat.com</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<p>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart2" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span> 
-							<span class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> , <a href="http://pexels.com/" target="_blank">Pexels.com</a></span>
-						</p>
-					</div>
-				</div>
+				
 			</div>
 		</footer>
 	</div>
@@ -956,6 +652,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
 	
+
+	</script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
