@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 19/02/2018 02:22
+    Creation date: 04/05/2018 23:42
     */
 
     @font-face {
@@ -36,24 +36,14 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-car:before { content: "\f100"; }
-.flaticon-sign:before { content: "\f101"; }
-.flaticon-plane:before { content: "\f102"; }
-.flaticon-cocktail:before { content: "\f103"; }
-.flaticon-landmark:before { content: "\f104"; }
-.flaticon-island:before { content: "\f105"; }
-.flaticon-postcard:before { content: "\f106"; }
-.flaticon-boat:before { content: "\f107"; }
-.flaticon-resort:before { content: "\f108"; }
-.flaticon-around:before { content: "\f109"; }
+    .flaticon-food-3:before { content: "\f100"; }
+.flaticon-food-1:before { content: "\f101"; }
+.flaticon-travel:before { content: "\f102"; }
+.flaticon-spoon:before { content: "\f103"; }
+.flaticon-restaurant:before { content: "\f104"; }
     
-    $font-Flaticon-car: "\f100";
-    $font-Flaticon-sign: "\f101";
-    $font-Flaticon-plane: "\f102";
-    $font-Flaticon-cocktail: "\f103";
-    $font-Flaticon-landmark: "\f104";
-    $font-Flaticon-island: "\f105";
-    $font-Flaticon-postcard: "\f106";
-    $font-Flaticon-boat: "\f107";
-    $font-Flaticon-resort: "\f108";
-    $font-Flaticon-around: "\f109";
+    $font-Flaticon-food-3: "\f100";
+    $font-Flaticon-food-1: "\f101";
+    $font-Flaticon-travel: "\f102";
+    $font-Flaticon-spoon: "\f103";
+    $font-Flaticon-restaurant: "\f104";

@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 19/02/2018 02:22
+  	Creation date: 04/05/2018 23:42
   	*/
 
 @font-face {
@@ -24,16 +24,11 @@
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
   font-family: Flaticon;
-  font-style: normal;
+font-style: normal;
 }
 
-.flaticon-car:before { content: "\f100"; }
-.flaticon-sign:before { content: "\f101"; }
-.flaticon-plane:before { content: "\f102"; }
-.flaticon-cocktail:before { content: "\f103"; }
-.flaticon-landmark:before { content: "\f104"; }
-.flaticon-island:before { content: "\f105"; }
-.flaticon-postcard:before { content: "\f106"; }
-.flaticon-boat:before { content: "\f107"; }
-.flaticon-resort:before { content: "\f108"; }
-.flaticon-around:before { content: "\f109"; }
+.flaticon-food-3:before { content: "\f100"; }
+.flaticon-food-1:before { content: "\f101"; }
+.flaticon-travel:before { content: "\f102"; }
+.flaticon-spoon:before { content: "\f103"; }
+.flaticon-restaurant:before { content: "\f104"; }
