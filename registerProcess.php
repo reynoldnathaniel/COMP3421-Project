@@ -18,7 +18,7 @@
       INSERT INTO
       users(user_email,user_fname,user_lname,user_gender,user_password,user_phone,user_DOB,user_type)
       VALUES('$email','$firstname','$lastname','$gender','$password','$phonenumber','$dateofbirth','$usertype')");
-      echo "<script type='text/javascript'>alert('You have registered, please login again.');window.location.replace(\"loginPage.html\");</script>";
+      echo "<script type='text/javascript'>alert('You have registered, please login again.');window.location.replace(\"loginPage.php\");</script>";
       mysqli_close($con);
   }
 ?>
