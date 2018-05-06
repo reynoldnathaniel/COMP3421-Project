@@ -1,4 +1,7 @@
 <!DOCTYPE HTML>
+<?php
+session_start();
+?>
 <html>
 	<head>
 	<meta charset="utf-8">
@@ -85,18 +88,46 @@
 									</ul>
 								</li>
 								<li class="has-dropdown">
-									<a href="#">Booking</a>
+									<?php
+									if(isset($_SESSION["user_id"])){
+										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
 										<li><a href="hotels.php">Restaurant</a></li>
 										<li><a href="#">News</a></li>
-									</ul>
+									</ul>';
+									}
+									else{
+										echo '<a href="#">Booking</a>
+									<ul class="dropdown">
+										<li><a href="loginPage.php">Restaurant</a></li>
+										<li><a href="loginPage.php">News</a></li>
+									</ul>';
+									}
+									?>
+									
+
 								</li>
 								<li class="has-dropdown">
-									<a href="#">Account</a>
-									<ul class="dropdown">
-										<li><a href="loginPage.php">Login</a></li>
-										<li><a href="registrationPage.php">Register</a></li>
-									</ul>
+									<?php
+										if(isset($_SESSION["user_id"])){
+											$lastname = strtoupper($_SESSION['lastname']);
+											echo '<a href="#">'.$lastname.'</a>
+											<ul class="dropdown">
+											<li><a href="editProfile.php">Edit Profile</a></li>
+												<li><a href="logoutProcess.php">Logout</a></li>
+											</ul>';
+										}
+										else{
+											echo '
+											<a href="loginPage.php">Account</a>
+											<ul class="dropdown">
+												<li><a href="loginPage.php">Login</a></li>
+											</ul>
+											';
+										}
+									?>
+									
+
 								</li>
 							</ul>
 						</div>
