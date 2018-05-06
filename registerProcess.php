@@ -16,8 +16,8 @@
     $password = sha1($password);
     mysqli_query($con,"
       INSERT INTO
-      users(user_email,user_fname,user_lname,user_gender,user_password,user_phone,user_DOB,user_type)
-      VALUES('$email','$firstname','$lastname','$gender','$password','$phonenumber','$dateofbirth','$usertype')");
+      users(user_email,user_fname,user_lname,user_gender,user_password,user_phone,user_DOB,user_type,rest_id)
+      VALUES('$email','$firstname','$lastname','$gender','$password','$phonenumber','$dateofbirth','$usertype',-1)");
       echo "<script type='text/javascript'>alert('You have registered, please login again.');window.location.replace(\"loginPage.php\");</script>";
       mysqli_close($con);
   }

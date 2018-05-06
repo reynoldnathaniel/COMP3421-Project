@@ -9,10 +9,9 @@ $sql0 = "CREATE TABLE users(
 		user_phone int(20),
 		user_DOB varchar(8),
 		user_type varchar(8) NOT NULL,
-		rest_id int DEFAULT -1,
+		rest_id int(5) DEFAULT -1,
 		user_password varchar(50) NOT NULL,
-		PRIMARY KEY (user_id),
-		FOREIGN KEY (rest_id) REFERENCES restaurant(rest_id))";
+		PRIMARY KEY (user_id))";
 
 $sql1 = "CREATE TABLE restaurant(
 		rest_id int(5) NOT NULL AUTO_INCREMENT,
@@ -61,7 +60,7 @@ $sql4 = "CREATE TABLE booking(
 		FOREIGN KEY (user_id) REFERENCES users(user_id)
 
 	)";
-
+//
 $sql5 = "CREATE TABLE comment(
 		cmnt_id int NOT NULL AUTO_INCREMENT,
 		cmnt_msg varchar(300) NOT NULL,
@@ -83,7 +82,7 @@ $sql6 = "CREATE TABLE news(
 		PRIMARY KEY (news_id),
 		FOREIGN KEY (rest_id) REFERENCES restaurant(rest_id)
 	)";
-
+//
 $sql7 = "CREATE TABLE favorite(
 		fav_id int NOT NULL AUTO_INCREMENT,
 		rest_id int(5) NOT NULL,
@@ -93,6 +92,9 @@ $sql7 = "CREATE TABLE favorite(
 		FOREIGN KEY (user_id) REFERENCES users(user_id)
 	)";
 if(
+	mysqli_query($con,$sql0)===true &&
+	mysqli_query($con,$sql7)===true &&
+	mysqli_query($con,$sql5)===true &&
 	mysqli_query($con,$sql4)===true
 ){ echo "Success";}
 else echo "fail";
