@@ -67,7 +67,8 @@ include("header.php");
 	<body>
 		<br><br>
 		<div align="center">
-			<a href="registerRestaurant.php">Add new restaurant</a>
+			<a href="registerRestaurant.php">Add new restaurant</a><br>
+			<a href="viewRestaurant.php">View all restaurant</a>
 		</div>
 
 	</body>

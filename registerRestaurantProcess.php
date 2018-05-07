@@ -13,7 +13,9 @@ if($rest_name == "" || $rest_address == "" || $rest_seats == ""){
 
 }
 ////////////////
-mkdir("restaurants/".$rest_name,0777,false);
+if(!file_exists("restaurants/".$rest_name))
+    mkdir("restaurants/".$rest_name,0777,false);
+
 $target_dir = "restaurants/".$rest_name."/";
 $target_file = $target_dir.basename($_FILES["restaurantImage"]["name"]);
 $uploadOk = 1;
@@ -50,12 +52,17 @@ else{
         echo "<script type='text/javascript'>alert('Failed to upload image file!');window.location.replace(\"registerRestaurant.php\");</script>";
     }
 }
-$tmp_name = $_FILES["restaurantImage"]["tmp_name"];
+$tmp_name = $_FILES["restaurantImage"]["name"];
+$rest_seats = (int)$rest_seats;
 ////////////////
 
 include("connection.php");
-mysqli_query($con,"
+if($uploadOk==1)
+{
+    mysqli_query($con,"
   INSERT INTO
-  users(rest_name,rest_address,rest_region,rest_type,rest_opentime,rest_closetime,rest_seats,rest_image)
-  VALUES('$rest_name','$rest_address','$rest_region','$rest_type','$rest_opentime','$rest_closetime','$rest_seats','$tmp_name')");
+  restaurant(rest_name,rest_address,rest_region,rest_type,rest_opentime,rest_closetime,rest_seats,rest_image,rest_avg_rating)
+  VALUES('$rest_name','$rest_address','$rest_region','$rest_type','$rest_opentime','$rest_closetime','$rest_seats','$tmp_name','3')");
+    echo "<script type='text/javascript'>alert('Restaurant Added!');window.location.replace(\"adminHomepage.php\");</script>";
+}
 ?>
