@@ -15,6 +15,7 @@ $_SESSION["phone"] = $row["user_phone"];
 $_SESSION["DOB"] = $row["user_DOB"];
 $_SESSION["user_type"] = $row["user_type"];
 $_SESSION["rest_id"] = $row["rest_id"];
+$_SESSION["email"] = $email;
 $rowcount = mysqli_num_rows($result);
 
 if($rowcount == 0 || $email =="" || $password ==""){

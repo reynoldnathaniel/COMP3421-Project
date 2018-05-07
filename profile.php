@@ -194,94 +194,34 @@ session_start();
 		  	</div>
 		</aside>
 
-		<div id="colorlib-contact">
+		<div id="colorlib-about">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-10 col-md-offset-1 animate-box">
-						<h3>Edit Profile</h3>
-						<form action="#">
-							<div class="row form-group">
-								<div class="col-md-6 padding-bottom">
+					<div class="about-flex">
+						<div class="col-one-forth aside-stretch animate-box">
+							<div class="row">
+								<div class="col-md-12 about">
+									<h2>About</h2>
 
-
-									<?php
-							if(isset($_SESSION["user_id"])){
-								$firstname = strtoupper($_SESSION["firstname"]); 
-								$lastname = strtoupper($_SESSION["lastname"]);
-								$email = strtoupper($_SESSION["email"]);
-								$phone = strtoupper($_SESSION["phone"]);
-								$DOB = strtoupper($_SESSION["DOB"]);
-
-								echo '<label for="fname">First Name</label>
-									<input type="text" name="firstname" class="form-control" value="'.$firstname.'">
-									</div>
-									<div class="col-md-6">
-									<label for="lname">Last Name</label>
-									<input type="text" name="lastname" class="form-control" value="'.$lastname.'">
-									</div>
-									</div>
-									<div class="row form-group">
-									<div class="col-md-6 padding-bottom">
-									<label for="fname">Email</label>
-									<input type="text" name="email" class="form-control" value="'.$email.'">
-									</div>
-									<div class="col-md-6">
-									<label for="lname">Phone Number</label>
-									<input type="text" name="phonenumber" class="form-control" value="'.$phone.'">
-									</div>
-									</div>
-									<div class="row form-group">
-									<div class="col-md-6 padding-bottom">
-									<label for="subject">Date of Birth</label>
-									<input type="date" name="dateofbirth" class="form-control" value="'.$DOB.'">
-									</div>
-									</div>';}?>
-
-								<!-- '<a href="#">'.$lastname.'</a>
-											<ul class="dropdown">
-											<li><a href="editProfile.php">Edit Profile</a></li>
-												<li><a href="logoutProcess.php">Logout</a></li>
-											</ul>'
-								-->
-									<!-- <label for="fname">First Name</label>
-									<input type="text" name="firstname" class="form-control" value="default value"> -->
-								<!-- </div>
-								<div class="col-md-6">
-									<label for="lname">Last Name</label>
-									<input type="text" name="lastname" class="form-control" value="default value">
+									<ul>
+										<li><a href="#">History</a></li>
+										<li><a href="#">Staff</a></li>
+										<li><a href="#">Connect with us</a></li>
+										<li><a href="#">Faqs</a></li>
+										<li><a href="#">Career</a></li>
+									</ul>
 								</div>
-							</div> -->
-
-							<!-- <div class="row form-group">
-								<div class="col-md-6 padding-bottom">
-									<label for="fname">Email</label>
-									<input type="text" name="email" class="form-control" value="default value">
-								</div>
-								<div class="col-md-6">
-									<label for="lname">Phone Number</label>
-									<input type="text" name="phonenumber" class="form-control" value="default value">
-								</div>
-							</div> -->
-
-							<!-- div class="row form-group">
-								<div class="col-md-6 padding-bottom">
-									<label for="subject">Date of Birth</label>
-									<input type="date" name="dateofbirth" class="form-control" value="2013-01-08">
-								</div>
-							</div> -->
-
-							<!-- <div class="row form-group">
-								<div class="col-md-12">
-									<label for="message">Message</label>
-									<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
-								</div>
-							</div> -->
-							<div class="form-group text-center">
-								<input type="submit" value="Submit" class="btn btn-primary">
 							</div>
-
-						</form>		
-					</div>	
+						</div>
+						<div class="col-three-forth animate-box">
+							<h2>This Is Your Profile</h2>
+							<?php
+							if(isset($_SESSION["user_id"])){
+								$firstname = strtoupper($_SESSION['firstname']); 
+								$lastname = strtoupper($_SESSION['lastname']);
+								echo '<h2>'.$firstname.' '.$lastname.'</h2>';}?>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
