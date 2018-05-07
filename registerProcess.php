@@ -9,7 +9,7 @@
   $dateofbirth = $_POST["dateofbirth"];
   $usertype = $_POST["usertype"];
   if($firstname == "" || $lastname == "" || $email == "" || $password == "" || $phonenumber == "" || $gender == "" || $dateofbirth == "" || $usertype == ""){
-    echo "<script type='text/javascript'>alert('Please fill in the missing fields.');window.location.replace(\"registrationPage.html\");</script>";
+    echo "<script type='text/javascript'>alert('Please fill in the missing fields.');window.location.replace(\"registrationPage.php\");</script>";
   }
   else{
     include("connection.php");

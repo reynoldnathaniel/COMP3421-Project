@@ -199,7 +199,7 @@ session_start();
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1 animate-box">
 						<h3>Edit Profile</h3>
-						<form action="#">
+						<form method="POST" action="editProfileProcess.php">
 							<div class="row form-group">
 								<div class="col-md-6 padding-bottom">
 
