@@ -68,7 +68,8 @@ include("header.php");
 		<br><br>
 		<div align="center">
 			<a href="registerRestaurant.php">Add new restaurant</a><br>
-			<a href="viewRestaurant.php">View all restaurant</a>
+			<a href="viewRestaurant.php">View all restaurant</a><br>
+			<a href="logoutProcess.php">Logout</a><br>
 		</div>
 
 	</body>

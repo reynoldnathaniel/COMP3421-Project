@@ -57,6 +57,8 @@ include("header.php");
 	<div class="colorlib-loader"></div>
     <form method="POST" action="registerRestaurantProcess.php" enctype="multipart/form-data">
       <center>
+        <br>
+        <a href="adminHomepage.php"><h1>Homepage Admin</h1></a>
         <br><br>
       <h2>List of Restaurants</h2>
       <br>

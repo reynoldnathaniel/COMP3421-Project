@@ -55,6 +55,8 @@ include("header.php");
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
+  <br><br><br>
+  <center><a href="adminHomepage.php"><h1>Homepage Admin</h1></a></center>
   <div id="register-box">
     <form method="POST" action="registerRestaurantProcess.php" enctype="multipart/form-data">
       <center>
