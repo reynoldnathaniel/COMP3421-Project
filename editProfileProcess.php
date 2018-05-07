@@ -6,10 +6,10 @@
   $phonenumber = $_POST["phonenumber"];
   $dateofbirth = $_POST["dateofbirth"];
   $id = $_SESSION["user_id"];
-  // if($firstname == $_SESSION["firstname"] && $lastname == $_SESSION["lastname"] && $email == $_SESSION["email"] && $phonenumber == $_SESSION["phone"] && $dateofbirth == $_SESSION["DOB"]){
-  //   echo "<script type='text/javascript'>alert('You did not make any changes.');window.location.replace(\"editProfile.php\");</script>";
-  // }
-  //else{
+  if($firstname == $_SESSION["firstname"] && $lastname == $_SESSION["lastname"] && $email == $_SESSION["email"] && $phonenumber == $_SESSION["phone"] && $dateofbirth == $_SESSION["DOB"]){
+    echo "<script type='text/javascript'>alert('You did not make any changes.');window.location.replace(\"editProfile.php\");</script>";
+  }
+  else{
     include("connection.php");
     mysqli_query($con,"
       UPDATE users 
@@ -26,5 +26,5 @@
 
 
 
-  //}
+  }
 ?>
