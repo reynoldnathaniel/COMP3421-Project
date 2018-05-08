@@ -1,11 +1,17 @@
 <?php
 include("header.php");
+
+  if (isset($_POST['viewDishButton'])){
+    $_SESSION['rest_id'] = $_POST['restid'];
+    $restid = $_POST['restid'];
+  }
+
 ?>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Restaurant</title>
+  <title>Dish</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="" />
   <meta name="keywords" content="" />
@@ -54,31 +60,50 @@ include("header.php");
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
-  <div id="register-box">
-    <form method="POST" action="registerDishProcess.php" enctype="multipart/form-data">
+    <form method="POST" action="registerDish.php" enctype="multipart/form-data">
       <center>
+        <br>
+        <a href="adminHomepage.php"><h1>Homepage Admin</h1></a>
         <br><br>
-      <h2>Add Dish Page</h2>
+      <h2>List of Dishes</h2>
       <br>
-      <label>Name</label><input type="text" placeholder="" name="dishname">
-      <label>Description</label><br><textarea  rows="5" cols="50" name="description">Please write down the menu description here... </textarea>
-      <br><br>
-      <label>Price ($HKD)</label><br><input type="number" value="100.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" name="price"/>
-      <br><br>
-      <label>Type of Dish</label><br> <select name="dishtype">
-        <option>appetizers</option>
-        <option>main dishes</option>
-        <option>side dishes</option>
-        <option>beverages</option>
-        <option>desserts</option> </select>  
-       <br><br>
-      <label>Image</label><br> <input type="file" name="dishImage" id="dishImage"> 
-      <p style="color: red;">* to select multiple files, hold down the CTRL or SHIFT key while selecting </p>
-      <br>
-      <button type="submit" class="btn">Add!</button>
+
+      <table>
+        <tr>
+          <td>Dish Name</td>
+          <td>Dish Price</td>
+          <td>Dish Type</td>
+
+
+          <!-- <a href="registerDish.php">Add new dish</a><br> -->
+        </tr>
+        <?php
+            include("connection.php");
+            $restid = $_SESSION['rest_id'];
+            $sql = "SELECT * FROM dish WHERE rest_id='$restid'";
+            $result = mysqli_query($con,$sql);
+            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+              echo "
+              <tr>
+              <td>$row[dish_name]</td>
+              <td>$row[dish_price]</td>
+              <td>$row[dish_type]</td>
+              </tr>
+              ";
+            }
+
+
+          ?>
+      </table><br><br>
+        <button type='submit' name='viewDishButton'>Add Dish</button><br><br>
       </center>
     </form>
-  </div>
+
+    <form method="POST" action="viewRestaurant.php" >
+      <center>
+        <button type='submit' name='backButton'>Back</button>
+      </center>
+      </form>
 </body>
 <!-- jQuery -->
 <script src="js/jquery.min.js"></script>

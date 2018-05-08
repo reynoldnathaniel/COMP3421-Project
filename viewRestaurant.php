@@ -1,6 +1,5 @@
 <?php
 include("header.php");
-
 ?>
 <html>
 <head>
@@ -55,7 +54,7 @@ include("header.php");
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
-    <form method="POST" action="registerRestaurantProcess.php" enctype="multipart/form-data">
+    <form method="POST" action="viewDish.php" enctype="multipart/form-data">
       <center>
         <br>
         <a href="adminHomepage.php"><h1>Homepage Admin</h1></a>
@@ -73,6 +72,10 @@ include("header.php");
           <td>Restaurant Opening Time</td>
           <td>Restaurant Closing Time</td>
           <td>Restaurant Number Of Seats</td>
+          <td>Restaurant Dishes</td>
+
+
+          <!-- <a href="registerDish.php">Add new dish</a><br> -->
         </tr>
         <?php
             include("connection.php");
@@ -89,12 +92,18 @@ include("header.php");
               <td>$row[rest_opentime]</td>
               <td>$row[rest_closetime]</td>
               <td>$row[rest_seats]</td>
+              <td> <form action='viewDish.php' method='POST'>
+                  <input type='hidden' name='restid' value='$row[rest_id]'>
+                  <button type='submit' name='viewDishButton'>View Dish</button>
+                </form></td>
+             
               </tr>
               ";
             }
 
 
           ?>
+           <!-- <a href=notes.php? $_SESSION["ID"]= $row["ID"] ?> -->
       </table>
       </center>
     </form>
