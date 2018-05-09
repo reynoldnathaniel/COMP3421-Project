@@ -7,8 +7,8 @@ $sql0 = "CREATE TABLE users(
 		user_lname varchar(50),
 		user_gender varchar(6),
 		user_phone int(20),
-		user_DOB varchar(8),
-		user_type varchar(8) NOT NULL,
+		user_DOB varchar(10),
+		user_type varchar(10) NOT NULL,
 		rest_id int(5) DEFAULT -1,
 		user_password varchar(50) NOT NULL,
 		PRIMARY KEY (user_id))";
@@ -23,6 +23,7 @@ $sql1 = "CREATE TABLE restaurant(
 		rest_opentime int(2),
 		rest_closetime int(2),
 		rest_seats int(3) NOT NULL,
+		rest_description varchar(300),
 		PRIMARY KEY (rest_id))";
 
 $sql2 = "CREATE TABLE dish(
@@ -31,6 +32,8 @@ $sql2 = "CREATE TABLE dish(
 		dish_price int(3) NOT NULL,
 		dish_type varchar(20),
 		rest_id int(5) NOT NULL,
+		dish_description varchar(100),
+		dish_image varchar(30),
 		FOREIGN KEY (rest_id) REFERENCES restaurant(rest_id),
 		PRIMARY KEY (dish_id)
 		)";
@@ -46,7 +49,7 @@ $sql3 = "CREATE TABLE vacancy(
 		
 		
 	)";
-
+//
 $sql4 = "CREATE TABLE booking(
 		book_id int NOT NULL AUTO_INCREMENT,
 		book_size int(2) NOT NULL,
