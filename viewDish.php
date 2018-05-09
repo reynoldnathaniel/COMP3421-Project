@@ -65,9 +65,21 @@ include("header.php");
     <form method="POST" enctype="multipart/form-data">
       <center>
         <br>
-        <a href="adminHomepage.php"><h1>Homepage Admin</h1></a>
+        <?php 
+          if($_SESSION["user_type"] == 'staff'){
+            echo "<a href='staffHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a>";
+          }
+          else if($_SESSION["user_type"] == 'admin'){
+            echo "<a href='adminHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a>";
+          }
+        ?>
         <br><br>
+<<<<<<< HEAD
       <h2>List of Dishes for Restaurant <?php echo $_SESSION['restname'];?></h2>
+=======
+      <h2>List of Dishes for Restaurant <?php echo $_SESSION['rest_id'];?></h2>
+      <h3>Where you are <?php echo $_SESSION["user_type"];?></h3>
+>>>>>>> ed3083e76bcd805c4485b04d2536e2433d58e27a
 
       <br>
 
@@ -120,8 +132,16 @@ include("header.php");
         <button type='submit' name='registerDishButton'>Add Dish</button><br><br>
       </center>
       </form>
+      <?php 
+          if($_SESSION["user_type"] == 'staff'){
+            echo "<form method='POST' action='staffHomepage.php' >";
+          }
+          else if($_SESSION["user_type"] == 'admin'){
+            echo "<form method='POST' action='viewRestaurant.php' >";
+          }
+        ?>
 
-    <form method="POST" action="viewRestaurant.php" >
+    <!-- <form method="POST" action="viewRestaurant.php" > -->
       <center>
         <button type='submit' name='backButton'>Back</button>
       </center>
