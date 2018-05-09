@@ -61,7 +61,7 @@ include("header.php");
       <h2>Add Dish Page</h2>
       <br>
       <label>Name</label><input type="text" placeholder="" name="dishname">
-      <label>Description</label><br><textarea  rows="5" cols="50" name="description">Please write down the menu description here... </textarea>
+      <label>Description</label><br><textarea  rows="5" cols="50" name="description" placeholder="Please write down the menu description here... "></textarea>
       <br><br>
       <label>Price ($HKD)</label><br><input type="number" value="100.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" name="price"/>
       <br><br>

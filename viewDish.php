@@ -2,8 +2,10 @@
 include("header.php");
 
   if (isset($_POST['viewDishButton'])){
-    $_SESSION['rest_id'] = $_POST['restid1'];
-    $restid = $_POST['restid1'];
+    $_SESSION['rest_id'] = $_POST['restid'];
+    $restid = $_POST['restid'];
+    $_SESSION["restname"] = $_POST['restname'];
+    $restname = $_SESSION["restname"];
   }
 
 ?>
@@ -65,7 +67,7 @@ include("header.php");
         <br>
         <a href="adminHomepage.php"><h1>Homepage Admin</h1></a>
         <br><br>
-      <h2>List of Dishes for Restaurant <?php echo $_SESSION['rest_id'];?></h2>
+      <h2>List of Dishes for Restaurant <?php echo $_SESSION['restname'];?></h2>
 
       <br>
 

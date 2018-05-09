@@ -16,6 +16,11 @@ if(!file_exists("dishes/".$dishname))
 $target_dir = "dishes/".$dishname."/";
 $target_file = $target_dir.basename($_FILES["dishImage"]["name"]);
 $uploadOk = 1;
+$filename = $_FILES["dishImage"]["name"];
+if(file_exists($target_file)){
+    $target_file = $target_dir."0".basename($_FILES["dishImage"]["name"]);
+    $filename = "0".$filename;
+}
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["dishImage"]["tmp_name"]);
@@ -51,7 +56,7 @@ else{
         echo "<script type='text/javascript'>alert('Failed to upload image file!');window.location.replace(\"registerDish.php\");</script>";
     }
 }
-$tmp_name = $_FILES["dishImage"]["name"];
+$tmp_name = $filename;
 $dishprice = (int)$dishprice;
 $restid = $_SESSION['rest_id'];
 

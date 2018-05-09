@@ -24,6 +24,7 @@ $sql1 = "CREATE TABLE restaurant(
 		rest_closetime int(2),
 		rest_seats int(3) NOT NULL,
 		rest_description varchar(300),
+		rest_image varchar(50),
 		PRIMARY KEY (rest_id))";
 
 $sql2 = "CREATE TABLE dish(

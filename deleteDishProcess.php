@@ -1,4 +1,5 @@
 <?php
+session_start();
   if (isset($_POST['deleteDishButton'])){
     $dishid = $_POST['dishid'];
     include("connection.php");

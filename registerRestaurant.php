@@ -124,7 +124,7 @@ include("header.php");
       <br>
       <input type="text" placeholder="Number of Seats" name="rest_seats">
       Description<br>
-      <textarea  rows="3" cols="50" name="description">Please write down the menu description here... </textarea>
+      <textarea  rows="3" cols="50" name="description" placeholder="Please write down the menu description here... "></textarea>
       <br><br>
       <label>Image</label><br> <input type="file" name="restaurantImage" id="restaurantImage"> 
       <button type="submit" class="btn">Register!</button>
