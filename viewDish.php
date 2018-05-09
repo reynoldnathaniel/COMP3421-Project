@@ -74,12 +74,9 @@ include("header.php");
           }
         ?>
         <br><br>
-<<<<<<< HEAD
       <h2>List of Dishes for Restaurant <?php echo $_SESSION['restname'];?></h2>
-=======
       <h2>List of Dishes for Restaurant <?php echo $_SESSION['rest_id'];?></h2>
       <h3>Where you are <?php echo $_SESSION["user_type"];?></h3>
->>>>>>> ed3083e76bcd805c4485b04d2536e2433d58e27a
 
       <br>
 
