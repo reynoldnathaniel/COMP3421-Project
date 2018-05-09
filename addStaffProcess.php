@@ -4,7 +4,7 @@
   $usertype = "staff";
   $restaurant = $_POST["restaurant_name"];
   if($email == "" || $password == "" || $restaurant == ""){
-    echo "<script type='text/javascript'>alert('Please fill in the missing fields.');window.location.replace(\"registrationPage.php\");</script>";
+    echo "<script type='text/javascript'>alert('Please fill in the missing fields.');window.location.replace(\"addStaff.php\");</script>";
   }
   else{
     include("connection.php");
