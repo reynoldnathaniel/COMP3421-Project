@@ -54,7 +54,7 @@ include("header.php");
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
-    <form method="POST" action="viewDish.php" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
       <center>
         <br>
         <a href="adminHomepage.php"><h1>Homepage Admin</h1></a>
@@ -73,10 +73,26 @@ include("header.php");
           <td>Restaurant Closing Time</td>
           <td>Restaurant Number Of Seats</td>
           <td>Restaurant Dishes</td>
-
-
-          <!-- <a href="registerDish.php">Add new dish</a><br> -->
+          <td>Delete Restaurant</td>
         </tr>
+        <!-- the following tr is for debugging purpose, please keep -->
+        <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td> <form action='viewDish.php' method='POST'>
+                  <input type='hidden' name='restid' value='$row[rest_id]'>
+                </form></td>
+              <td> <form action='deleteRestaurantProcess.php' method='POST'>
+                  <input type='hidden' name='restid' value='$row[rest_id]'>
+                </form></td>
+             
+              </tr>
         <?php
             include("connection.php");
             $sql = "SELECT * FROM restaurant";
@@ -95,6 +111,10 @@ include("header.php");
               <td> <form action='viewDish.php' method='POST'>
                   <input type='hidden' name='restid' value='$row[rest_id]'>
                   <button type='submit' name='viewDishButton'>View Dish</button>
+                </form></td>
+              <td> <form action='deleteRestaurantProcess.php' method='POST'>
+                  <input type='hidden' name='restid' value='$row[rest_id]'>
+                  <button type='submit' name='deleteRestaurantButton'>Delete</button>
                 </form></td>
              
               </tr>

@@ -65,7 +65,8 @@ include("header.php");
         <br>
         <a href="adminHomepage.php"><h1>Homepage Admin</h1></a>
         <br><br>
-      <h2>List of Dishes</h2>
+      <h2>List of Dishes for Restaurant <?php echo $_SESSION['rest_id'];?></h2>
+      
       <br>
 
       <table>

@@ -69,10 +69,18 @@ include("header.php");
           <td>Staff Email&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td>Restaurant&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td>Delete Staff</td>
-
-
-          <!-- <a href="registerDish.php">Add new dish</a><br> -->
         </tr>
+        <!-- the following tr is for debugging purpose, please keep -->
+        <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td> <form action='deleteStaffProcess.php' method='POST'>
+                  <input type='hidden' name='staffid' value='$row[user_id]'>
+                </form></td>
+             
+              </tr>
         <?php
             include("connection.php");
             $sql = "SELECT * FROM users WHERE user_type='staff'";
