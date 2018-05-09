@@ -2,8 +2,8 @@
 include("header.php");
 
   if (isset($_POST['viewDishButton'])){
-    $_SESSION['rest_id'] = $_POST['restid'];
-    $restid = $_POST['restid'];
+    $_SESSION['rest_id'] = $_POST['restid1'];
+    $restid = $_POST['restid1'];
   }
 
 ?>
@@ -60,24 +60,33 @@ include("header.php");
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
-    <form method="POST" action="registerDish.php" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
       <center>
         <br>
         <a href="adminHomepage.php"><h1>Homepage Admin</h1></a>
         <br><br>
       <h2>List of Dishes for Restaurant <?php echo $_SESSION['rest_id'];?></h2>
-      
+
       <br>
 
       <table>
         <tr>
-          <td>Dish Name</td>
-          <td>Dish Price</td>
-          <td>Dish Type</td>
-
-
-          <!-- <a href="registerDish.php">Add new dish</a><br> -->
+          <td>Dish Name&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Dish Price&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Dish Type&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Dish Description&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Delete Dish</td>
         </tr>
+        <!-- the following tr is for debugging purpose, please keep -->
+        <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td> <form action='deleteDishProcess.php' method='POST'>
+                  <input type='hidden' name='dishid' value='$row[dish_id]'>
+                </form></td>
+              </tr>
         <?php
             include("connection.php");
             $restid = $_SESSION['rest_id'];
@@ -89,6 +98,11 @@ include("header.php");
               <td>$row[dish_name]</td>
               <td>$row[dish_price]</td>
               <td>$row[dish_type]</td>
+              <td>$row[dish_description]</td>
+              <td> <form action='deleteDishProcess.php' method='POST'>
+                  <input type='hidden' name='dishid' value='$row[dish_id]'>
+                  <button type='submit' name='deleteDishButton'>Delete</button>
+                </form></td>
               </tr>
               ";
             }
@@ -96,9 +110,14 @@ include("header.php");
 
           ?>
       </table><br><br>
-        <button type='submit' name='viewDishButton'>Add Dish</button><br><br>
       </center>
     </form>
+
+    <form method="POST" action="registerDish.php" >
+      <center>
+        <button type='submit' name='registerDishButton'>Add Dish</button><br><br>
+      </center>
+      </form>
 
     <form method="POST" action="viewRestaurant.php" >
       <center>

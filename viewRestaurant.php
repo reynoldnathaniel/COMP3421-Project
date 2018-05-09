@@ -109,11 +109,11 @@ include("header.php");
               <td>$row[rest_closetime]</td>
               <td>$row[rest_seats]</td>
               <td> <form action='viewDish.php' method='POST'>
-                  <input type='hidden' name='restid' value='$row[rest_id]'>
+                  <input type='hidden' name='restid1' value='$row[rest_id]'>
                   <button type='submit' name='viewDishButton'>View Dish</button>
                 </form></td>
               <td> <form action='deleteRestaurantProcess.php' method='POST'>
-                  <input type='hidden' name='restid' value='$row[rest_id]'>
+                  <input type='hidden' name='restid2' value='$row[rest_id]'>
                   <button type='submit' name='deleteRestaurantButton'>Delete</button>
                 </form></td>
              

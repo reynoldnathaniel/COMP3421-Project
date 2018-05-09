@@ -60,8 +60,8 @@ if($uploadOk==1)
 {
     mysqli_query($con,"
   INSERT INTO
-  dish(dish_name,dish_price,dish_type,rest_id)
-  VALUES('$dishname','$dishprice','$dishtype','$restid')");
+  dish(dish_name,dish_price,dish_type,rest_id,dish_description,dish_image)
+  VALUES('$dishname','$dishprice','$dishtype','$restid','$description','$tmp_name')");
     echo "<script type='text/javascript'>alert('Dish Added!');window.location.replace(\"viewDish.php\");</script>";
 }
 
