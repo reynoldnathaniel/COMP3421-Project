@@ -4,7 +4,6 @@ $dishname = $_POST["dishname"];
 $description = $_POST["description"];
 $dishprice = $_POST["price"];
 $dishtype = $_POST["dishtype"];
-$dishimg = $_POST["dishImage"];
 
 if($dishname == "" || $dishprice == "" || $dishtype == ""){
 	$uploadOk=0;
