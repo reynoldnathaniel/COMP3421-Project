@@ -110,39 +110,11 @@ include("header.php");
               </tr>
         <?php
             include("connection.php");
-<<<<<<< HEAD
             if(isset($_POST["rest_name"])){
               $rest_name = $_POST['rest_name'];
               $rest_address = $_POST['rest_address'];
               $rest_region = $_POST['rest_region'];
              }
-=======
-            $sql = "SELECT * FROM restaurant";
-            $result = mysqli_query($con,$sql);
-            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-              echo "
-              <tr>
-              <td>$row[rest_name]</td>
-              <td>$row[rest_avg_rating]</td>
-              <td>$row[rest_address]</td>
-              <td>$row[rest_region]</td>
-              <td>$row[rest_type]</td>
-              <td>$row[rest_opentime]</td>
-              <td>$row[rest_closetime]</td>
-              <td>$row[rest_seats]</td>
-              <td> <form action='viewDish.php' method='POST'>
-                  <input type='hidden' name='restid1' value='$row[rest_id]'>
-                  <button type='submit' name='viewDishButton'>View Dish</button>
-                </form></td>
-              <td> <form action='deleteRestaurantProcess.php' method='POST'>
-                  <input type='hidden' name='restid2' value='$row[rest_id]'>
-                  <button type='submit' name='deleteRestaurantButton'>Delete</button>
-                </form></td>
-             
-              </tr>
-              ";
-            }
->>>>>>> 47b2ad62465e42ea8d4ff14b040a5cc616360c9f
 
             if(isset($_POST['rest_name']) && isset($_POST['rest_address']) && isset($_POST['rest_region'])){
               $sql = "SELECT * FROM restaurant WHERE rest_name LIKE '%$rest_name%' AND rest_address LIKE '%$rest_address%' AND rest_region LIKE '%$rest_region%'";
@@ -162,7 +134,10 @@ include("header.php");
                     <input type='hidden' name='restid' value='$row[rest_id]'>
                     <button type='submit' name='viewDishButton'>View Dish</button>
                   </form></td>
-               
+               <td> <form action='deleteRestaurantProcess.php' method='POST'>
+                  <input type='hidden' name='restid2' value='$row[rest_id]'>
+                  <button type='submit' name='deleteRestaurantButton'>Delete</button>
+                </form></td>
                 </tr>
                 ";
               }
@@ -185,7 +160,10 @@ include("header.php");
                     <input type='hidden' name='restid' value='$row[rest_id]'>
                     <button type='submit' name='viewDishButton'>View Dish</button>
                   </form></td>
-               
+               <td> <form action='deleteRestaurantProcess.php' method='POST'>
+                  <input type='hidden' name='restid2' value='$row[rest_id]'>
+                  <button type='submit' name='deleteRestaurantButton'>Delete</button>
+                </form></td>
                 </tr>
                 ";
               }
@@ -208,7 +186,10 @@ include("header.php");
                     <input type='hidden' name='restid' value='$row[rest_id]'>
                     <button type='submit' name='viewDishButton'>View Dish</button>
                   </form></td>
-               
+               <td> <form action='deleteRestaurantProcess.php' method='POST'>
+                  <input type='hidden' name='restid2' value='$row[rest_id]'>
+                  <button type='submit' name='deleteRestaurantButton'>Delete</button>
+                </form></td>
                 </tr>
                 ";
               }
@@ -231,7 +212,10 @@ include("header.php");
                     <input type='hidden' name='restid' value='$row[rest_id]'>
                     <button type='submit' name='viewDishButton'>View Dish</button>
                   </form></td>
-               
+               <td> <form action='deleteRestaurantProcess.php' method='POST'>
+                  <input type='hidden' name='restid2' value='$row[rest_id]'>
+                  <button type='submit' name='deleteRestaurantButton'>Delete</button>
+                </form></td>
                 </tr>
                 ";
               }
@@ -254,7 +238,10 @@ include("header.php");
                     <input type='hidden' name='restid' value='$row[rest_id]'>
                     <button type='submit' name='viewDishButton'>View Dish</button>
                   </form></td>
-               
+               <td> <form action='deleteRestaurantProcess.php' method='POST'>
+                  <input type='hidden' name='restid2' value='$row[rest_id]'>
+                  <button type='submit' name='deleteRestaurantButton'>Delete</button>
+                </form></td>
                 </tr>
                 ";
               }
