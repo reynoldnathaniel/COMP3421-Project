@@ -7,6 +7,7 @@ $rest_type = $_POST["rest_type"];
 $rest_opentime = $_POST["rest_opentime"];
 $rest_closetime = $_POST["rest_closetime"];
 $rest_seats = $_POST["rest_seats"];
+$description = $_POST["description"];
 if($rest_name == "" || $rest_address == "" || $rest_seats == ""){
 	$uploadOk=0;
 	echo "<script type='text/javascript'>alert('Fill in the missing fields!');window.location.replace(\"registerRestaurant.php\");</script>";
@@ -61,8 +62,8 @@ if($uploadOk==1)
 {
     mysqli_query($con,"
   INSERT INTO
-  restaurant(rest_name,rest_address,rest_region,rest_type,rest_opentime,rest_closetime,rest_seats,rest_image,rest_avg_rating)
-  VALUES('$rest_name','$rest_address','$rest_region','$rest_type','$rest_opentime','$rest_closetime','$rest_seats','$tmp_name','3')");
+  restaurant(rest_name,rest_address,rest_region,rest_type,rest_opentime,rest_closetime,rest_seats,rest_image,rest_avg_rating,rest_description)
+  VALUES('$rest_name','$rest_address','$rest_region','$rest_type','$rest_opentime','$rest_closetime','$rest_seats','$tmp_name','3','$description')");
     echo "<script type='text/javascript'>alert('Restaurant Added!');window.location.replace(\"adminHomepage.php\");</script>";
 }
 ?>

@@ -48,7 +48,18 @@ include("header.php");
 
   <!-- Theme style  -->
   <link rel="stylesheet" href="css/style.css">
-
+<style>
+  table{
+    width: 90%; border:1px solid black;
+  }
+  td{
+    padding: 15px;border:1px solid black;
+  }
+  tr:nth-child(even){
+    background-color: #f2f2f2;
+  }
+  tr:hover {background-color: #f5f5f5;}
+</style>
   <!-- Modernizr JS -->
   <script src="js/modernizr-2.6.2.min.js"></script>
 </head>
@@ -69,10 +80,18 @@ include("header.php");
           <td>Staff Email&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td>Restaurant&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td>Delete Staff</td>
-
-
-          <!-- <a href="registerDish.php">Add new dish</a><br> -->
         </tr>
+        <!-- the following tr is for debugging purpose, please keep -->
+        <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td> <form action='deleteStaffProcess.php' method='POST'>
+                  <input type='hidden' name='staffid' value='$row[user_id]'>
+                </form></td>
+             
+              </tr>
         <?php
             include("connection.php");
             $sql = "SELECT * FROM users WHERE user_type='staff'";

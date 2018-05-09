@@ -66,7 +66,10 @@ include("header.php");
 	</head>
 	<body>
 		<br><br>
+		<center><h1>Admin Homepage</h1></center>
+		<br><br>
 		<div align="center">
+
 			<a href="registerRestaurant.php">Add New Restaurant</a><br>
 			<a href="viewRestaurant.php">View All Restaurant</a><br>
 			<a href="addStaff.php">Add Staff</a><br>

@@ -23,7 +23,6 @@ include("header.php");
   <meta name="twitter:card" content="" />
 
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-
   <!-- Animate.css -->
   <link rel="stylesheet" href="css/animate.css">
   <!-- Icomoon Icon Fonts-->
@@ -51,13 +50,29 @@ include("header.php");
 
   <!-- Modernizr JS -->
   <script src="js/modernizr-2.6.2.min.js"></script>
+  <style>
+  table{
+    width: 90%; border:1px solid black;
+  }
+  td{
+    padding: 15px;border:1px solid black;
+  }
+  tr:nth-child(even){
+    background-color: #f2f2f2;
+  }
+  tr:hover {background-color: #f5f5f5;}
+</style>
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
-    <form method="POST" action="viewDish.php" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
       <center>
-        <br>
-        <a href="adminHomepage.php"><h1>Homepage Admin</h1></a>
+        <br><br>
+        <a href="adminHomepage.php"><h1>Homepage Admin</h1></a><br><br>
+        <input type="text" placeholder="Resturant Name" name="rest_name" value="">
+        <input type="text" placeholder="Address" name="rest_address" value="">
+        <input type="text" placeholder="Region" name="rest_region" value="">
+        <button type="submit" class="btn">Browse</button>
         <br><br>
       <h2>List of Restaurants</h2>
       <br>
@@ -73,12 +88,35 @@ include("header.php");
           <td>Restaurant Closing Time</td>
           <td>Restaurant Number Of Seats</td>
           <td>Restaurant Dishes</td>
-
-
-          <!-- <a href="registerDish.php">Add new dish</a><br> -->
+          <td>Delete Restaurant</td>
         </tr>
+        <!-- the following tr is for debugging purpose, please keep -->
+        <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td> <form action='viewDish.php' method='POST'>
+                  <input type='hidden' name='restid' value='$row[rest_id]'>
+                </form></td>
+              <td> <form action='deleteRestaurantProcess.php' method='POST'>
+                  <input type='hidden' name='restid' value='$row[rest_id]'>
+                </form></td>
+             
+              </tr>
         <?php
             include("connection.php");
+<<<<<<< HEAD
+            if(isset($_POST["rest_name"])){
+              $rest_name = $_POST['rest_name'];
+              $rest_address = $_POST['rest_address'];
+              $rest_region = $_POST['rest_region'];
+             }
+=======
             $sql = "SELECT * FROM restaurant";
             $result = mysqli_query($con,$sql);
             while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
@@ -93,14 +131,134 @@ include("header.php");
               <td>$row[rest_closetime]</td>
               <td>$row[rest_seats]</td>
               <td> <form action='viewDish.php' method='POST'>
-                  <input type='hidden' name='restid' value='$row[rest_id]'>
+                  <input type='hidden' name='restid1' value='$row[rest_id]'>
                   <button type='submit' name='viewDishButton'>View Dish</button>
+                </form></td>
+              <td> <form action='deleteRestaurantProcess.php' method='POST'>
+                  <input type='hidden' name='restid2' value='$row[rest_id]'>
+                  <button type='submit' name='deleteRestaurantButton'>Delete</button>
                 </form></td>
              
               </tr>
               ";
             }
+>>>>>>> 47b2ad62465e42ea8d4ff14b040a5cc616360c9f
 
+            if(isset($_POST['rest_name']) && isset($_POST['rest_address']) && isset($_POST['rest_region'])){
+              $sql = "SELECT * FROM restaurant WHERE rest_name LIKE '%$rest_name%' AND rest_address LIKE '%$rest_address%' AND rest_region LIKE '%$rest_region%'";
+              $result = mysqli_query($con,$sql);
+              while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                echo "
+                <tr>
+                <td>$row[rest_name]</td>
+                <td>$row[rest_avg_rating]</td>
+                <td>$row[rest_address]</td>
+                <td>$row[rest_region]</td>
+                <td>$row[rest_type]</td>
+                <td>$row[rest_opentime]</td>
+                <td>$row[rest_closetime]</td>
+                <td>$row[rest_seats]</td>
+                <td> <form action='viewDish.php' method='POST'>
+                    <input type='hidden' name='restid' value='$row[rest_id]'>
+                    <button type='submit' name='viewDishButton'>View Dish</button>
+                  </form></td>
+               
+                </tr>
+                ";
+              }
+            }
+            else if(isset($_POST['rest_name'])){
+              $sql = "SELECT * FROM restaurant WHERE rest_name LIKE '%$rest_name%'";
+              $result = mysqli_query($con,$sql);
+              while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                echo "
+                <tr>
+                <td>$row[rest_name]</td>
+                <td>$row[rest_avg_rating]</td>
+                <td>$row[rest_address]</td>
+                <td>$row[rest_region]</td>
+                <td>$row[rest_type]</td>
+                <td>$row[rest_opentime]</td>
+                <td>$row[rest_closetime]</td>
+                <td>$row[rest_seats]</td>
+                <td> <form action='viewDish.php' method='POST'>
+                    <input type='hidden' name='restid' value='$row[rest_id]'>
+                    <button type='submit' name='viewDishButton'>View Dish</button>
+                  </form></td>
+               
+                </tr>
+                ";
+              }
+            }
+            else if(isset($_POST['rest_address'])){
+              $sql = "SELECT * FROM restaurant WHERE rest_address LIKE '%$rest_address%'";
+              $result = mysqli_query($con,$sql);
+              while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                echo "
+                <tr>
+                <td>$row[rest_name]</td>
+                <td>$row[rest_avg_rating]</td>
+                <td>$row[rest_address]</td>
+                <td>$row[rest_region]</td>
+                <td>$row[rest_type]</td>
+                <td>$row[rest_opentime]</td>
+                <td>$row[rest_closetime]</td>
+                <td>$row[rest_seats]</td>
+                <td> <form action='viewDish.php' method='POST'>
+                    <input type='hidden' name='restid' value='$row[rest_id]'>
+                    <button type='submit' name='viewDishButton'>View Dish</button>
+                  </form></td>
+               
+                </tr>
+                ";
+              }
+            }
+            else if(isset($_POST['rest_region'])){
+              $sql = "SELECT * FROM restaurant WHERE rest_region LIKE '%$rest_region%'";
+              $result = mysqli_query($con,$sql);
+              while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                echo "
+                <tr>
+                <td>$row[rest_name]</td>
+                <td>$row[rest_avg_rating]</td>
+                <td>$row[rest_address]</td>
+                <td>$row[rest_region]</td>
+                <td>$row[rest_type]</td>
+                <td>$row[rest_opentime]</td>
+                <td>$row[rest_closetime]</td>
+                <td>$row[rest_seats]</td>
+                <td> <form action='viewDish.php' method='POST'>
+                    <input type='hidden' name='restid' value='$row[rest_id]'>
+                    <button type='submit' name='viewDishButton'>View Dish</button>
+                  </form></td>
+               
+                </tr>
+                ";
+              }
+            }
+            else{
+              $sql = "SELECT * FROM restaurant";
+              $result = mysqli_query($con,$sql);
+              while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                echo "
+                <tr>
+                <td>$row[rest_name]</td>
+                <td>$row[rest_avg_rating]</td>
+                <td>$row[rest_address]</td>
+                <td>$row[rest_region]</td>
+                <td>$row[rest_type]</td>
+                <td>$row[rest_opentime]</td>
+                <td>$row[rest_closetime]</td>
+                <td>$row[rest_seats]</td>
+                <td> <form action='viewDish.php' method='POST'>
+                    <input type='hidden' name='restid' value='$row[rest_id]'>
+                    <button type='submit' name='viewDishButton'>View Dish</button>
+                  </form></td>
+               
+                </tr>
+                ";
+              }
+            }
 
           ?>
            <!-- <a href=notes.php? $_SESSION["ID"]= $row["ID"] ?> -->
