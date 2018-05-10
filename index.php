@@ -187,7 +187,7 @@
 				              	 </div>
 				                <div class="col-md-3">
 				                  <div class="form-group">
-				                    <label for="date">Date:</label>
+				                    <label for="date">Date</label>
 				                    <div class="form-field">
 				                      <i class="icon icon-calendar2"></i>
 				                      <input type="text" id="date" class="form-control date" placeholder="Booking date">
@@ -195,23 +195,54 @@
 				                  </div>
 				                </div>
 				 
-				                <div class="col-md-2">
+				                <div class="col-md-3">
 				                  <div class="form-group">
 				                    <label for="guests">Guest</label>
 				                    <div class="form-field">
-				                      <i class="icon icon-arrow-down3"></i>
+				                      <i class="icon icon-user"></i>
 				                      <select name="people" id="people" class="form-control">
-				                        <option value="#">1</option>
-				                        <option value="#">2</option>
-				                        <option value="#">3</option>
-				                        <option value="#">4</option>
-				                        <option value="#">5+</option>
+				                        <option value="1">1</option>
+				                        <option value="2">2</option>
+				                        <option value="3">3</option>
+				                        <option value="4">4</option>
+				                        <option value="5">5</option>
+				                        <option value="6">6</option>
+				                        <option value="7">7</option>
+				                        <option value="8">8</option>
+				                        <option value="9">9</option>
 				                      </select>
 				                    </div>
 				                  </div>
 				                </div>
 
-				                <div class="col-md-2">
+				                <div class="col-md-3">
+				                  <div class="form-group">
+				                    <label for="guests">Time</label>
+				                    <div class="form-field">
+				                      <i class="icon icon-time"></i>
+				                      <select name="time" id="time" class="form-control">
+				                      	<option value="8">08:00</option>
+				                      	<option value="9">09:00</option>
+				                        <option value="10">10:00</option>
+				                        <option value="11">11:00</option>
+				                        <option value="12">12:00</option>
+				                        <option value="13">13:00</option>
+				                        <option value="14">14:00</option>
+				                        <option value="15">15:00</option>
+				                        <option value="16">16:00</option>
+				                        <option value="17">17:00</option>
+				                        <option value="18">18:00</option>
+				                        <option value="19">19:00</option>
+				                        <option value="20">20:00</option>
+				                        <option value="21">21:00</option>
+				                        <option value="22">22:00</option>
+				                        <option value="23">23:00</option>
+				                      </select>
+				                    </div>
+				                  </div>
+				                </div>
+				                
+				                <div class="col-md-3">
 				                  <div class="form-group">
 				                    <label for="guests">Any Cuisine</label>
 				                    <div class="form-field">
@@ -230,7 +261,7 @@
 				                  </div>
 				                </div>
 
-				                <div class="col-md-2">
+				                <div class="col-md-3">
 				                  <div class="form-group">
 				                    <label for="guests">Any Location</label>
 				                    <div class="form-field">
@@ -265,7 +296,7 @@
 				              	 </div>
 				                <div class="col-md-3">
 				                  <div class="form-group">
-				                    <label for="date">Date:</label>
+				                    <label for="date">Date</label>
 				                    <div class="form-field">
 				                      <i class="icon icon-calendar2"></i>
 				                      <input type="text" id="date" class="form-control date" placeholder="Booking date">
@@ -273,17 +304,48 @@
 				                  </div>
 				                </div>
 				 
-				                <div class="col-md-2">
+				                <div class="col-md-3">
 				                  <div class="form-group">
 				                    <label for="guests">Guest</label>
 				                    <div class="form-field">
-				                      <i class="icon icon-arrow-down3"></i>
+				                      <i class="icon icon-user"></i>
 				                      <select name="people" id="people" class="form-control">
-				                        <option value="#">1</option>
-				                        <option value="#">2</option>
-				                        <option value="#">3</option>
-				                        <option value="#">4</option>
-				                        <option value="#">5+</option>
+				                        <option value="1">1</option>
+				                        <option value="2">2</option>
+				                        <option value="3">3</option>
+				                        <option value="4">4</option>
+				                        <option value="5">5</option>
+				                        <option value="6">6</option>
+				                        <option value="7">7</option>
+				                        <option value="8">8</option>
+				                        <option value="9">9</option>
+				                      </select>
+				                    </div>
+				                  </div>
+				                </div>
+
+				                <div class="col-md-3">
+				                  <div class="form-group">
+				                    <label for="guests">Time</label>
+				                    <div class="form-field">
+				                      <i class="icon icon-time"></i>
+				                      <select name="time" id="time" class="form-control">
+				                      	<option value="8">08:00</option>
+				                      	<option value="9">09:00</option>
+				                        <option value="10">10:00</option>
+				                        <option value="11">11:00</option>
+				                        <option value="12">12:00</option>
+				                        <option value="13">13:00</option>
+				                        <option value="14">14:00</option>
+				                        <option value="15">15:00</option>
+				                        <option value="16">16:00</option>
+				                        <option value="17">17:00</option>
+				                        <option value="18">18:00</option>
+				                        <option value="19">19:00</option>
+				                        <option value="20">20:00</option>
+				                        <option value="21">21:00</option>
+				                        <option value="22">22:00</option>
+				                        <option value="23">23:00</option>
 				                      </select>
 				                    </div>
 				                  </div>
@@ -331,7 +393,7 @@
 					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
 						<h2>Popular Restaurants</h2>
 						<p>Check out the most popular restaurants in Hong Kong right now.</p>
-						<span style = "font-size: 18px;" class="flaticon-food-3"></span>
+						<span style = "font-size: 45px;" class="flaticon-food-3"></span>
 					</div>
 				</div>
 			</div>
