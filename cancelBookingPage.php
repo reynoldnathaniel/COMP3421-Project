@@ -218,7 +218,7 @@ session_start();
 						echo "<h2>From ".$row['book_time1'].":00 To ".$row['book_time2'].":00</h2>";
 
 						?>
-						<form method="POST" action="cancelBookingProcess.php">
+						<form method="POST" action="cancelBookingProcess.php" enctype="multipart/form-data">
 						<!-- 
 							<div class="row form-group">
 								<div class="col-md-6 padding-bottom">
