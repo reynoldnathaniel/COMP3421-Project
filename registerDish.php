@@ -1,3 +1,6 @@
+<?php
+include("header.php");
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -52,24 +55,24 @@
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
   <div id="register-box">
-    <form method="POST" action="addDishProcess.php">
+    <form method="POST" action="registerDishProcess.php" enctype="multipart/form-data">
       <center>
         <br><br>
       <h2>Add Dish Page</h2>
       <br>
       <label>Name</label><input type="text" placeholder="" name="dishname">
-      <label>Description</label><br><textarea  rows="5" cols="50" name="description">Please write down the menu description here... </textarea>
+      <label>Description</label><br><textarea  rows="5" cols="50" name="description" placeholder="Please write down the menu description here... "></textarea>
       <br><br>
       <label>Price ($HKD)</label><br><input type="number" value="100.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" name="price"/>
       <br><br>
-      <label>Type of Dish</label><br> <select id="dishtype">
+      <label>Type of Dish</label><br> <select name="dishtype">
         <option>appetizers</option>
         <option>main dishes</option>
         <option>side dishes</option>
         <option>beverages</option>
         <option>desserts</option> </select>  
        <br><br>
-      <label>Image</label><br> <input type="file" name="img" multiple> 
+      <label>Image</label><br> <input type="file" name="dishImage" id="dishImage"> 
       <p style="color: red;">* to select multiple files, hold down the CTRL or SHIFT key while selecting </p>
       <br>
       <button type="submit" class="btn">Add!</button>

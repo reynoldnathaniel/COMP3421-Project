@@ -1,8 +1,11 @@
+<?php
+include("header.php");
+?>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Restaurant</title>
+  <title>Staff</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="" />
   <meta name="keywords" content="" />
@@ -45,26 +48,76 @@
 
   <!-- Theme style  -->
   <link rel="stylesheet" href="css/style.css">
-
+<style>
+  table{
+    width: 90%; border:1px solid black;
+  }
+  td{
+    padding: 15px;border:1px solid black;
+  }
+  tr:nth-child(even){
+    background-color: #f2f2f2;
+  }
+  tr:hover {background-color: #f5f5f5;}
+</style>
   <!-- Modernizr JS -->
   <script src="js/modernizr-2.6.2.min.js"></script>
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
-  <div id="login-box">
-    <form method="POST" action="loginProcess.php">
+    <form method="POST" enctype="multipart/form-data">
       <center>
+        <br>
+        <a href="adminHomepage.php"><h1>Homepage Admin</h1></a>
         <br><br>
-      <h2>Sign in</h2>
+      <h2>List of Staffs</h2>
+      <br>
 
-      <input type="text" placeholder="Email" name="email">
-      <input type="password" placeholder="Password" name="password">
-      <button type="submit" class="btn">Sign in</button>
-      <br><br><br>
-      Are you NEW? <a href="registrationPage.php" style="color:blue; font-weight:bold;"> Create an account</a>
+      <table>
+        <tr>
+          <td>Staff First Name&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Staff Last Name&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Staff Email&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Restaurant&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Delete Staff</td>
+        </tr>
+        <!-- the following tr is for debugging purpose, please keep -->
+        <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td> <form action='deleteStaffProcess.php' method='POST'>
+                  <input type='hidden' name='staffid' value='$row[user_id]'>
+                </form></td>
+             
+              </tr>
+        <?php
+            include("connection.php");
+            $sql = "SELECT * FROM users WHERE user_type='staff'";
+            $result = mysqli_query($con,$sql);
+            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+              echo "
+              <tr>
+              <td>$row[user_fname]</td>
+              <td>$row[user_lname]</td>
+              <td>$row[user_email]</td>
+              <td>$row[rest_id]</td>
+              <td> <form action='deleteStaffProcess.php' method='POST'>
+                  <input type='hidden' name='staffid' value='$row[user_id]'>
+                  <button type='submit' name='deleteStaffButton'>Delete</button>
+                </form></td>
+             
+              </tr>
+              ";
+            }
+
+
+          ?>
+           <!-- <a href=notes.php? $_SESSION["ID"]= $row["ID"] ?> -->
+      </table>
       </center>
     </form>
-  </div>
 </body>
 <!-- jQuery -->
 <script src="js/jquery.min.js"></script>

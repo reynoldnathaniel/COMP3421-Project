@@ -52,16 +52,14 @@
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
   <div id="login-box">
-    <form method="POST" action="loginProcess.php">
+    <form method="POST" action="addStaffProcess.php">
       <center>
         <br><br>
-      <h2>Sign in</h2>
-
+      <h2>Sign Up Staff</h2>
+      <input type="text" placeholder="Restaurant Name" name="restaurant_name">
       <input type="text" placeholder="Email" name="email">
       <input type="password" placeholder="Password" name="password">
-      <button type="submit" class="btn">Sign in</button>
-      <br><br><br>
-      Are you NEW? <a href="registrationPage.php" style="color:blue; font-weight:bold;"> Create an account</a>
+      <button type="submit" class="btn">Sign Up</button>
       </center>
     </form>
   </div>

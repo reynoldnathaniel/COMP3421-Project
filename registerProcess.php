@@ -9,16 +9,16 @@
   $dateofbirth = $_POST["dateofbirth"];
   $usertype = $_POST["usertype"];
   if($firstname == "" || $lastname == "" || $email == "" || $password == "" || $phonenumber == "" || $gender == "" || $dateofbirth == "" || $usertype == ""){
-    echo "<script type='text/javascript'>alert('Please fill in the missing fields.');window.location.replace(\"registrationPage.html\");</script>";
+    echo "<script type='text/javascript'>alert('Please fill in the missing fields.');window.location.replace(\"registrationPage.php\");</script>";
   }
   else{
     include("connection.php");
     $password = sha1($password);
     mysqli_query($con,"
       INSERT INTO
-      users(user_email,user_fname,user_lname,user_gender,user_password,user_phone,user_DOB,user_type)
-      VALUES('$email','$firstname','$lastname','$gender','$password','$phonenumber','$dateofbirth','$usertype')");
-      echo "<script type='text/javascript'>alert('You have registered, please login again.');window.location.replace(\"loginPage.html\");</script>";
+      users(user_email,user_fname,user_lname,user_gender,user_password,user_phone,user_DOB,user_type,rest_id)
+      VALUES('$email','$firstname','$lastname','$gender','$password','$phonenumber','$dateofbirth','$usertype',-1)");
+      echo "<script type='text/javascript'>alert('You have registered, please login again.');window.location.replace(\"loginPage.php\");</script>";
       mysqli_close($con);
   }
 ?>
