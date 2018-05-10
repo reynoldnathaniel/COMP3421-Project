@@ -82,6 +82,7 @@ include("header.php");
       <h2>Update Dish</h2>
       <br>
       <?php
+        include("connection.php");
         $dishid=$_SESSION['dishid'];
         $sql = "SELECT * FROM dish WHERE dish_id='$dishid'";
         $result = mysqli_query($con,$sql);
