@@ -55,10 +55,11 @@ $sql4 = "CREATE TABLE booking(
 		book_id int NOT NULL AUTO_INCREMENT,
 		book_size int(2) NOT NULL,
 		book_date varchar(10) NOT NULL,
-		book_time int(2) NOT NULL,
-		book_duration int(1),
+		book_time1 int(2) NOT NULL,
+		book_time2 int(2) NOT NULL,
 		rest_id int(5) NOT NULL,
 		user_id int(5) NOT NULL,
+		book_request varchar(300),
 		PRIMARY KEY (book_id),
 		FOREIGN KEY (rest_id) REFERENCES restaurant(rest_id),
 		FOREIGN KEY (user_id) REFERENCES users(user_id)

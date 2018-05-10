@@ -207,6 +207,7 @@ session_start();
 										$restid  = $_GET['restid'];
 										$restname = $_GET['restname'];
 										$_SESSION['rest_id'] = $restid;
+										$_SESSION['rest_name'] = $restname;
 										echo "<h2>".$restname."</h2>";
 										?>
 										<h3>Menu</h3>
@@ -216,6 +217,7 @@ session_start();
 										<?php
 								            include("connection.php");
 								            $restid = $_SESSION['rest_id'];
+								            $restname = $_SESSION['rest_name'];
 								            $sql = "SELECT * FROM dish WHERE rest_id='$restid'";
 								            $result = mysqli_query($con,$sql);
 								            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
@@ -232,7 +234,7 @@ session_start();
 																<p class='price'><span>$$row[dish_price]</span> <small>/ serving</small></p>
 																<p>$row[dish_type]</p>
 																<p>$row[dish_description]</p>
-																<p><a href='#'' class='btn btn-primary'>Book Now!</a></p>
+																<p><a href='bookingPage.php?restid=$restid&restname=$restname' class='btn btn-primary'>Book Now!</a></p>
 															</div>
 														</div>
 													</div>
