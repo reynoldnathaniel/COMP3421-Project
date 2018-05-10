@@ -67,14 +67,21 @@ include("header.php");
         <br>
         <?php 
           if($_SESSION["user_type"] == 'staff'){
-            echo "<a href='staffHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a>";
+            include("connection.php");
+            $restid = $_SESSION['rest_id'];
+            $sql = "SELECT * FROM restaurant WHERE rest_id='$restid'";
+            $result = mysqli_query($con,$sql);
+            $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+            echo "<a href='staffHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a><br><br>
+            <h2>List of Dishes for Restaurant ".$row['rest_name']."</h2>";
           }
           else if($_SESSION["user_type"] == 'admin'){
-            echo "<a href='adminHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a>";
+            echo "<a href='adminHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a><br><br>
+            <h2>List of Dishes for Restaurant ".$_SESSION['restname'].";?></h2>";
           }
         ?>
-        <br><br>
-      <h2>List of Dishes for Restaurant <?php echo $_SESSION['restname'];?></h2>
+        
+      <!-- <h2>List of Dishes for Restaurant <?php echo $_SESSION['restname'];?></h2> -->
       <h2>List of Dishes for Restaurant <?php echo $_SESSION['rest_id'];?></h2>
       <h3>Where you are <?php echo $_SESSION["user_type"];?></h3>
 

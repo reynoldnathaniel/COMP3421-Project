@@ -92,7 +92,7 @@ session_start();
 									if(isset($_SESSION["user_id"])){
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
-										<li><a href="hotels.php">Restaurant</a></li>
+										<li><a href="restaurantsPage.php">Restaurant</a></li>
 										<li><a href="#">News</a></li>
 									</ul>';
 									}
@@ -113,6 +113,7 @@ session_start();
 											$lastname = strtoupper($_SESSION['lastname']);
 											echo '<a href="#">'.$lastname.'</a>
 											<ul class="dropdown">
+											<li><a href="profile.php">Profile</a></li>
 											<li><a href="editProfile.php">Edit Profile</a></li>
 												<li><a href="logoutProcess.php">Logout</a></li>
 											</ul>';
