@@ -67,7 +67,7 @@ include("header.php");
 	<body>
 		<br><br>
 		<div align="center">
-			<a href="registerRestaurant.php">View Users (TBD by alison)</a><br>
+			<a href="viewBooking.php">View Bookings (TBD by alison)</a><br>
 			<a href="viewDish.php">View Dish</a><br>
 			<a href="registerDish.php">Add Dish</a><br>
 			<a href="logoutProcess.php">Logout</a><br>
