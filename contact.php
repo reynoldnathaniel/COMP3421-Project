@@ -195,112 +195,97 @@ session_start();
 		  	</div>
 		</aside>
 
-		<div id="colorlib-about">
+
+		<!-- contact info start -->
+		<div id="colorlib-contact">
 			<div class="container">
 				<div class="row">
-					<div class="about-flex">
-						<div class="col-one-forth aside-stretch animate-box">
+					<div class="col-md-10 col-md-offset-1 animate-box">
+						<h3>Get In Touch</h3>
+						<form action="#">
+							<div class="row form-group">
+								<div class="col-md-6 padding-bottom">
+									<label for="fname">First Name</label>
+									<input type="text" id="fname" class="form-control" placeholder="Your firstname">
+								</div>
+								<div class="col-md-6">
+									<label for="lname">Last Name</label>
+									<input type="text" id="lname" class="form-control" placeholder="Your lastname">
+								</div>
+							</div>
+
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="email">Email</label>
+									<input type="text" id="email" class="form-control" placeholder="Your email address">
+								</div>
+							</div>
+
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="subject">Subject</label>
+									<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+								</div>
+							</div>
+
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+								</div>
+							</div>
+							<div class="form-group text-center">
+								<input type="submit" value="Send Message" class="btn btn-primary">
+							</div>
+
+						</form>		
+					</div>
+					<div class="col-md-10 col-md-offset-1 animate-box">
+						<h3>Contact Information</h3>
+						<div class="row contact-info-wrap">
+							<div class="col-md-3">
+								<p><span><i class="icon-location"></i></span> 198 West 21th Street, <br> Suite 721 New York NY 10016</p>
+							</div>
+							<div class="col-md-3">
+								<p><span><i class="icon-phone3"></i></span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+							</div>
+							<div class="col-md-3">
+								<p><span><i class="icon-paperplane"></i></span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+							</div>
+							<div class="col-md-3">
+								<p><span><i class="icon-globe"></i></span> <a href="#">yoursite.com</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="map" class="colorlib-map"></div>
+	
+		<div id="colorlib-subscribe" style="background-image: url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
+						<h2>Sign Up for a Newsletter</h2>
+						<p>Sign up for our mailing list to get latest updates and offers.</p>
+						<form class="form-inline qbstp-header-subscribe">
 							<div class="row">
-								<div class="col-md-12 about">
-									<h2>About</h2>
-
-									<ul>
-										<li><a href="#">History</a></li>
-										<li><a href="#">Staff</a></li>
-										<li><a href="#">Connect with us</a></li>
-										<li><a href="#">Faqs</a></li>
-										<li><a href="#">Career</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-three-forth animate-box">
-							<h2>Your Profile</h2>
-							<?php
-							if(isset($_SESSION["user_id"])){
-								$firstname = strtoupper($_SESSION['firstname']); 
-								$lastname = strtoupper($_SESSION['lastname']);
-								$gender = $_SESSION["gender"];
-								$phone = $_SESSION["phone"];
-								$DOB = $_SESSION["DOB"];
-								$email = $_SESSION["email"];
-								echo '<h2>'.$firstname.' '.$lastname.'</h2>';
-								echo '<h3>'.$gender.'</h3>';
-								echo '<h3>'.$email.'</h3>';
-								echo '<h3>'.$phone.'</h3>';
-								echo '<h3>'.$DOB.'</h3>';
-
-
-
-								}
-							?>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-						<!-- lala -->
-		<div class="colorlib-wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-9">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="wrap-division">
-									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
-										<h2>Your Bookings</h2>
-									</div>
-									<div class="row">
-
-										<?php
-								            include("connection.php");
-								            $userid = $_SESSION['user_id'];
-								            //$restname = $_SESSION['rest_name'];
-								            $sql = "SELECT * FROM booking WHERE user_id='$userid'";
-								            $result = mysqli_query($con,$sql);
-								            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								            	$restid = $row['rest_id'];
-								            	$bookid = $row['book_id'];
-								            	$sql_getrest = "SELECT * FROM restaurant WHERE rest_id='$restid'";
-								            	$result_getrest = mysqli_query($con,$sql_getrest);
-								            	$row_getrest = mysqli_fetch_array($result_getrest,MYSQLI_ASSOC);
-									            echo "
-									            <div class='col-md-12 animate-box'>
-													<div class='room-wrap'>
-														<div class='row'>
-															<div class='col-md-6 col-sm-6'>
-																<div class='room-img' style='background-image: url(images/$row_getrest[rest_image]);'></div>
-															</div>
-															<div class='col-md-6 col-sm-6'>
-																<div class='desc'>
-																	<h1>$row_getrest[rest_name]</h1>
-																	<p class='price'><span>Date: $row[book_date]</span> <small></small></p>
-																	<p class='price'><span>Time: $row[book_time1]:00 - $row[book_time2]:00</span> <small></small></p>
-																	<p class='price'><span>Table Size: $row[book_size]</span> <small></small></p>
-																	<p>$row_getrest[rest_description]</p>
-																	<p>
-																	<a href='cancelBookingPage.php?bookid=$bookid&restid=$restid' class='btn btn-primary' name='cancelBookingButton'>Cancel Booking</a>
-																	</p>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												";
-								            }//href='cancelBookingPage.php?restid=$restid&restname=$restname' 
-
-								        ?>
+								<div class="col-md-12 col-md-offset-0">
+									<div class="form-group">
+										<input type="text" class="form-control" id="email" placeholder="Enter your email">
+										<button type="submit" class="btn btn-primary">Subscribe</button>
 									</div>
 								</div>
 							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 
-						<!-- lala end -->
+		<!-- contact info end -->
 		<footer id="colorlib-footer" role="contentinfo">
 			<div class="container">
 				<div class="row row-pb-md">
