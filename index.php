@@ -252,7 +252,6 @@ session_start();
 				                    <div class="form-field">
 				                      <i class="icon icon-time"></i>
 				                      <select name="time" id="time" class="form-control">
-				             
 				                      	<option value="9">09:00</option>
 				                        <option value="10">10:00</option>
 				                        <option value="11">11:00</option>
@@ -361,7 +360,6 @@ session_start();
 				                    <div class="form-field">
 				                      <i class="icon icon-time"></i>
 				                      <select name="time" id="time" class="form-control">
-				                   
 				                      	<option value="9">09:00</option>
 				                        <option value="10">10:00</option>
 				                        <option value="11">11:00</option>
