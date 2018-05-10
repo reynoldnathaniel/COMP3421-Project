@@ -206,6 +206,10 @@ session_start();
 						$_SESSION['rest_id'] = $restid;
 						$_SESSION['rest_name'] = $restname;
 						echo "<h3>Book $restname</h3>";
+						$localdate = date('Y-m-d');
+						echo $localdate."<br>";
+						if($localdate>="2018-05-09")echo "true";
+						else echo "false";
 						?>
 						
 						<form method="POST" action="bookingProcess.php" enctype="multipart/form-data">

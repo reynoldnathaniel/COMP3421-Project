@@ -36,6 +36,12 @@ session_start();
       $result = mysqli_query($con,$query);
       $book = 1;//can book
       $booked = 0;//number of people booked in that period
+      //date has past already
+      $localdate = date('Y-m-d');
+      if($localdate>=$date){
+        echo "failed";
+        echo "<script type='text/javascript'>alert('date has pasted already');window.location.replace(\"bookingPage.php?restid=$restid&restname=$restname\");</script>";
+      }
 
       //time out of range
       if($time1<$opentime||$time2>$closetime){
