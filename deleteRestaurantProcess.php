@@ -1,6 +1,6 @@
 <?php
   if (isset($_POST['deleteRestaurantButton'])){
-    $restid = $_POST['restid2'];
+    $restid = $_POST['restid'];
     include("connection.php");
     $delete_rest = "DELETE FROM restaurant WHERE rest_id='$restid'";
     $delete_dish = "DELETE FROM dish WHERE rest_id='$restid'";

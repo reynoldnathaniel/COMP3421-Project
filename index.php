@@ -92,7 +92,7 @@ session_start();
 									if(isset($_SESSION["user_id"])){
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
-										<li><a href="hotels.php">Restaurant</a></li>
+										<li><a href="restaurantsPage.php">Restaurant</a></li>
 										<li><a href="#">News</a></li>
 									</ul>';
 									}
