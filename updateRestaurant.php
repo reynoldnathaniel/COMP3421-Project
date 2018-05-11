@@ -1,11 +1,13 @@
 <?php
 include("header.php");
+  if (isset($_POST['updateRestaurantButton'])){
+    $_SESSION['restid'] = $_POST['restid'];}
 ?>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Restaurant</title>
+  <title>Update Restaurant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="" />
   <meta name="keywords" content="" />
@@ -66,83 +68,91 @@ include("header.php");
       <center>
         <br><br>
       <h2>Update Restaurant</h2>
-<br>
-      Resturant Name
-      <select name="rest_name" id="name" class="form-control">
-        <?php
-          include("connection.php");
-          $sql = "SELECT rest_name FROM restaurant";
-          $result = mysqli_query($con, $sql);
-          while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-            echo "<option value='$row[rest_name]'>$row[rest_name]</option>";
-          }
-        ?>
-      </select>
-      <input type="text" placeholder="Restaurant Address" name="rest_address">
-      Restaurant Region
-      <select name="rest_region" id="category" class="form-control">
-		<option value="Central">Central</option>
-		<option value="Hung Hom">Hung Hom</option>
-		<option value="Tsim Sha Tsui">Tsim Sha Tsui</option>
-		<option value="Wan Chai">Wan Chai</option>
-		<option value="Soho">Soho</option>
-		<option value="North Point">North Point</option>
-	  </select>
-	  Restaurant Type:
-	  <select name="rest_type" id="category" class="form-control">
-        <option value="Japanese">Japanese</option>
-        <option value="BBQ">BBQ</option>
-        <option value="American">American</option>
-        <option value="Bar">Bar</option>
-        <option value="European">European</option>
-        <option value="Italian">Italian</option>
-        <option value="Thai">Thai</option>
-        <option value="Dessert">Dessert</option>
-      </select>
-      Opening Time:
-      <select name="rest_opentime" id="category" class="form-control">
-        <option value="09">09:00</option>
-        <option value="10">10:00</option>
-        <option value="11">11:00</option>
-        <option value="12">12:00</option>
-        <option value="13">13:00</option>
-        <option value="14">14:00</option>
-        <option value="15">15:00</option>
-        <option value="16">16:00</option>
-        <option value="17">17:00</option>
-        <option value="18">18:00</option>
-        <option value="19">19:00</option>
-        <option value="20">20:00</option>
-        <option value="21">21:00</option>
-        <option value="22">22:00</option>
-        <option value="23">23:00</option>
-      </select>
-      Closing Time:
-       <select name="rest_closetime" id="category" class="form-control">
-        <option value="09">09:00</option>
-        <option value="10">10:00</option>
-        <option value="11">11:00</option>
-        <option value="12">12:00</option>
-        <option value="13">13:00</option>
-        <option value="14">14:00</option>
-        <option value="15">15:00</option>
-        <option value="16">16:00</option>
-        <option value="17">17:00</option>
-        <option value="18">18:00</option>
-        <option value="19">19:00</option>
-        <option value="20">20:00</option>
-        <option value="21">21:00</option>
-        <option value="22">22:00</option>
-        <option value="23">23:00</option>
-      </select>
       <br>
-      <input type="text" placeholder="Number of Seats" name="rest_seats">
-      Description<br>
-      <textarea  rows="3" cols="50" name="description" placeholder="Please write down the menu description here... "></textarea>
-      <br><br>
-      <label>Image</label><br> <input type="file" name="restaurantImage" id="restaurantImage"> 
-      <button type="submit" class="btn">Register!</button>
+      <?php
+      $restid=$_SESSION['restid'];
+      include("connection.php");
+      $sql = "SELECT * FROM restaurant WHERE rest_id='$restid'";
+      $result = mysqli_query($con, $sql);
+      $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+      $restname=$row['rest_name'];
+      $restaddress=$row['rest_address'];
+      $restregion=$row['rest_region'];
+      $resttype=$row['rest_type'];
+      $opentime=$row['rest_opentime'];
+      $closetime=$row['rest_closetime'];
+      $restseats=$row['rest_seats'];
+      $restimage=$row['rest_image'];
+      $description=$row['rest_description'];
+
+      echo "
+      <label>Restaurant Name</label><br><input type='text' name='restname' value='".$restname."'/>
+      <label>Address</label><br><input type='text' name='restaddress' value='".$restaddress."'/>
+      <label>Region</label>
+            <select name='restregion' id='category' class='form-control'>
+            <option value='Central'>Central</option>
+            <option value='Hung Hom'>Hung Hom</option>
+            <option value='Tsim Sha Tsui'>Tsim Sha Tsui</option>
+            <option value='Wan Chai'>Wan Chai</option>
+            <option value='Soho'>Soho</option>
+            <option value='North Point'>North Point</option>
+            </select>
+      <label>Type</label>
+            <select name='resttype' id='category' class='form-control'>
+            <option value='Japanese'>Japanese</option>
+            <option value='BBQ'>BBQ</option>
+            <option value='American'>American</option>
+            <option value='Bar'>Bar</option>
+            <option value='European'>European</option>
+            <option value='Italian'>Italian</option>
+            <option value='Thai'>Thai</option>
+            <option value='Dessert'>Dessert</option>
+            </select>
+      <label>Open Time</label>
+            <select name='opentime' id='category' class='form-control'>
+            <option value='09'>09:00</option>
+            <option value='10'>10:00</option>
+            <option value='11'>11:00</option>
+            <option value='12'>12:00</option>
+            <option value='13'>13:00</option>
+            <option value='14'>14:00</option>
+            <option value='15'>15:00</option>
+            <option value='16'>16:00</option>
+            <option value='17'>17:00</option>
+            <option value='18'>18:00</option>
+            <option value='19'>19:00</option>
+            <option value='20'>20:00</option>
+            <option value='21'>21:00</option>
+            <option value='22'>22:00</option>
+            <option value='23'>23:00</option>
+            </select>
+      <label>Close Time</label>
+            <select name='closetime' id='category' class='form-control'>
+            <option value='09'>09:00</option>
+            <option value='10'>10:00</option>
+            <option value='11'>11:00</option>
+            <option value='12'>12:00</option>
+            <option value='13'>13:00</option>
+            <option value='14'>14:00</option>
+            <option value='15'>15:00</option>
+            <option value='16'>16:00</option>
+            <option value='17'>17:00</option>
+            <option value='18'>18:00</option>
+            <option value='19'>19:00</option>
+            <option value='20'>20:00</option>
+            <option value='21'>21:00</option>
+            <option value='22'>22:00</option>
+            <option value='23'>23:00</option>
+            </select>
+      <label>Number of Seats</label><br><input type='number' name='restseats' value='".$restseats."'/>
+      <label>Image</label><br><input type='file' name='restImage' id='restImage'> 
+      <label>Description</label><br><textarea  rows='5' cols='50' name='description' >".$description."</textarea>
+        <br><br>
+      ";
+      ?>
       <p style="color: red;">*Max 5MB</p>
+      <button type="submit" class="btn">Update!</button>
       </center>
     </form>
   </div>
