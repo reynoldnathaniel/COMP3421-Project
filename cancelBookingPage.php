@@ -256,7 +256,7 @@ session_start();
 						      echo "<input type='hidden' name='bookid' value='$bookid'>";
 						      ?>
 							<div class="form-group text-center">
-								<input type="submit" value="Cancel Booking" name="cancelBookingButton" class="btn btn-primary">
+								<input type="submit" value="Cancel" name="cancelBookingButton" class="btn btn-primary">
 							</div>
 						</form>		
 						<form action="profile.php">
