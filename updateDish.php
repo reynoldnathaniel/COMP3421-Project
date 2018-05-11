@@ -114,6 +114,7 @@ include("header.php");
         </select>  
        <br><br>
        <label>Image</label><br> <input type='file' name='dishImage' id='dishImage'> ";
+       mysqli_close($con);
 
       ?>
       <!-- selected="selected" -->

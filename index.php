@@ -331,263 +331,58 @@ session_start();
 				</div>
 			</div>
 			<div class="tour-wrap">
-				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/enoteca-1.jpg);">
+				<?php
+				include("connection.php");
+
+				$sql = "SELECT * FROM restaurant";
+		        $result = mysqli_query($con,$sql);
+		        while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+		        	$restid=$row['rest_id'];
+		        	$restname=$row['rest_name'];
+		        	$resttype=$row['rest_type'];
+		        	$restregion=$row['rest_region'];
+		        	$restimage=$row['rest_image'];
+
+		        	$sql_getc="SELECT AVG(cmnt_rating) AS avg_rating,COUNT(cmnt_id) AS num_review FROM comment WHERE rest_id='$row[rest_id]'";
+					$result_getc = mysqli_query($con,$sql_getc);
+					$row_getc = mysqli_fetch_array($result_getc,MYSQLI_ASSOC);
+					$avg = $row_getc['avg_rating'];
+					$avg = number_format((float)$avg, 1, '.', '');
+					$num_review = $row_getc['num_review'];
+
+
+		        	echo"
+		        	<a href='restaurantDetailPage.php?restid=$restid&restname=$restname' class='tour-entry animate-box'>
+					<div class='tour-img' style='background-image: url(images/$restimage);'>
 					</div>
-					<span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Enoteca</h2>
-						<span class="city">Italian</span>
-						<span class="price">Soho</span>
+					<span class='desc'>
+					<p class='star'><span>";
+					for($i=1;$i<=$avg;$i++){
+						echo "<i class='icon-star-full'></i>";
+					}
+					$j=$i;
+					for($i=$j;$i<=5;$i++){
+						echo "<i class='icon-star-empty'></i>";
+					}
+
+					echo "
 					</span>
-				</a>
-				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/grand-3.jpg);">
-					</div>
-					<span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Grand Central Bar & Grill</h2>
-						<span class="city">European</span>
-						<span class="price">Tsim sha tsui</span>
+					$num_review Reviews
+					</p>
+					<h2>$restname</h2>
+					<span class='city'>$resttype</span>
+					<span class='price'>$restregion</span>
 					</span>
-				</a>
-				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/sawali-2.jpg);">
-					</div>
-					<span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Sawali</h2>
-						<span class="city">Thai</span>
-						<span class="price">Wan Chai</span>
-					</span>
-				</a>
-				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/lobster-1.jpg);">
-					</div>
-					<span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Lobster Central</h2>
-						<span class="city">American</span>
-						<span class="price">Central</span>
-					</span>
-				</a>
-				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/grom-1.jpg);">
-					</div>
-					<span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Grom</h2>
-						<span class="city">Dessert</span>
-						<span class="price">Central</span>
-					</span>
-				</a>
-				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/roku-1.jpg);">
-					</div>
-					<span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Roku Japanese Restaurant Teppanyaki + Robatayaki</h2>
-						<span class="city">Japanese</span>
-						<span class="price">Tsim sha tsui</span>
-					</span>
-				</a>
-				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/meokbang-2.jpg);">
-					</div>
-					<span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>MeokBang Korean BBQ</h2>
-						<span class="city">bbq</span>
-						<span class="price">Tsim sha tsui</span>
-					</span>
-				</a>
-				<a href="#" class="tour-entry animate-box">
-					<div class="tour-img" style="background-image: url(images/senzuru-1.jpg);">
-					</div>
-					<span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Senzuru Japanese Restaurant</h2>
-						<span class="city">Japanese</span>
-						<span class="price">Hung Hom</span>
-					</span>
-				</a>
+					</a>
+		        	";
+		        	
+		        }
+		        //<i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
+				mysqli_close($con);
+				?>
 			</div>
 		</div>
-
-
-		
-
-
-		<div id="colorlib-hotel">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>Recommended New Restaurants</h2>
-						<p>Check out brand-new Restaurant from Hong Kong.</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 animate-box">
-						<div class="owl-carousel">
-							<div class="item">
-								<div class="hotel-entry">
-									<a href="hotels.html" class="hotel-img" style="background-image: url(images/newyork-6.jpg);">
-										<p class="price"><span>American</span><small> /casual dining</small></p>
-									</a>
-									<div class="desc">
-										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-										<h3><a href="#">New York Diner</a></h3>
-										<span class="place">shop 1-2, g/f, island lodge, 180 java road, north point</span>
-										<p>New York Diner at North Point’s Java Road offers an authentic American diner setting. Menu highlights include slow-cooked Spanish roast baby pig, risotto in Boletus cream sauce and 10oz grilled Australian black angus ribeye steak.</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="hotel-entry">
-									<a href="hotels.html" class="hotel-img" style="background-image: url(images/supabowl-1.jpg);">
-										<p class="price"><span>Dessert</span><small> /organic</small></p>
-									</a>
-									<div class="desc">
-										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-										<h3><a href="#">Supabowl</a></h3>
-										<span class="place">Shop A1, G/F, 4 Swatow Street, Wan Chai</span>
-										<p>Supabowl serves acai based smoothie bowls. Made from the best stuff in the world! Supabowl is all about superfoods and more. Eat Healthy, Eat Beautiful, Made for Hong Kong!</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="hotel-entry">
-									<a href="hotels.html" class="hotel-img" style="background-image: url(images/uncle-1.jpg);">
-										<p class="price"><span>Italian</span><small> /pizza</small></p>
-									</a>
-									<div class="desc">
-										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-										<h3><a href="#">Uncle Pizza, Pasta & Grill</a></h3>
-										<span class="place">g/f, 25 elgin street, soho, central</span>
-										<p>Recently opened in October 2017, this new pizza joint serves appetising Italian pies with an Asian twist. Uncle Pizza, Pasta & Grill has must-try options like Uncle Rajeev Pizza, risotto with garlic herbs tomato sauce topped with king prawns, linguine with clam and chilli in white wine fish broth.</p>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="hotel-entry">
-									<a href="hotels.html" class="hotel-img" style="background-image: url(images/hancham-1.jpg);">
-										<p class="price"><span>Korean BBQ</span><small> /modern</small></p>
-									</a>
-									<div class="desc">
-										<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-										<h3><a href="#">Hancham Korean BBQ Restaurant</a></h3>
-										<span class="place">shop 43, ug/f, empire centre, 68 mody road, tsim sha tsui</span>
-										<p> Ideal for catching up with friends or refuelling before hitting up the area’s many shops, Hancham has mouthwatering fare like spicy skirt meat, seafood pancake and marinated short ribs – all good options for a hearty BBQ meal.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div id="colorlib-blog">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>Recent News</h2>
-						<p>Find out the recent news.</p>
-					</div>
-				</div>
-				<div class="blog-flex">
-					<div class="f-entry-img" style="background-image: url(images/dimsum.jpg);">
-					</div>
-					<div class="blog-entry aside-stretch-right">
-						<div class="row">
-							<div class="col-md-12 animate-box">
-								<a href="blog.html" class="blog-post">
-									<span class="img" style="background-image: url(images/blog-1.jpg);"></span>
-									<div class="desc">
-										<span class="date">Feb 22, 2018</span>
-										<h3>A Definitive Guide to the Best Dining</h3>
-										<span class="cat">Activities</span>
-									</div>
-								</a>
-							</div>
-							<div class="col-md-12 animate-box">
-								<a href="blog.html" class="blog-post">
-									<span class="img" style="background-image: url(images/blog-2.jpg);"></span>
-									<div class="desc">
-										<span class="date">Feb 22, 2018</span>
-										<h3>How These 5 People Found The Path to Their Dream Trip</h3>
-										<span class="cat">Activities</span>
-									</div>
-								</a>
-							</div>
-							<div class="col-md-12 animate-box">
-								<a href="blog.html" class="blog-post">
-									<span class="img" style="background-image: url(images/blog-3.jpg);"></span>
-									<div class="desc">
-										<span class="date">Feb 22, 2018</span>
-										<h3>Our Secret Island Boat Tour Is just for You</h3>
-										<span class="cat">Activities</span>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<div id="colorlib-testimony" class="colorlib-light-grey">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<h2>Recommended restaurants by our Guests</h2>
-						<p>Check out the real comments about restaurants.</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 animate-box">						
-						<div class="owl-carousel2">
-							<div class="item">
-								<div class="testimony text-center">
-									<span class="img-user" style="background-image: url(images/person1.jpg);"></span>
-									<span class="user">Alysha Myers</span>
-									<small>Miami Florida, USA</small>
-									<blockquote>
-										<p>" A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-									</blockquote>
-								</div>
-							</div>
-							<div class="item">
-								<div class="testimony text-center">
-									<span class="img-user" style="background-image: url(images/person2.jpg);"></span>
-									<span class="user">James Fisher</span>
-									<small>New York, USA</small>
-									<blockquote>
-										<p>One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-									</blockquote>
-								</div>
-							</div>
-							<div class="item">
-								<div class="testimony text-center">
-									<span class="img-user" style="background-image: url(images/person3.jpg);"></span>
-									<span class="user">Jacob Webb</span>
-									<small>Athens, Greece</small>
-									<blockquote>
-										<p>Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-									</blockquote>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>	
-			</div>
-		</div>
-
 	
-
-
-
 
 
 		<footer id="colorlib-footer" role="contentinfo">

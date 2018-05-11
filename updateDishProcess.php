@@ -69,5 +69,6 @@ if($uploadOk==1)
   WHERE dish_id='$dishid' ");
     echo "<script type='text/javascript'>alert('Dish Updated!');window.location.replace(\"viewDish.php\");</script>";
 }
+mysqli_close($con);
 
 ?>
