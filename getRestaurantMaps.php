@@ -1,8 +1,4 @@
 <?php
-include("connection.php");
-/*$pass = sha1("admin");
-if(mysqli_query($con,"ALTER TABLE restaurant ADD rest_description varchar(300)"))
-	echo "nice";*/
 function getCoordinates($address){
  
 	$address = str_replace(" ", "+", $address); // replace all the white space with "+" sign to match with google search pattern
@@ -15,5 +11,16 @@ function getCoordinates($address){
 	return ($json['results'][0]['geometry']['location']['lat'].",".$json['results'][0]['geometry']['location']['lng']);
 	 
 }
-echo getCoordinates("Hung Hom");
+include("connection.php");
+$text="";
+$sql1 = "SELECT * FROM restaurant";
+$result1 = mysqli_query($con,$sql1);
+while($row1 = mysqli_fetch_array($result1,MYSQLI_ASSOC)){
+	$text = $text . $row1["rest_name"] . "_";
+	$coordinates = getCoordinates($row1["rest_address"]);
+	$text = $text . $coordinates . "?";
+}
+$text = rtrim($text,"-");
+echo $text;
+mysqli_close($con);
 ?>
