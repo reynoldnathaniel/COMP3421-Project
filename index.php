@@ -94,7 +94,10 @@ session_start();
 										<li><a href="restaurantsPage.php">Restaurants</a></li>
 										<li><a href="dishesPage.php">Dishes</a></li>
 <<<<<<< HEAD
+<<<<<<< HEAD
 										<li><a href="#">News</a></li>
+=======
+>>>>>>> 083435d0c8f5dc8faf012cc76dc0bd1cc1b14110
 =======
 >>>>>>> 083435d0c8f5dc8faf012cc76dc0bd1cc1b14110
 									</ul>';
