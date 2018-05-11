@@ -322,35 +322,72 @@ body .container__content > div.section4 {
 
     <div id="page">
         <nav class="colorlib-nav" role="navigation">
-            <div class="top-menu">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <div id="colorlib-logo"><a href="index.html">Tour</a></div>
-                        </div>
-                        <div class="col-xs-10 text-right menu-1">
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li class="has-dropdown active">
-                                    <a href="tours.html">Tours</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Destination</a></li>
-                                        <li><a href="#">Cruises</a></li>
-                                        <li><a href="#">Hotels</a></li>
-                                        <li><a href="#">Booking</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="hotels.html">Hotels</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+      <div class="top-menu">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-2">
+              <div id="colorlib-logo"><a href="index.php">LovEat</a></div>
             </div>
-        </nav>
+            <div class="col-xs-10 text-right menu-1">
+              <ul>
+                <li class="active"><a href="index.php">Home</a></li>
+                <li class="has-dropdown">
+                  <a href="#">About US</a>
+                  <ul class="dropdown">
+                    <li><a href="#">LovEat</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </li>
+                <li class="has-dropdown">
+                  <?php
+                  if(isset($_SESSION["user_id"])){
+                    echo '<a href="#">Booking</a>
+                  <ul class="dropdown">
+                    <li><a href="restaurantsPage.php">Restaurants</a></li>
+                    <li><a href="dishesPage.php">Dishes</a></li>
+                    <li><a href="#">News</a></li>
+                  </ul>';
+                  }
+                  else{
+                    echo '<a href="#">Booking</a>
+                  <ul class="dropdown">
+                    <li><a href="loginPage.php">Restaurant</a></li>
+                    <li><a href="loginPage.php">News</a></li>
+                  </ul>';
+                  }
+                  ?>
+                  
+
+                </li>
+                <li class="has-dropdown">
+                  <?php
+                    if(isset($_SESSION["user_id"])){
+                      $lastname = strtoupper($_SESSION['lastname']);
+                      echo '<a href="#">'.$lastname.'</a>
+                      <ul class="dropdown">
+                      <li><a href="profile.php">Profile</a></li>
+                      <li><a href="editProfile.php">Edit Profile</a></li>
+                        <li><a href="logoutProcess.php">Logout</a></li>
+                      </ul>';
+                    }
+                    else{
+                      echo '
+                      <a href="loginPage.php">Account</a>
+                      <ul class="dropdown">
+                        <li><a href="loginPage.php">Login</a></li>
+                      </ul>
+                      ';
+                    }
+                  ?>
+                  
+
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
         <aside id="colorlib-hero">
             <div class="flexslider">
                 <ul class="slides">
@@ -603,112 +640,11 @@ mysqli_close($con);
                     <!-- SIDEBAR-->
                     <div class="col-md-3">
                         <div class="sidebar-wrap">
-                            <div class="side search-wrap animate-box">
-                                <h3 class="sidebar-heading">Book A Table</h3>
-                                <form method="post" class="colorlib-form">
-                                <div class="row">
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label for="date">Date:</label>
-                                    <div class="form-field">
-                                      <i class="icon icon-calendar2"></i>
-                                      <input type="text" id="date" class="form-control date" placeholder="Booking date">
-                                    </div>
-                                  </div>
-                                </div>
-                                
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                     <label for="guests">Time</label>
-                                    <div class="form-field">
-                                      <i class="icon icon-time"></i>
-                                      <select name="time" id="time" class="form-control">
-                                        <option value="9">09:00</option>
-                                        <option value="10">10:00</option>
-                                        <option value="11">11:00</option>
-                                        <option value="12">12:00</option>
-                                        <option value="13">13:00</option>
-                                        <option value="14">14:00</option>
-                                        <option value="15">15:00</option>
-                                        <option value="16">16:00</option>
-                                        <option value="17">17:00</option>
-                                        <option value="18">18:00</option>
-                                        <option value="19">19:00</option>
-                                        <option value="20">20:00</option>
-                                        <option value="21">21:00</option>
-                                        <option value="22">22:00</option>
-                                        <option value="23">23:00</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
+                              <?php
+                              echo"
+                                <a href='bookingPage.php?restid=$restid&restname=$restname' class='btn btn-primary'>Book Now!</a>";
+                              ?>
 
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label for="guests">Guest</label>
-                                    <div class="form-field">
-                                      <i class="icon icon-user"></i>
-                                      <select name="people" id="people" class="form-control">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                  <input type="submit" name="submit" id="submit" value="Search" class="btn btn-primary btn-block">
-                                </div>
-                              </div>
-                            </form>
-                            </div>
-
-                            <div class="side search-wrap animate-box">
-                                <h3 class="sidebar-heading">Contact Business</h3>
-                                <form method="post" class="colorlib-form">
-                                <div class="row">
-                        
-                                
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                     <label>Name</label>
-                                    <div class="form-field">
-                                      <input type="text" placeholder="Name" name="name">
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label>Email</label>
-                                    <div class="form-field">
-                                      <input type="text" placeholder="Email" name="email">
-                                    </div>
-                                  </div>
-                                </div>
-
-                                 <div class="col-md-12">
-                                  <div class="form-group">
-                                    <label>Message</label>
-                                    <div class="form-field">
-                                      <textarea  rows="5" cols="28.5" name="message" placeholder="Your Message..."></textarea>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                  <input type="submit" name="submit" id="submit" value="Send" class="btn btn-primary btn-block">
-                                </div>
-                              </div>
-                            </form>
-                            </div>
 
 
                         </div>
