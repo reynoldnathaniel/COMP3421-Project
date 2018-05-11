@@ -73,6 +73,7 @@ include("header.php");
 			<a href="viewDish.php">View Menu</a><br>
 			<a href="registerDish.php">Add Dish</a><br>
 			<a href="logoutProcess.php">Logout</a><br>
+            <a href="index.php">Home Page</a><br>
 		</div>
 
 	</body>

@@ -69,6 +69,10 @@
       <button type="submit" class="btn">Register!</button>
       </center>
     </form>
+      <br><br><br><br>
+      <center>
+        <a href="index.php" style="color:blue;">Back to Home Page</a>
+      </center>
   </div>
 </body>
 <!-- jQuery -->
