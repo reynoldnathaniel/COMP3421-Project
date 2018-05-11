@@ -492,23 +492,25 @@ body .container__content > div.section4 {
       <div class="col-md-12 animate-box">
         <tr><td>
         <div class="">
-          <form action="send.php" method="post">
+          <form action="commentProcess.php" method="post" enctype="multipart/form-data">
           <fieldset>
     
             <!-- Name input-->
             <div class="form-group">
-              <label class="col-md-2 control-label" for="name">Full Name</label>
-              <div class="col-md-10">
+              <label class="col-md-2 control-label" for="name">Your Full Name</label>
+              <!-- <div class="col-md-10">
                 <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
-              </div>
+              </div> -->
+              <h3><?php echo $_SESSION["firstname"]." ".$_SESSION["lastname"];?></h3>
             </div>
     
             <!-- Email input-->
             <div class="form-group">
               <label class="col-md-2 control-label" for="email">Your E-mail</label>
-              <div class="col-md-10">
+              <!-- <div class="col-md-10">
                 <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
-              </div>
+              </div> -->
+              <h3><?php echo $_SESSION["email"];?></h3>
             </div>
     
             <!-- Message body -->
@@ -523,14 +525,14 @@ body .container__content > div.section4 {
             <div class="form-group">
               <label class="col-md-2 control-label" for="message">Your rating</label>
               <div class="col-md-10">
-                <input id="star" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                <input id="star" value="0" type="number" name="rating" class="rating" min=0 max=5 step=0.5 data-size="xs" >
               </div>
             </div>
 
             <!-- Form actions -->
             <div class="form-group">
               <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-primary btn-md">Submit</button>
+                <button type="submit" class="btn btn-primary btn-md" name="submit">Submit</button>
                 <button type="reset" class="btn btn-default btn-md">Clear</button>
               </div>
             </div>
@@ -547,65 +549,41 @@ body .container__content > div.section4 {
 <br><br><br>
 <hr>
 
-<div class="row">
-<div class="reviews">
-  <div class="row blockquote review-item">
-    <div class="col-md-3 text-center">
-      <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-      <div class="caption">
-        <small>by <a href="#joe">Name</a></small>
+
+<?php
+    $restid = $_SESSION['rest_id'];
+    $restname = $_SESSION['rest_name'];
+    include("connection.php");
+    $restid=$_SESSION['rest_id'];
+    $sql = "SELECT * FROM comment WHERE rest_id='$restid'";
+    $result = mysqli_query($con,$sql);
+    while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+        $sql_getuser = "SELECT * FROM users WHERE user_id='$row[user_id]'";
+        $result_getuser = mysqli_query($con,$sql_getuser);
+        $row_getuser = mysqli_fetch_array($result_getuser,MYSQLI_ASSOC);
+        //$name=$row_getuser['user_lname'];
+        echo "
+<div class='row'>
+<div class='reviews'>
+  <div class='row blockquote review-item'>
+    <div class='col-md-3 text-center'>
+      <img class='rounded-circle reviewer' src='http://standaloneinstaller.com/upload/avatar.png'>
+      <div class='caption'>
+        <small>by <a href='#joe'>$row_getuser[user_lname]</a></small>
       </div>
 
     </div>
-    <div class="col-md-9">
-     <h2>Rating: 4.4/5.0</h2>
-      <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac nibh sed mi ullamcorper rhoncus. Curabitur pulvinar vel augue sit amet vestibulum. Proin tempus lacus porta lorem blandit aliquam eget quis ipsum. Vivamus accumsan consequat ligula non volutpat.</p>
-
-      <small class="review-date">March 26, 2017</small>
+    <div class='col-md-9'>
+     <h2>Rating: $row[cmnt_rating]/5.0</h2>
+      <p class='review-text'>$row[cmnt_msg]</p>
     </div>                          
   </div>  
 </div>
 </div>
+        ";
+    }
 
-<div class="row">
-<div class="reviews">
-  <div class="row blockquote review-item">
-    <div class="col-md-3 text-center">
-      <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-      <div class="caption">
-        <small>by <a href="#joe">Name</a></small>
-      </div>
-
-    </div>
-    <div class="col-md-9">
-     <h2>Rating: 4.4/5.0</h2>
-      <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac nibh sed mi ullamcorper rhoncus. Curabitur pulvinar vel augue sit amet vestibulum. Proin tempus lacus porta lorem blandit aliquam eget quis ipsum. Vivamus accumsan consequat ligula non volutpat.</p>
-
-      <small class="review-date">March 26, 2017</small>
-    </div>                          
-  </div>  
-</div>
-</div>
-
-<div class="row">
-<div class="reviews">
-  <div class="row blockquote review-item">
-    <div class="col-md-3 text-center">
-      <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-      <div class="caption">
-        <small>by <a href="#joe">Name</a></small>
-      </div>
-
-    </div>
-    <div class="col-md-9">
-     <h2>Rating: 4.4/5.0</h2>
-      <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac nibh sed mi ullamcorper rhoncus. Curabitur pulvinar vel augue sit amet vestibulum. Proin tempus lacus porta lorem blandit aliquam eget quis ipsum. Vivamus accumsan consequat ligula non volutpat.</p>
-
-      <small class="review-date">March 26, 2017</small>
-    </div>                          
-  </div>  
-</div>
-</div>
+?>
 
 </div> <!-- end of section3 -->
 
