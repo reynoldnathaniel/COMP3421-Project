@@ -79,12 +79,11 @@ session_start();
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="index.php">Home</a></li>
+								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown">
 									<a href="#">About US</a>
 									<ul class="dropdown">
-										<li><a href="#">LovEat</a></li>
-										<li><a href="#">Contact</a></li>
+										<li><a href="aboutus.php">LovEat</a></li>
 									</ul>
 								</li>
 								<li class="has-dropdown">
@@ -107,7 +106,7 @@ session_start();
 									
 
 								</li>
-								<li class="has-dropdown">
+								<li class="active has-dropdown">
 									<?php
 										if(isset($_SESSION["user_id"])){
 											$lastname = strtoupper($_SESSION['lastname']);
@@ -115,6 +114,7 @@ session_start();
 											<ul class="dropdown">
 											<li><a href="profile.php">Profile</a></li>
 											<li><a href="editProfile.php">Edit Profile</a></li>
+											<li><a href="favorite.php">Favorite Restaurant</a></li>
 												<li><a href="logoutProcess.php">Logout</a></li>
 											</ul>';
 										}
