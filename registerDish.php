@@ -71,15 +71,23 @@ include("header.php");
         <option>main dishes</option>
         <option>side dishes</option>
         <option>beverages</option>
+<<<<<<< HEAD
+        <option>desserts</option> </select>  
+       <br>
+=======
         <option>desserts</option>
       </select>  
        <br><br>
+>>>>>>> 975c10994860b3a670f2020030206f46066e5662
       <label>Image</label><br> <input type="file" name="dishImage" id="dishImage"> 
       <p style="color: red;">* to select multiple files, hold down the CTRL or SHIFT key while selecting </p>
-      <br>
       <button type="submit" class="btn">Add!</button>
       </center>
     </form>
+      <br>
+      <center>
+        <a href="staffHomepage.php" style="color:blue;">Back to Staff Home Page</a>
+      </center>
   </div>
 </body>
 <!-- jQuery -->
