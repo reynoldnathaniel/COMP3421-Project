@@ -136,9 +136,6 @@ include("header.php");
       <p style="color: red;">*Max 5MB</p>
       </center>
     </form>
-    <center>
-        <a href="index.php" style="color:blue;">Back to Home Page</a>
-      </center>
   </div>
 </body>
 <!-- jQuery -->

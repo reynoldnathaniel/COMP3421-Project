@@ -51,14 +51,10 @@ include("header.php");
 
   <!-- Modernizr JS -->
   <script src="js/modernizr-2.6.2.min.js"></script>
-  <style type="text/css">
-      #login-box{
-          height: auto;
-      }  
-  </style>
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
+    <center><a href="staffHomepage.php"><h1>Homepage Staff</h1></a></center>
   <div id="login-box">
     <form method="POST" action="addNewsProcess.php">
       <center>
@@ -80,10 +76,6 @@ include("header.php");
       <button type="submit" class="btn">Publish!</button>
       </center>
     </form>
-      <br>
-      <center>
-        <a href="staffHomepage.php" style="color:blue;">Back to Staff Home Page</a>
-      </center>
   </div>
 </body>
 <!-- jQuery -->
