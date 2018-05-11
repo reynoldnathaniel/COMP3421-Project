@@ -152,29 +152,50 @@ include("header.php");
                     $sql = "SELECT * FROM restaurant WHERE rest_id='$restid'";
                     $result = mysqli_query($con,$sql);
                     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-                    echo "<li style='background-image: url(images/$row[rest_image]);'>";
-                    mysqli_close($con);
-                    ?>
-                    <div class="overlay"></div>
-
-                    <div class="container-fluid">
-                        <div class="row">
-
-                            <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-
-                                <div class="slider-text-inner text-center">
-
-                               
-                               <!-- Restaurant Name -->   
-                                    <?php
-                                    
-                                    echo "<h1>".$_SESSION['rest_name']."</h1>";
-                                    ?>
+                    echo "<li style='background-image: url(images/$row[rest_image]);'>
+                    <div class='overlay'></div>
+                    <div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text'>
+                                <div class='slider-text-inner text-center'>
+                                  <h1>$restname</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
+
+
+
+                    ";
+
+                    $sql = "SELECT * FROM photo WHERE rest_id='$restid'";
+                    $result = mysqli_query($con,$sql);
+                    while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                    echo "<li style='background-image: url(images/$row[photo_image]);'>
+                    <div class='overlay'></div>
+                    <div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text'>
+                                <div class='slider-text-inner text-center'>
+                                  <h1>$restname</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+
+                      ";
+                    }
+
+                    mysqli_close($con);
+                    ?>
+
+
+
                 </ul>
             </div>
         </aside>

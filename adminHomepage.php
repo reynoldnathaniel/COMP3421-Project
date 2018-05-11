@@ -71,7 +71,6 @@ include("header.php");
 		<div align="center">
 
 			<a href="registerRestaurant.php">Add New Restaurant</a><br>
-            <a href="updateRestaurant.php">Update The Restaurant</a><br>
 			<a href="viewRestaurant.php">View All Restaurant</a><br>
 			<a href="addStaff.php">Add Staff</a><br>
 			<a href="viewStaff.php">View Staff and Customers</a><br>

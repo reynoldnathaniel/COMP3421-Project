@@ -136,64 +136,66 @@ session_start();
 				</div>
 			</div>
 		</nav>
-		<aside id="colorlib-hero">
-			<div class="flexslider">
-				<ul class="slides">
-			   	<li style="background-image: url(images/bg_1.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>Best Table Reservations System in Hong Kong</h2>
-				   					<h1>LovEat</h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url(images/bg_2.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>Enjoy</h2>
-				   					<h1>Amazing Testing Tour</h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url(images/bg_5.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluids">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>Explore our most loved restaurants</h2>
-				   					<h1>Search Your New Favorite </h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url(images/bg_4.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>Taste the</h2>
-				   					<h1>Best Food Ever</h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>	   	
-			  	</ul>
-		  	</div>
-		</aside>
+        <aside id="colorlib-hero">
+            <div class="flexslider">
+                <ul class="slides">
+                    <?php
+                    $restid  = $_GET['restid'];
+                    echo "<script>var rest_id = $restid;</script>";
+                    //$restname = $_GET['restname'];
+                    $_SESSION['rest_id'] = $restid;
+                    $restname=$_SESSION['rest_name'];
+                    include("connection.php");
+                    $sql = "SELECT * FROM restaurant WHERE rest_id='$restid'";
+                    $result = mysqli_query($con,$sql);
+                    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                    echo "<li style='background-image: url(images/$row[rest_image]);'>
+                    <div class='overlay'></div>
+                    <div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text'>
+                                <div class='slider-text-inner text-center'>
+                                  <h1>$restname</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+                    ";
+
+                    $sql = "SELECT * FROM photo WHERE rest_id='$restid'";
+                    $result = mysqli_query($con,$sql);
+                    while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                    echo "<li style='background-image: url(images/$row[photo_image]);'>
+                    <div class='overlay'></div>
+                    <div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text'>
+                                <div class='slider-text-inner text-center'>
+                                  <h1>$restname</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+
+                      ";
+                    }
+
+                    mysqli_close($con);
+                    ?>
+
+
+
+                </ul>
+            </div>
+        </aside>
 
 		<!-- restaurant info segment start -->
 		<div class="colorlib-wrap">
