@@ -96,11 +96,17 @@ $sql7 = "CREATE TABLE favorite(
 		FOREIGN KEY (rest_id) REFERENCES restaurant(rest_id),
 		FOREIGN KEY (user_id) REFERENCES users(user_id)
 	)";
+$sql8 = "CREATE TABLE photo(
+		photo_id int NOT NULL AUTO_INCREMENT,
+		user_id int(5) NOT NULL,
+		rest_id int(5) NOT NULL,
+		photo_image varchar(160),
+		PRIMARY KEY (photo_id),
+		FOREIGN KEY (rest_id) REFERENCES restaurant(rest_id),
+		FOREIGN KEY (user_id) REFERENCES users(user_id)
+)";
 if(
-	mysqli_query($con,$sql0)===true &&
-	mysqli_query($con,$sql7)===true &&
-	mysqli_query($con,$sql5)===true &&
-	mysqli_query($con,$sql4)===true
+	mysqli_query($con,$sql8)===true
 ){ echo "Success";}
 else echo "fail";
 ?>
