@@ -96,6 +96,7 @@ $sql7 = "CREATE TABLE favorite(
 		FOREIGN KEY (rest_id) REFERENCES restaurant(rest_id),
 		FOREIGN KEY (user_id) REFERENCES users(user_id)
 	)";
+
 $sql8 = "CREATE TABLE photo(
 		photo_id int NOT NULL AUTO_INCREMENT,
 		user_id int(5) NOT NULL,
@@ -105,8 +106,11 @@ $sql8 = "CREATE TABLE photo(
 		FOREIGN KEY (rest_id) REFERENCES restaurant(rest_id),
 		FOREIGN KEY (user_id) REFERENCES users(user_id)
 )";
-if(
-	mysqli_query($con,$sql8)===true
-){ echo "Success";}
+
+$user_password = sha1("admin");
+$admin = "INSERT INTO users(user_email, user_fname, user_lname, user_gender, user_phone, user_DOB, user_type, user_password) VALUES('admin', 'admin', 'admin', 'Male' ,'0', '0000-00-00', 'admin', '$user_password')";
+
+if(mysqli_query($con,$sql0)===true && mysqli_query($con,$sql1)===true && mysqli_query($con,$sql2)===true && mysqli_query($con,$sql3)===true && mysqli_query($con,$sql4)===true && mysqli_query($con,$sql5)===true && mysqli_query($con,$sql6)===true && mysqli_query($con,$sql7)===true && mysqli_query($con,$sql8)===true && mysqli_query($con, $admin)===true){ echo "Success";}
 else echo "fail";
+
 ?>

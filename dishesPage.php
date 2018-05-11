@@ -315,7 +315,7 @@ session_start();
 				                <div class="col-md-12">
 				                  <div class="form-group">
 				                  	<i class="icon icon-arrow-down3"></i>
-				                    <label for="date">Location:</label>
+				                    <label for="date">Price Range:</label>
 			                   			<select name="dish_price" id="people" class="form-control">
 					                      	<option value="">Please select dish</option>
 					                        <option value="1">$1-$50</option>
