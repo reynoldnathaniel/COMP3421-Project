@@ -492,23 +492,25 @@ body .container__content > div.section4 {
       <div class="col-md-12 animate-box">
         <tr><td>
         <div class="">
-          <form action="send.php" method="post">
+          <form action="commentProcess.php" method="post" enctype="multipart/form-data">
           <fieldset>
     
             <!-- Name input-->
             <div class="form-group">
-              <label class="col-md-2 control-label" for="name">Full Name</label>
-              <div class="col-md-10">
+              <label class="col-md-2 control-label" for="name">Your Full Name</label>
+              <!-- <div class="col-md-10">
                 <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
-              </div>
+              </div> -->
+              <h3><?php echo $_SESSION["firstname"]." ".$_SESSION["lastname"];?></h3>
             </div>
     
             <!-- Email input-->
             <div class="form-group">
               <label class="col-md-2 control-label" for="email">Your E-mail</label>
-              <div class="col-md-10">
+              <!-- <div class="col-md-10">
                 <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
-              </div>
+              </div> -->
+              <h3><?php echo $_SESSION["email"];?></h3>
             </div>
     
             <!-- Message body -->
@@ -523,14 +525,14 @@ body .container__content > div.section4 {
             <div class="form-group">
               <label class="col-md-2 control-label" for="message">Your rating</label>
               <div class="col-md-10">
-                <input id="star" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                <input id="star" value="0" type="number" name="rating" class="rating" min=0 max=5 step=0.5 data-size="xs" >
               </div>
             </div>
 
             <!-- Form actions -->
             <div class="form-group">
               <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-primary btn-md">Submit</button>
+                <button type="submit" class="btn btn-primary btn-md" name="submit">Submit</button>
                 <button type="reset" class="btn btn-default btn-md">Clear</button>
               </div>
             </div>
