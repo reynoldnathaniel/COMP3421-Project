@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <?php
-session_start();
+include("header.php");
 ?>
 <html>
 	<head>
@@ -195,145 +195,58 @@ session_start();
 			  	</ul>
 		  	</div>
 		</aside>
+	<div id="map" style="width:100%;height:650px">qwe</div>
+	<script>
+		var text;
+		function getAllRestaurants(){
+			var xhttp;
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			 	if (this.readyState == 4 && this.status == 200) {
+			 		var myCenter = new google.maps.LatLng(22.3039547,114.1854156);
+					var mapCanvas = document.getElementById("map");
+					var mapOptions = {center: myCenter, zoom: 12};
+					var map = new google.maps.Map(mapCanvas, mapOptions);
+			 		text = this.responseText;
+			 		var result = text.split("?");
+			 		var countRestaurants = result.length;
+			 		var coordinates = new Array(countRestaurants);
+			 		var markers = [];
+			 		for(var i = 0 ; i < countRestaurants; i++){
+			 			var row = result[i].split("_");
+			 			//identity
+			 			var identity = row[0];
+			 			var coordinate = row[1].split(",");
+			 			coordinates[i] = new google.maps.LatLng(coordinate[0],coordinate[1]);
+			 			var info="";
+			 			info="Restaurant Name: "+identity;
 
-		<!-- menu segment start -->
-		<div class="colorlib-wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-9">
-						<div class="row">
-							<div class="wrap-division">
-								<div class="col-md-12 col-md-offset-0 heading2 animate-box">
-									<h2>Restaurants</h2>
-									<?php
-									//echo "<h2>".$_SESSION["rest_name"]."</h2>";
-									?>
-								</div>
+			 			var infowindow = new google.maps.InfoWindow();
 
-								<!-- info segment start here -->
-								<?php
-								include("connection.php");
-								$sql = "SELECT * FROM restaurant";
-								if(isset($_POST["rest_type"])){
-									if($_POST["rest_type"]!="" && $_POST["rest_region"]!=""){
-										$sql = "SELECT * FROM restaurant WHERE rest_type LIKE '%$_POST[rest_type]%' AND rest_region LIKE '%$_POST[rest_region]%'";
-									}
-									else if($_POST["rest_type"]!="" && $_POST["rest_region"]==""){
-										$sql = "SELECT * FROM restaurant WHERE rest_type LIKE '%$_POST[rest_type]%'";
-									}
-									else if($_POST["rest_type"]=="" && $_POST["rest_region"]!=""){
-										$sql = "SELECT * FROM restaurant WHERE rest_region LIKE '%$_POST[rest_region]%'";
-									}
-								}
-              					$result = mysqli_query($con,$sql);
-              					while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-              						$sql_getc="SELECT AVG(cmnt_rating) AS avg_rating,COUNT(cmnt_id) AS num_review FROM comment WHERE rest_id='$row[rest_id]'";
-              						$result_getc = mysqli_query($con,$sql_getc);
-              						$row_getc = mysqli_fetch_array($result_getc,MYSQLI_ASSOC);
-              						$avg = $row_getc['avg_rating'];
-              						$avg = number_format((float)$avg, 1, '.', '');
-              						$num_review = $row_getc['num_review'];
-              						//<i class="icon-star-half"></i>
-									echo "
-									<div class='col-md-6 col-sm-6 animate-box'>
-									<div class='hotel-entry'>
-										<a href='restaurantDetailPage.php?restid=$row[rest_id]&restname=$row[rest_name]' class='hotel-img' style='background-image: url(images/$row[rest_image]);'>
-											<p class='price'><span>";
-									for($i=1;$i<=$avg;$i++){
-										echo "<i class='icon-star-full'></i>";
-									}
-									$j=$i;
-									for($i=$j;$i<=5;$i++){
-										echo "<i class='icon-star-empty'></i>";
-									}
+			 			markers[i] = new google.maps.Marker({
+			 				position:coordinates[i],
+			 				id:i,
+			 				description:info,
+			 				map:map
+			 			});
+			 			google.maps.event.addListener(markers[i],'click',function(){
+			 				infowindow.setContent(markers[this.id].description);
+				 			infowindow.open(map,this);
+			 			});
+				 			
+			 		}
 
-									echo "</span></p>
-										</a>
-										<div class='desc'>
-											<p class='star'><span></span> $avg/5 <br>$num_review Reviews</p>
-											<h3><a href='restaurantDetailPage.php?restid=$row[rest_id]&restname=$row[rest_name]'>$row[rest_name]</a></h3>
-											<span class='place'>$row[rest_region]</span>
-											<p>$row[rest_description]</p>
-										</div>
-									</div>
-								</div>
+			 		
+			    }
+			};
+			xhttp.open("GET", "getRestaurantMaps.php?map=hello", false);
+			xhttp.send(); 
+		}
+		
+		    
+	</script>
 
-
-
-									";
-								}
-								?>
-								<!-- info segment end here -->
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<ul class="pagination">
-									<li class="disabled"><a href="#">&laquo;</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">&raquo;</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- SIDEBAR-->
-					<div class="col-md-3">
-						<div class="sidebar-wrap">
-							<a href='restaurantMaps.php' class='btn btn-primary'>View all the locations of the Restaurants!</a>
-							<br><br><br>
-							<div class="side search-wrap animate-box">
-								<h3 class="sidebar-heading">Find your restaurants!</h3>
-								<form method="post" class="colorlib-form">
-				              	<div class="row">
-				                <div class="col-md-12">
-				                  <div class="form-group">
-				                  	<i class="icon icon-arrow-down3"></i>
-				                    <label for="date">Cuisine:</label>
-				                    	<select name="rest_type" id="category" class="form-control">
-			                    		<option value="">Select your cuisine</option>
-								        <option value="Japanese">Japanese</option>
-								        <option value="BBQ">BBQ</option>
-								        <option value="American">American</option>
-								        <option value="Bar">Bar</option>
-								        <option value="European">European</option>
-								        <option value="Italian">Italian</option>
-								        <option value="Thai">Thai</option>
-								        <option value="Dessert">Dessert</option>
-								      </select>
-				                  </div>
-				                </div>
-				                <div class="col-md-12">
-				                  <div class="form-group">
-				                  	<i class="icon icon-arrow-down3"></i>
-				                    <label for="date">Location:</label>
-				                    	<select name="rest_region" id="category" class="form-control">
-				                    		<option value="">Select your region</option>
-											<option value="Central">Central</option>
-											<option value="Hung Hom">Hung Hom</option>
-											<option value="Tsim Sha Tsui">Tsim Sha Tsui</option>
-											<option value="Wan Chai">Wan Chai</option>
-											<option value="Soho">Soho</option>
-											<option value="North Point">North Point</option>
-									  </select>
-				                  </div>
-				                </div>
-				                <div class="col-md-12">
-				                  <input type="submit" name="submit" id="submit" value="Find Restaurant" class="btn btn-primary btn-block">
-				                </div>
-				              </div>
-				            </form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<!-- menu segment end -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-NNPrmgbPTdVcBnGwtpZKOrXb3A7LS-E&callback=getAllRestaurants"></script>
 
 		<footer id="colorlib-footer" role="contentinfo">
 			<div class="container">
@@ -370,7 +283,9 @@ session_start();
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
+	
 
+	</script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -390,10 +305,6 @@ session_start();
 	<script src="js/bootstrap-datepicker.js"></script>
 	<!-- Stellar Parallax -->
 	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
-
 	<!-- Main -->
 	<script src="js/main.js"></script>
 
