@@ -83,8 +83,7 @@ session_start();
 								<li class="has-dropdown">
 									<a href="#">About US</a>
 									<ul class="dropdown">
-										<li><a href="#">LovEat</a></li>
-										<li><a href="#">Contact</a></li>
+										<li><a href="aboutus.php">LovEat</a></li>
 									</ul>
 								</li>
 								<li class="has-dropdown">
@@ -94,14 +93,17 @@ session_start();
 									<ul class="dropdown">
 										<li><a href="restaurantsPage.php">Restaurants</a></li>
 										<li><a href="dishesPage.php">Dishes</a></li>
+<<<<<<< HEAD
 										<li><a href="#">News</a></li>
+=======
+>>>>>>> 083435d0c8f5dc8faf012cc76dc0bd1cc1b14110
 									</ul>';
 									}
 									else{
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
 										<li><a href="loginPage.php">Restaurant</a></li>
-										<li><a href="loginPage.php">News</a></li>
+										<li><a href="loginPage.php">Dishes</a></li>
 									</ul>';
 									}
 									?>
@@ -116,6 +118,7 @@ session_start();
 											<ul class="dropdown">
 											<li><a href="profile.php">Profile</a></li>
 											<li><a href="editProfile.php">Edit Profile</a></li>
+											<li><a href="favorite.php">Favorite Restaurant</a></li>
 												<li><a href="logoutProcess.php">Logout</a></li>
 											</ul>';
 										}

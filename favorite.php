@@ -86,12 +86,12 @@ session_start();
 										<li><a href="aboutus.php">LovEat</a></li>
 									</ul>
 								</li>
-								<li class="active has-dropdown">
+								<li class="has-dropdown">
 									<?php
 									if(isset($_SESSION["user_id"])){
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
-										<li><a href="restaurantsPage.php">Restaurants</a></li>
+										<li><a href="restaurantsPage.php">Restaurant</a></li>
 										<li><a href="dishesPage.php">Dishes</a></li>
 									</ul>';
 									}
@@ -106,15 +106,15 @@ session_start();
 									
 
 								</li>
-								<li class="has-dropdown">
+								<li class="active has-dropdown">
 									<?php
 										if(isset($_SESSION["user_id"])){
 											$lastname = strtoupper($_SESSION['lastname']);
 											echo '<a href="#">'.$lastname.'</a>
 											<ul class="dropdown">
-											<li><a href="profile.php">Profile</a></li>
-											<li><a href="editProfile.php">Edit Profile</a></li>
-											<li><a href="favorite.php">Favorite Restaurant</a></li>
+												<li><a href="profile.php">Profile</a></li>
+												<li><a href="editProfile.php">Edit Profile</a></li>
+												<li><a href="favorite.php">Favorite Restaurant</a></li>
 												<li><a href="logoutProcess.php">Logout</a></li>
 											</ul>';
 										}
@@ -195,134 +195,75 @@ session_start();
 		  	</div>
 		</aside>
 
-		<!-- menu segment start -->
+		<div id="colorlib-about">
+			<div class="container">
+				<div class="row">
+                    <?php
+                        if(isset($_SESSION["user_id"])){
+                            $firstname = $_SESSION['firstname']; 
+                            $lastname = $_SESSION['lastname'];
+                            $gender = $_SESSION["gender"];
+                            $phone = $_SESSION["phone"];
+                            $DOB = $_SESSION["DOB"];
+                            $email = $_SESSION["email"];
+                        }
+                    ?>
+				</div>
+			</div>
+		</div>
+						<!-- lala -->
 		<div class="colorlib-wrap">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-9">
+					<div class="col-md-12">
 						<div class="row">
-							<div class="wrap-division">
-								<div class="col-md-12 col-md-offset-0 heading2 animate-box">
-									<h2>Restaurants</h2>
-									<?php
-									//echo "<h2>".$_SESSION["rest_name"]."</h2>";
-									?>
-								</div>
+							<div class="col-md-12">
+								<div class="wrap-division">
+									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
+										<h2>Your Favorite Restaurant</h2>
+									</div>
+									<div class="row">
 
-								<!-- info segment start here -->
-								<?php
-								include("connection.php");
-								$sql = "SELECT * FROM restaurant";
-								if(isset($_POST["rest_type"])){
-									if($_POST["rest_type"]!="" && $_POST["rest_region"]!=""){
-										$sql = "SELECT * FROM restaurant WHERE rest_type LIKE '%$_POST[rest_type]%' AND rest_region LIKE '%$_POST[rest_region]%'";
-									}
-									else if($_POST["rest_type"]!="" && $_POST["rest_region"]==""){
-										$sql = "SELECT * FROM restaurant WHERE rest_type LIKE '%$_POST[rest_type]%'";
-									}
-									else if($_POST["rest_type"]=="" && $_POST["rest_region"]!=""){
-										$sql = "SELECT * FROM restaurant WHERE rest_region LIKE '%$_POST[rest_region]%'";
-									}
-								}
-              					$result = mysqli_query($con,$sql);
-              					while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-              						$sql_getc="SELECT AVG(cmnt_rating) AS avg_rating,COUNT(cmnt_id) AS num_review FROM comment WHERE rest_id='$row[rest_id]'";
-              						$result_getc = mysqli_query($con,$sql_getc);
-              						$row_getc = mysqli_fetch_array($result_getc,MYSQLI_ASSOC);
-              						$avg = $row_getc['avg_rating'];
-              						$avg = number_format((float)$avg, 1, '.', '');
-              						$num_review = $row_getc['num_review'];
-              						//<i class="icon-star-half"></i>
-									echo "
-									<div class='col-md-6 col-sm-6 animate-box'>
-									<div class='hotel-entry'>
-										<a href='restaurantDetailPage.php?restid=$row[rest_id]&restname=$row[rest_name]' class='hotel-img' style='background-image: url(images/$row[rest_image]);'>
-											<p class='price'><span>";
-									for($i=1;$i<=$avg;$i++){
-										echo "<i class='icon-star-full'></i>";
-									}
-									$j=$i;
-									for($i=$j;$i<=5;$i++){
-										echo "<i class='icon-star-empty'></i>";
-									}
+										<?php
+								            include("connection.php");
+								            $userid = $_SESSION['user_id'];
+								            $sql = "SELECT * FROM favorite WHERE user_id='$userid'";
+								            $result = mysqli_query($con,$sql);
+								            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+								            	$restid = $row['rest_id'];
+								            	$sql_getrest = "SELECT * FROM restaurant WHERE rest_id='$restid'";
+								            	$result_getrest = mysqli_query($con,$sql_getrest);
+								            	$row_getrest = mysqli_fetch_array($result_getrest,MYSQLI_ASSOC);
+									            echo "
+									            <div class='col-md-12 animate-box'>
+													<div class='room-wrap'>
+														<div class='row'>
+															<div class='col-md-6 col-sm-6'>
+																<div class='room-img' style='background-image: url(images/$row_getrest[rest_image]);'></div>
+															</div>
+															<div class='col-md-6 col-sm-6'>
+																<div class='desc'>
+																	<h1>$row_getrest[rest_name]</h1>
+																	<p>$row_getrest[rest_description]</p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												";
+								            }
 
-									echo "</span></p>
-										</a>
-										<div class='desc'>
-											<p class='star'><span></span> $avg/5 <br>$num_review Reviews</p>
-											<h3><a href='restaurantDetailPage.php?restid=$row[rest_id]&restname=$row[rest_name]'>$row[rest_name]</a></h3>
-											<span class='place'>$row[rest_region]</span>
-											<p>$row[rest_description]</p>
-										</div>
+								        ?>
 									</div>
 								</div>
-
-
-
-									";
-								}
-								?>
-								<!-- info segment end here -->
 							</div>
-						</div>
-						
-					</div>
-
-					<!-- SIDEBAR-->
-					<div class="col-md-3">
-						<div class="sidebar-wrap">
-							<a href='restaurantMaps.php' class='btn btn-primary'>View all the locations of the Restaurants!</a>
-							<br><br><br>
-							<div class="side search-wrap animate-box">
-								<h3 class="sidebar-heading">Find your restaurants!</h3>
-								<form method="post" class="colorlib-form">
-				              	<div class="row">
-				                <div class="col-md-12">
-				                  <div class="form-group">
-				                  	<i class="icon icon-arrow-down3"></i>
-				                    <label for="date">Cuisine:</label>
-				                    	<select name="rest_type" id="category" class="form-control">
-			                    		<option value="">Select your cuisine</option>
-								        <option value="Japanese">Japanese</option>
-								        <option value="BBQ">BBQ</option>
-								        <option value="American">American</option>
-								        <option value="Bar">Bar</option>
-								        <option value="European">European</option>
-								        <option value="Italian">Italian</option>
-								        <option value="Thai">Thai</option>
-								        <option value="Dessert">Dessert</option>
-								      </select>
-				                  </div>
-				                </div>
-				                <div class="col-md-12">
-				                  <div class="form-group">
-				                  	<i class="icon icon-arrow-down3"></i>
-				                    <label for="date">Location:</label>
-				                    	<select name="rest_region" id="category" class="form-control">
-				                    		<option value="">Select your region</option>
-											<option value="Central">Central</option>
-											<option value="Hung Hom">Hung Hom</option>
-											<option value="Tsim Sha Tsui">Tsim Sha Tsui</option>
-											<option value="Wan Chai">Wan Chai</option>
-											<option value="Soho">Soho</option>
-											<option value="North Point">North Point</option>
-									  </select>
-				                  </div>
-				                </div>
-				                <div class="col-md-12">
-				                  <input type="submit" name="submit" id="submit" value="Find Restaurant" class="btn btn-primary btn-block">
-				                </div>
-				              </div>
-				            </form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-
-		<!-- menu segment end -->
-
+						<!-- lala end -->
 		<footer id="colorlib-footer" role="contentinfo">
 			<div class="container">
 				<div class="row row-pb-md">

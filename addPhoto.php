@@ -1,12 +1,15 @@
 <!DOCTYPE HTML>
 <?php
-session_start();
+include("header.php");
 ?>
 <html>
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Restaurant</title>
+	<?php $restname = $_GET['restname'];
+    $_SESSION['rest_name'] = $restname;
+    echo "<title>$restname</title>";
+    ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -69,73 +72,73 @@ session_start();
 		
 	<div class="colorlib-loader"></div>
 
-	<div id="page">
-		<nav class="colorlib-nav" role="navigation">
-			<div class="top-menu">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="index.php">LovEat</a></div>
-						</div>
-						<div class="col-xs-10 text-right menu-1">
-							<ul>
-								<li><a href="index.php">Home</a></li>
-								<li class="has-dropdown">
-									<a href="#">About US</a>
-									<ul class="dropdown">
-										<li><a href="aboutus.php">LovEat</a></li>
-									</ul>
-								</li>
-								<li class="active has-dropdown">
-									<?php
-									if(isset($_SESSION["user_id"])){
-										echo '<a href="#">Booking</a>
-									<ul class="dropdown">
-										<li><a href="restaurantsPage.php">Restaurants</a></li>
-										<li><a href="dishesPage.php">Dishes</a></li>
-									</ul>';
-									}
-									else{
-										echo '<a href="#">Booking</a>
-									<ul class="dropdown">
-										<li><a href="loginPage.php">Restaurant</a></li>
-										<li><a href="loginPage.php">Dishes</a></li>
-									</ul>';
-									}
-									?>
-									
+    <div id="page">
+        <nav class="colorlib-nav" role="navigation">
+      <div class="top-menu">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-2">
+              <div id="colorlib-logo"><a href="index.php">LovEat</a></div>
+            </div>
+            <div class="col-xs-10 text-right menu-1">
+              <ul>
+                <li><a href="index.php">Home</a></li>
+                <li class="has-dropdown">
+                  <a href="#">About US</a>
+                  <ul class="dropdown">
+                    <li><a href="aboutus.php">LovEat</a></li>
+                  </ul>
+                </li>
+                <li class="active has-dropdown">
+                  <?php
+                  if(isset($_SESSION["user_id"])){
+                    echo '<a href="#">Booking</a>
+                  <ul class="dropdown">
+                    <li><a href="restaurantsPage.php">Restaurants</a></li>
+                    <li><a href="dishesPage.php">Dishes</a></li>
+                  </ul>';
+                  }
+                  else{
+                    echo '<a href="#">Booking</a>
+                  <ul class="dropdown">
+                    <li><a href="loginPage.php">Restaurant</a></li>
+                    <li><a href="loginPage.php">Dishes</a></li>
+                  </ul>';
+                  }
+                  ?>
+                  
 
-								</li>
-								<li class="has-dropdown">
-									<?php
-										if(isset($_SESSION["user_id"])){
-											$lastname = strtoupper($_SESSION['lastname']);
-											echo '<a href="#">'.$lastname.'</a>
-											<ul class="dropdown">
-											<li><a href="profile.php">Profile</a></li>
-											<li><a href="editProfile.php">Edit Profile</a></li>
-											<li><a href="favorite.php">Favorite Restaurant</a></li>
-												<li><a href="logoutProcess.php">Logout</a></li>
-											</ul>';
-										}
-										else{
-											echo '
-											<a href="loginPage.php">Account</a>
-											<ul class="dropdown">
-												<li><a href="loginPage.php">Login</a></li>
-											</ul>
-											';
-										}
-									?>
-									
+                </li>
+                <li class="has-dropdown">
+                  <?php
+                    if(isset($_SESSION["user_id"])){
+                      $lastname = strtoupper($_SESSION['lastname']);
+                      echo '<a href="#">'.$lastname.'</a>
+                      <ul class="dropdown">
+                      <li><a href="profile.php">Profile</a></li>
+                      <li><a href="editProfile.php">Edit Profile</a></li>
+                      <li><a href="favorite.php">Favorite Restaurant</a></li>
+                        <li><a href="logoutProcess.php">Logout</a></li>
+                      </ul>';
+                    }
+                    else{
+                      echo '
+                      <a href="loginPage.php">Account</a>
+                      <ul class="dropdown">
+                        <li><a href="loginPage.php">Login</a></li>
+                      </ul>
+                      ';
+                    }
+                  ?>
+                  
 
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
         <aside id="colorlib-hero">
             <div class="flexslider">
                 <ul class="slides">
@@ -197,67 +200,51 @@ session_start();
             </div>
         </aside>
 
-		<!-- restaurant info segment start -->
-		<div class="colorlib-wrap">
+		<div id="colorlib-hotel">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="wrap-division">
-									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
-										<?php
-										$restid  = $_GET['restid'];
-										$restname = $_GET['restname'];
-										$_SESSION['rest_id'] = $restid;
-										$_SESSION['rest_name'] = $restname;
-										echo "<h2>".$restname."</h2>";
-										?>
-										<h3>Menu</h3>
-									</div>
-									<div class="row">
+					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
+						<h2>Our Gallery</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 animate-box">
+						<div class="owl-carousel">
 
-										<?php
-								            include("connection.php");
-								            $restid = $_SESSION['rest_id'];
-								            $restname = $_SESSION['rest_name'];
-								            $sql = "SELECT * FROM dish WHERE rest_id='$restid'";
-								            $result = mysqli_query($con,$sql);
-								            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								            echo "
-								            <div class='col-md-12 animate-box'>
-												<div class='room-wrap'>
-													<div class='row'>
-														<div class='col-md-6 col-sm-6'>
-															<div class='room-img' style='background-image: url(images/$row[dish_image]);'></div>
-														</div>
-														<div class='col-md-6 col-sm-6'>
-															<div class='desc'>
-																<h2>$row[dish_name]</h2>
-																<p class='price'><span>$$row[dish_price]</span> <small>/ serving</small></p>
-																<p>$row[dish_type]</p>
-																<p>$row[dish_description]</p>
-																<p><a href='bookingPage.php?restid=$restid&restname=$restname' class='btn btn-primary'>Book Now!</a></p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											";
-								            }
-
-								        ?>
-									</div>
+							<?php
+							include("connection.php");
+							$restid=$_SESSION['rest_id'];
+							$sql = "SELECT * FROM photo WHERE rest_id='$restid'";
+		                    $result = mysqli_query($con,$sql);
+		                    while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+		                    	echo "
+		                    <div class='item'>
+								<div class='hotel-entry'>
+									<a href='hotels.html' class='hotel-img' style='background-image: url(images/$row[photo_image]);'></a>
 								</div>
-							</div>
+							</div>";
+
+		                    }
+
+
+		                    mysqli_close($con);
+							?>
 						</div>
 					</div>
+					<center><h2>Add Your Own Photo!</h2></center>
+					<form method="POST" action="addPhotoProcess.php" enctype="multipart/form-data">
+      					<center>
+      						<label>Choose Image</label><br> <input type="file" name="galleryImage" id="galleryImage"> 
+      						<button type="submit" class="btn">Add!</button>
+      					</center>
+
+      				</form>
 				</div>
 			</div>
 		</div>
 
-		<!-- restaurant info segment end -->
 
+						<!-- lala end -->
 		<footer id="colorlib-footer" role="contentinfo">
 			<div class="container">
 				<div class="row row-pb-md">

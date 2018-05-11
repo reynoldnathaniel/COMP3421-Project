@@ -64,7 +64,8 @@ include("header.php");
   <script src="js/modernizr-2.6.2.min.js"></script>
 </head>
 <body class="colorlib-light-grey">
-	<div class="colorlib-loader"></div>
+
+  <!-- view staff -->
     <form method="POST" enctype="multipart/form-data">
       <center>
         <br>
@@ -111,6 +112,7 @@ include("header.php");
               </tr>
               ";
             }
+            mysqli_close($con);
 
 
           ?>
@@ -118,6 +120,65 @@ include("header.php");
       </table>
       </center>
     </form>
+
+
+<!-- view customer -->
+        <form method="POST" enctype="multipart/form-data">
+      <center>
+        <br><br>
+      <h2>List of Customers</h2>
+      <br>
+
+      <table>
+        <tr>
+          <td>First Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Last Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Contact Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Birthday</td>
+        </tr>
+        <!-- the following tr is for debugging purpose, please keep -->
+        <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+             
+              </tr>
+        <?php
+            include("connection.php");
+            $sql = "SELECT * FROM users WHERE user_type='customer'";
+            $result = mysqli_query($con,$sql);
+            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+              echo "
+              <tr>
+              <td>$row[user_fname]</td>
+              <td>$row[user_lname]</td>
+              <td>$row[user_email]</td>
+              <td>$row[user_gender]</td>
+              <td>$row[user_phone]</td>
+              <td>$row[user_DOB]</td>
+             
+              </tr>
+              ";
+            }
+             mysqli_close($con);
+
+          ?>
+           <!-- <a href=notes.php? $_SESSION["ID"]= $row["ID"] ?> -->
+      </table>
+      </center>
+    </form>
+    <br><br>
+
+    <form method="POST" action="adminHomepage.php" >
+      <center>
+        <button type='submit' name='backButton'>Back</button>
+      </center>
+      </form>
 </body>
 <!-- jQuery -->
 <script src="js/jquery.min.js"></script>

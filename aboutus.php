@@ -50,13 +50,6 @@ session_start();
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
 
-
-
-<!-- SelectPicker  -->
-<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
-
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -75,12 +68,12 @@ session_start();
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="index.php">LovEat</a></div>
+							<div id="colorlib-logo"><a href="index.html">LovEat</a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
 								<li><a href="index.php">Home</a></li>
-								<li class="has-dropdown">
+								<li class="active has-dropdown">
 									<a href="#">About US</a>
 									<ul class="dropdown">
 										<li><a href="aboutus.php">LovEat</a></li>
@@ -106,7 +99,7 @@ session_start();
 									
 
 								</li>
-								<li class="active has-dropdown">
+								<li class="has-dropdown">
 									<?php
 										if(isset($_SESSION["user_id"])){
 											$lastname = strtoupper($_SESSION['lastname']);
@@ -139,154 +132,59 @@ session_start();
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(images/bg_1.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>Best Table Reservations System in Hong Kong</h2>
-				   					<h1>LovEat</h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url(images/bg_2.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>Enjoy</h2>
-				   					<h1>Amazing Testing Tour</h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style="background-image: url(images/bg_5.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluids">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>Explore our most loved restaurants</h2>
-				   					<h1>Search Your New Favorite </h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
 			   	<li style="background-image: url(images/bg_4.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
-				   					<h2>Taste the</h2>
-				   					<h1>Best Food Ever</h1>
+				   					<h1>About us</h1>
 				   				</div>
 				   			</div>
 				   		</div>
 			   		</div>
-			   	</li>	   	
+			   	</li>
 			  	</ul>
 		  	</div>
 		</aside>
 
-		<div id="colorlib-contact">
+		<div id="colorlib-about">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-10 col-md-offset-1 animate-box">
-						<h3>Edit Profile</h3>
-						<form method="POST" action="editProfileProcess.php">
-							<div class="row form-group">
-								<div class="col-md-6 padding-bottom">
-
-
-									<?php
-							if(isset($_SESSION["user_id"])){
-								$firstname = strtoupper($_SESSION["firstname"]); 
-								$lastname = strtoupper($_SESSION["lastname"]);
-								$email = strtoupper($_SESSION["email"]);
-								$phone = strtoupper($_SESSION["phone"]);
-								$DOB = strtoupper($_SESSION["DOB"]);
-
-								echo '<label for="fname">First Name</label>
-									<input type="text" name="firstname" class="form-control" value="'.$firstname.'">
-									</div>
-									<div class="col-md-6">
-									<label for="lname">Last Name</label>
-									<input type="text" name="lastname" class="form-control" value="'.$lastname.'">
-									</div>
-									</div>
-									<div class="row form-group">
-									<div class="col-md-6 padding-bottom">
-									<label for="fname">Email</label>
-									<input type="text" name="email" class="form-control" value="'.$email.'">
-									</div>
-									<div class="col-md-6">
-									<label for="lname">Phone Number</label>
-									<input type="text" name="phonenumber" class="form-control" value="'.$phone.'">
-									</div>
-									</div>
-									<div class="row form-group">
-									<div class="col-md-6 padding-bottom">
-									<label for="subject">Date of Birth</label>
-									<input type="date" name="dateofbirth" class="form-control" value="'.$DOB.'">
-									</div>
-									</div>';}?>
-
-								<!-- '<a href="#">'.$lastname.'</a>
-											<ul class="dropdown">
-												<li><a href="profile.php">Profile</a></li>
-											<li><a href="editProfile.php">Edit Profile</a></li>
-												<li><a href="logoutProcess.php">Logout</a></li>
-											</ul>'
-								-->
-									<!-- <label for="fname">First Name</label>
-									<input type="text" name="firstname" class="form-control" value="default value"> -->
-								<!-- </div>
-								<div class="col-md-6">
-									<label for="lname">Last Name</label>
-									<input type="text" name="lastname" class="form-control" value="default value">
+					<div class="about-flex">
+						<div class="col-one-forth aside-stretch animate-box">
+							<div class="row">
+								<div class="col-md-12 about">
+									<h2>About</h2>
 								</div>
-							</div> -->
-
-							<!-- <div class="row form-group">
-								<div class="col-md-6 padding-bottom">
-									<label for="fname">Email</label>
-									<input type="text" name="email" class="form-control" value="default value">
-								</div>
-								<div class="col-md-6">
-									<label for="lname">Phone Number</label>
-									<input type="text" name="phonenumber" class="form-control" value="default value">
-								</div>
-							</div> -->
-
-							<!-- div class="row form-group">
-								<div class="col-md-6 padding-bottom">
-									<label for="subject">Date of Birth</label>
-									<input type="date" name="dateofbirth" class="form-control" value="2013-01-08">
-								</div>
-							</div> -->
-
-							<!-- <div class="row form-group">
-								<div class="col-md-12">
-									<label for="message">Message</label>
-									<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
-								</div>
-							</div> -->
-							<div class="form-group text-center">
-								<input type="submit" value="Submit" class="btn btn-primary">
 							</div>
+						</div>
+						<div class="col-three-forth animate-box">
+							<h2>LovEat</h2>
+							<div class="row">
+								<div class="col-md-12">
+									<p>LOVEAT is made to aid in restaurant operations. We provide both potential customers and restaurants memorable experience. We start our business from Hong Kong and reaching out to the world.</p>
 
-						</form>		
-					</div>	
+									<p>The potential customers of restaurants can search for the restaurants which suit their taste by cuisine or location or name using our searching engine and book a table. The restaurant staffs can manage bookings, update menu and news and check customers’ reviews.</p>
+
+									<div class="row row-pb-sm">
+										<div class="col-md-6">
+											<img class="img-responsive" src="images/bg_2.jpg" alt="">
+										</div>
+										<div class="col-md-6">
+											<p>We provide various restaurants with different cuisine from all over Hong Kong. Japanese, American, Italian, European, Thai... Find out your new favorite restaurant though us, LovEat. We LovEat! Share the review of the restaurant with others and visit the most hottest restaurant in Hong Kong right now.</p>
+											<p>We create valuable experience. Don't forget to check out news of your favorite restaurant and do not miss out the discount promotion. We hope you enjoy delicious food with us and add a little happiness to your day.</p>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+
 
 		<footer id="colorlib-footer" role="contentinfo">
 			<div class="container">
@@ -343,9 +241,6 @@ session_start();
 	<script src="js/bootstrap-datepicker.js"></script>
 	<!-- Stellar Parallax -->
 	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
 
 	<!-- Main -->
 	<script src="js/main.js"></script>
