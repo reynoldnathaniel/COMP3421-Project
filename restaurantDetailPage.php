@@ -354,7 +354,17 @@ body .container__content > div.section4 {
         <aside id="colorlib-hero">
             <div class="flexslider">
                 <ul class="slides">
-                <li style="background-image: url(images/enoteca-2.jpg);">
+                    <?php
+                    $restid  = $_GET['restid'];
+                    $restname = $_GET['restname'];
+                    $_SESSION['rest_id'] = $restid;
+                    $_SESSION['rest_name'] = $restname;
+                    include("connection.php");
+                    $sql = "SELECT * FROM restaurant WHERE rest_id='$restid'";
+                    $result = mysqli_query($con,$sql);
+                    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                    echo "<li style='background-image: url(images/$row[rest_image]);'>";
+                    ?>
                     <div class="overlay"></div>
                     <div class="container-fluid">
                         <div class="row">
@@ -363,11 +373,7 @@ body .container__content > div.section4 {
                                
                                <!-- Restaurant Name -->   
                                     <?php
-                                    $restid  = $_GET['restid'];
-                                    $restname = $_GET['restname'];
-                                    $_SESSION['rest_id'] = $restid;
-                                    $_SESSION['rest_name'] = $restname;
-
+                                    
                                     echo "<h1>".$_SESSION['rest_name']."</h1>";
                                     ?>
                                 </div>
@@ -393,8 +399,13 @@ body .container__content > div.section4 {
                                         <?php
                                         
                                         echo "<h2>".$_SESSION['rest_name']."</h2>";
+                                        include("connection.php");
+                                        $restid=$_SESSION['rest_id'];
+                                        $sql = "SELECT * FROM restaurant WHERE rest_id='$restid'";
+                                        $result = mysqli_query($con,$sql);
+                                        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                                        echo "<h4>".$row['rest_address']."</h4>";
                                         ?>
-                                        <h4>G/F, 47 Elgin Street SoHo, Central, Hong Kong</h4>
                                     </div>
 
                                 
@@ -416,8 +427,15 @@ body .container__content > div.section4 {
 <div class="container__content">
     <div id="section1" class="section1">
         <h2>Overview</h2>
-        <p>Enoteca on Elgin (soho) opened its doors in 2005 and remains busy and buzzing today. This narrow 50 seat Mediterranean tapas and wine bar is so popular with locals and tourists that reservations are a must on the weekends. Don't let this deter you from turning up unannounced though, as the friendly staff will seat you at the bar with a glass of wine until a table comes available.
-Enoteca roughly translates to 'wine library' or 'wine bar'. They have been part of Italian Mediterranean tradition since Roman times, as a place to gather, relax, taste and chat amongst friends. We simply wanted to replicate that unpretentious vibe in Hong Kong whilst offering gourmet style wines and shared dishes - we think we have succeeded!</p>
+        <?php
+        include("connection.php");
+        $restid=$_SESSION['rest_id'];
+        $sql = "SELECT * FROM restaurant WHERE rest_id='$restid'";
+        $result = mysqli_query($con,$sql);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        echo "<p>".$row['rest_description']."</p>";
+
+        ?>
     </div>
 
     <!-- MENU -->   
@@ -427,80 +445,45 @@ Enoteca roughly translates to 'wine library' or 'wine bar'. They have been part 
         $restid = $_SESSION['rest_id'];
         $restname = $_SESSION['rest_name'];
         echo "<h2><a href='menuPage.php?restid=$restid&restname=$restname'>Menu</a></h2>";
+
+        include("connection.php");
+        $restid=$_SESSION['rest_id'];
+        $sql = "SELECT * FROM dish WHERE rest_id='$restid'";
+        $result = mysqli_query($con,$sql);
+        while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+            echo "
+        <div class='row'>
+            <div class='col-md-12 animate-box'>
+                <div class='room-wrap'>
+                    <div class='row'>
+                        <div class='col-md-10 col-sm-10'>
+                            <h2>$row[dish_name]</h2>
+                            <p>$row[dish_description]</p>
+                        </div>
+                        <div class='col-md-2 col-sm-2'>
+                            <div class='desc'>
+                                <h2>$$row[dish_price]</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>";
+
+
+        }
+
         ?>
-        <div class="row">
-            <div class="col-md-12 animate-box">
-                <div class="room-wrap">
-                    <div class="row">
-                        <div class="col-md-10 col-sm-10">
-                            <h2>Margherita</h2>
-                            <p>Fresh tomato sauce, mozzarella & shredded basil</p>
-                        </div>
-                        <div class="col-md-2 col-sm-2">
-                            <div class="desc">
-                                <h2>$118</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 animate-box">
-                <div class="room-wrap">
-                    <div class="row">
-                        <div class="col-md-10 col-sm-10">
-                            <h2>Roasted Garlic & Buffalo Mozarella </h2>
-                            <p>Roasted garlic paste, buffalo mozzarella, basil pesto,
-vine-ripened cherry tomatoes</p>
-                        </div>
-                        <div class="col-md-2 col-sm-2">
-                            <div class="desc">
-                                <h2>$156</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 animate-box">
-                <div class="room-wrap">
-                    <div class="row">
-                        <div class="col-md-10 col-sm-10">
-                            <h2>Steak Ciabatta</h2>
-                            <p>grilled tenderloin, roasted tomato & sauteed onion on ciabatta with rich gravy & fires</p>
-                        </div>
-                        <div class="col-md-2 col-sm-2">
-                            <div class="desc">
-                                <h2>$148</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <form method="get" action="menuPage.php">
-        <div class="row">
-            <div class="col-md-12 animate-box">
-                <div class="room-wrap">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-3">
-                            <input type="submit" name="submit" id="submit" value="+ See the Menu" class="btn btn-primary btn-block">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </form>
-
-    </div>
-
+        
+       <?php
+       $restid = $_SESSION['rest_id'];
+        $restname = $_SESSION['rest_name'];
+        echo "<h4><a href='menuPage.php?restid=$restid&restname=$restname'>View Menu</a></h4>";
+       ?>
+<br><br><br>
     <div id="section3" class="section3">
         <h2>Reviews</h2>
+    </div>
 
 
 
@@ -509,23 +492,25 @@ vine-ripened cherry tomatoes</p>
       <div class="col-md-12 animate-box">
         <tr><td>
         <div class="">
-          <form action="send.php" method="post">
+          <form action="commentProcess.php" method="post" enctype="multipart/form-data">
           <fieldset>
     
             <!-- Name input-->
             <div class="form-group">
-              <label class="col-md-2 control-label" for="name">Full Name</label>
-              <div class="col-md-10">
+              <label class="col-md-2 control-label" for="name">Your Full Name</label>
+              <!-- <div class="col-md-10">
                 <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
-              </div>
+              </div> -->
+              <h3><?php echo $_SESSION["firstname"]." ".$_SESSION["lastname"];?></h3>
             </div>
     
             <!-- Email input-->
             <div class="form-group">
               <label class="col-md-2 control-label" for="email">Your E-mail</label>
-              <div class="col-md-10">
+              <!-- <div class="col-md-10">
                 <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
-              </div>
+              </div> -->
+              <h3><?php echo $_SESSION["email"];?></h3>
             </div>
     
             <!-- Message body -->
@@ -540,14 +525,14 @@ vine-ripened cherry tomatoes</p>
             <div class="form-group">
               <label class="col-md-2 control-label" for="message">Your rating</label>
               <div class="col-md-10">
-                <input id="star" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                <input id="star" value="0" type="number" name="rating" class="rating" min=0 max=5 step=0.5 data-size="xs" >
               </div>
             </div>
 
             <!-- Form actions -->
             <div class="form-group">
               <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-primary btn-md">Submit</button>
+                <button type="submit" class="btn btn-primary btn-md" name="submit">Submit</button>
                 <button type="reset" class="btn btn-default btn-md">Clear</button>
               </div>
             </div>
