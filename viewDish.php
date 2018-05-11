@@ -74,6 +74,7 @@ include("header.php");
             $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
             echo "<a href='staffHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a><br><br>
             <h2>List of Dishes for Restaurant ".$row['rest_name']."</h2>";
+             mysqli_close($con);
           }
           else if($_SESSION["user_type"] == 'admin'){
             echo "<a href='adminHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a><br><br>

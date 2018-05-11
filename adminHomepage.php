@@ -73,7 +73,7 @@ include("header.php");
 			<a href="registerRestaurant.php">Add New Restaurant</a><br>
 			<a href="viewRestaurant.php">View All Restaurant</a><br>
 			<a href="addStaff.php">Add Staff</a><br>
-			<a href="viewStaff.php">View Staff</a><br>
+			<a href="viewStaff.php">View Staff and Customers</a><br>
 			<a href="viewBooking.php">View Bookings</a><br>
 			<a href="logoutProcess.php">Logout</a><br>
 		</div>
