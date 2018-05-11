@@ -60,10 +60,15 @@
       <input type="text" placeholder="Email" name="email">
       <input type="password" placeholder="Password" name="password">
       <button type="submit" class="btn">Sign in</button>
-      <br><br><br>
-      Are you NEW? <a href="registrationPage.php" style="color:blue; font-weight:bold;"> Create an account</a>
       </center>
     </form>
+    <center>
+        Are you NEW? <a href="registrationPage.php" style="color:blue; font-weight:bold;"> Create an account</a>
+    </center>
+      <br><br><br><br><br><br><br><br>
+      <center>
+        <a href="index.php" style="color:blue;">Back to Home Page</a>
+      </center>
   </div>
 </body>
 <!-- jQuery -->
