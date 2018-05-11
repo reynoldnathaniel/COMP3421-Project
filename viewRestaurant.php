@@ -88,6 +88,7 @@ include("header.php");
           <td>Restaurant Closing Time</td>
           <td>Restaurant Number Of Seats</td>
           <td>Restaurant Dishes</td>
+          <td>Restaurant Reviews</td>
           <td>Delete Restaurant</td>
         </tr>
         <!-- the following tr is for debugging purpose, please keep -->
@@ -104,6 +105,10 @@ include("header.php");
                   <input type='hidden' name='restname' value='$row[rest_name]'>
                     <input type='hidden' name='restid' value='$row[rest_id]'>
                 </form></td>
+              <td> <form action='viewReviews.php' method='POST'>
+                  <input type='hidden' name='restname' value='$row[rest_name]'>
+                    <input type='hidden' name='restid' value='$row[rest_id]'>
+                </form></td>  
               <td> <form action='deleteRestaurantProcess.php' method='POST'>
                   <input type='hidden' name='restname' value='$row[rest_name]'>
                     <input type='hidden' name='restid' value='$row[rest_id]'>
@@ -137,6 +142,11 @@ include("header.php");
                     <input type='hidden' name='restid' value='$row[rest_id]'>
                     <button type='submit' name='viewDishButton'>View Dish</button>
                   </form></td>
+                <td> <form action='viewReviews.php' method='POST'>
+                    <input type='hidden' name='restname' value='$row[rest_name]'>
+                    <input type='hidden' name='restid' value='$row[rest_id]'>
+                    <button type='submit' name='viewReviewsButton'>View Reviews</button>
+                  </form></td>
                <td> <form action='deleteRestaurantProcess.php' method='POST'>
                   <input type='hidden' name='restid2' value='$row[rest_id]'>
                   <button type='submit' name='deleteRestaurantButton'>Delete</button>
@@ -166,6 +176,11 @@ include("header.php");
                     <button type='submit' name='viewDishButton'>View Dish</button>
 
                   </form></td>
+                <td> <form action='viewReviews.php' method='POST'>
+                    <input type='hidden' name='restname' value='$row[rest_name]'>
+                    <input type='hidden' name='restid' value='$row[rest_id]'>
+                    <button type='submit' name='viewReviewsButton'>View Reviews</button>
+                  </form></td>
                <td> <form action='deleteRestaurantProcess.php' method='POST'>
                   <input type='hidden' name='restid2' value='$row[rest_id]'>
                   <button type='submit' name='deleteRestaurantButton'>Delete</button>
@@ -192,6 +207,11 @@ include("header.php");
                     <input type='hidden' name='restname' value='$row[rest_name]'>
                     <input type='hidden' name='restid' value='$row[rest_id]'>
                     <button type='submit' name='viewDishButton'>View Dish</button>
+                  </form></td>
+                <td> <form action='viewReviews.php' method='POST'>
+                    <input type='hidden' name='restname' value='$row[rest_name]'>
+                    <input type='hidden' name='restid' value='$row[rest_id]'>
+                    <button type='submit' name='viewReviewsButton'>View Reviews</button>
                   </form></td>
                <td> <form action='deleteRestaurantProcess.php' method='POST'>
                   <input type='hidden' name='restid2' value='$row[rest_id]'>
@@ -220,6 +240,11 @@ include("header.php");
                     <input type='hidden' name='restid' value='$row[rest_id]'>
                     <button type='submit' name='viewDishButton'>View Dish</button>
                   </form></td>
+                <td> <form action='viewReviews.php' method='POST'>
+                    <input type='hidden' name='restname' value='$row[rest_name]'>
+                    <input type='hidden' name='restid' value='$row[rest_id]'>
+                    <button type='submit' name='viewReviewsButton'>View Reviews</button>
+                  </form></td>
                <td> <form action='deleteRestaurantProcess.php' method='POST'>
                   <input type='hidden' name='restid2' value='$row[rest_id]'>
                   <button type='submit' name='deleteRestaurantButton'>Delete</button>
@@ -247,6 +272,11 @@ include("header.php");
                     <input type='hidden' name='restid' value='$row[rest_id]'>
                     <button type='submit' name='viewDishButton'>View Dish</button>
                   </form></td>
+                <td> <form action='viewReviews.php' method='POST'>
+                    <input type='hidden' name='restname' value='$row[rest_name]'>
+                    <input type='hidden' name='restid' value='$row[rest_id]'>
+                    <button type='submit' name='viewReviewsButton'>View Reviews</button>
+                  </form></td>
                <td> <form action='deleteRestaurantProcess.php' method='POST'>
                   <input type='hidden' name='restid2' value='$row[rest_id]'>
                   <button type='submit' name='deleteRestaurantButton'>Delete</button>
@@ -255,6 +285,7 @@ include("header.php");
                 ";
               }
             }
+            mysqli_close($con);
 
           ?>
            <!-- <a href=notes.php? $_SESSION["ID"]= $row["ID"] ?> -->

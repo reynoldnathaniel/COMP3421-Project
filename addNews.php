@@ -1,12 +1,11 @@
 <?php
 include("header.php");
 ?>
-<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Restaurant</title>
+  <title>Publish News</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="" />
   <meta name="keywords" content="" />
@@ -56,20 +55,26 @@ include("header.php");
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
   <div id="login-box">
-    <form method="POST" action="addStaffProcess.php">
+    <form method="POST" action="addNewsProcess.php">
       <center>
         <br><br>
-      <h2>Sign Up Staff</h2>
-      <input type="text" placeholder="Restaurant Name" name="restaurant_name">
-      <input type="text" placeholder="Email" name="email">
-      <input type="password" placeholder="Password" name="password">
-      <button type="submit" class="btn">Sign Up</button>
+      <h2>Publish News</h2>
+
+      <label>Message</label><br><textarea  rows="5" cols="50" name="message" placeholder="Please write down the news message here... "></textarea><br>
+      <label>Discount %off (if any)</label><br><input type="number" value="50" min="0" step="5" data-number-to-fixed="2" data-number-stepfactor="100"  name="discount"><br><br>
+      <label>Type of News</label><br><select name="newstype">
+        <option>Discount</option>
+        <option>Promotion</option>
+        <option>New Menu</option>
+        <option>Holiday</option>
+        <option>Special Offers</option> </select>  
+       <br><br>
+
+
+
+      <button type="submit" class="btn">Publish!</button>
       </center>
     </form>
-    <br><br><br><br><br><br><br>
-      <center>
-        <a href="index.php" style="color:blue;">Back to Home Page</a>
-      </center>
   </div>
 </body>
 <!-- jQuery -->

@@ -72,6 +72,9 @@ include("header.php");
 			<a href="viewBooking.php">View Bookings</a><br>
 			<a href="viewDish.php">View Menu</a><br>
 			<a href="registerDish.php">Add Dish</a><br>
+			<a href="viewReviews.php">View Reviews</a><br>
+			<a href="viewNews.php">View News</a><br>
+			<a href="addNews.php">Add News</a><br>
 			<a href="logoutProcess.php">Logout</a><br>
             <a href="index.php">Home Page</a><br>
 		</div>
