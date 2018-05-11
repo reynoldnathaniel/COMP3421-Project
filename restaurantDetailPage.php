@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 include("header.php");
+echo "<script>var user_id = $_SESSION[user_id];</script>";
 ?>
 <html>
     <head>
@@ -393,6 +394,7 @@ body .container__content > div.section4 {
                 <ul class="slides">
                     <?php
                     $restid  = $_GET['restid'];
+                    echo "<script>var rest_id = $restid;</script>";
                     $restname = $_GET['restname'];
                     $_SESSION['rest_id'] = $restid;
                     $_SESSION['rest_name'] = $restname;
@@ -641,10 +643,38 @@ mysqli_close($con);
                     <div class="col-md-3">
                         <div class="sidebar-wrap">
                               <?php
-                              echo"
+                                echo"
                                 <a href='bookingPage.php?restid=$restid&restname=$restname' class='btn btn-primary'>Book Now!</a>";
+                                include("connection.php");
+                                $sql_getfavorite = "SELECT * FROM favorite WHERE user_id='$_SESSION[user_id]' AND rest_id='$restid'";
+                                $result_getfavorite = mysqli_query($con,$sql_getfavorite);
+                                $row_getfavorite = mysqli_num_rows($result_getfavorite);
+                                if($row_getfavorite==0){
+                                  echo "<input type='button' value='Favorite' id='favorite' onclick='favoriteProcess()'>";
+                                }
+                                else if($row_getfavorite==1){
+                                  echo "<input type='button' value='Unfavorite' id='favorite' onclick='favoriteProcess()'>";
+                                }
                               ?>
-
+                              <script>
+                                function favoriteProcess(){
+                                  var xhttp;
+                                  xhttp = new XMLHttpRequest();
+                                  xhttp.onreadystatechange = function() {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                      resultText = this.responseText;
+                                      if(document.getElementById("favorite").value=="Favorite"){
+                                        document.getElementById("favorite").value = "Unfavorite";
+                                      }
+                                      else if(document.getElementById("favorite").value=="Unfavorite"){
+                                        document.getElementById("favorite").value = "Favorite";
+                                      }
+                                    }
+                                  };
+                                  xhttp.open("GET", "favoriteProcess.php?user_id="+user_id+"&rest_id="+rest_id+"&favorite="+document.getElementById("favorite").value, false);
+                                  xhttp.send();
+                                }
+                              </script>
 
 
                         </div>
