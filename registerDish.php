@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+//include("header.php");
 ?>
 <html>
 <head>
@@ -51,6 +51,11 @@ include("header.php");
 
   <!-- Modernizr JS -->
   <script src="js/modernizr-2.6.2.min.js"></script>
+    <style type="text/css">
+        #register-box{
+            height: auto;
+        }
+    </style>
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
@@ -65,20 +70,13 @@ include("header.php");
       <br><br>
       <label>Price ($HKD)</label><br><input type="number" value="100.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" name="price"/>
       <br><br>
-      <label>Type of Dish</label><br>
-      <select name="dishtype">
+      <label>Type of Dish</label><br> <select name="dishtype">
         <option>appetizers</option>
         <option>main dishes</option>
         <option>side dishes</option>
         <option>beverages</option>
-<<<<<<< HEAD
         <option>desserts</option> </select>  
        <br>
-=======
-        <option>desserts</option>
-      </select>  
-       <br><br>
->>>>>>> 975c10994860b3a670f2020030206f46066e5662
       <label>Image</label><br> <input type="file" name="dishImage" id="dishImage"> 
       <p style="color: red;">* to select multiple files, hold down the CTRL or SHIFT key while selecting </p>
       <button type="submit" class="btn">Add!</button>

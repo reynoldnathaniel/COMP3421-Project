@@ -68,7 +68,7 @@ include("header.php");
     </form>
     <br><br><br><br><br><br><br>
       <center>
-        <a href="index.php" style="color:blue;">Back to Home Page</a>
+        <a href="adminHomepage.php" style="color:blue;">Back to Home Page</a>
       </center>
   </div>
 </body>
