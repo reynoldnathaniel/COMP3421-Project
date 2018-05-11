@@ -93,14 +93,14 @@ session_start();
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
 										<li><a href="hotels.php">Restaurant</a></li>
-										<li><a href="#">News</a></li>
+										
 									</ul>';
 									}
 									else{
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
 										<li><a href="loginPage.php">Restaurant</a></li>
-										<li><a href="loginPage.php">News</a></li>
+										
 									</ul>';
 									}
 									?>

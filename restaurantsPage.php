@@ -94,14 +94,13 @@ session_start();
 									<ul class="dropdown">
 										<li><a href="restaurantsPage.php">Restaurants</a></li>
 										<li><a href="dishesPage.php">Dishes</a></li>
-										<li><a href="#">News</a></li>
 									</ul>';
 									}
 									else{
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
 										<li><a href="loginPage.php">Restaurant</a></li>
-										<li><a href="loginPage.php">News</a></li>
+										
 									</ul>';
 									}
 									?>
@@ -266,18 +265,7 @@ session_start();
 								<!-- info segment end here -->
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<ul class="pagination">
-									<li class="disabled"><a href="#">&laquo;</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">&raquo;</a></li>
-								</ul>
-							</div>
-						</div>
+						
 					</div>
 
 					<!-- SIDEBAR-->
