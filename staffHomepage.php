@@ -66,9 +66,11 @@ include("header.php");
 	</head>
 	<body>
 		<br><br>
+		<center><h1>Staff Homepage</h1></center>
+		<br><br>
 		<div align="center">
-			<a href="registerRestaurant.php">View Users (TBD by alison)</a><br>
-			<a href="viewDish.php">View Dish</a><br>
+			<a href="viewBooking.php">View Bookings</a><br>
+			<a href="viewDish.php">View Menu</a><br>
 			<a href="registerDish.php">Add Dish</a><br>
 			<a href="logoutProcess.php">Logout</a><br>
 		</div>

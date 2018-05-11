@@ -92,7 +92,7 @@ session_start();
 									if(isset($_SESSION["user_id"])){
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
-										<li><a href="hotels.php">Restaurant</a></li>
+										<li><a href="restaurantsPage.php">Restaurant</a></li>
 										<li><a href="#">News</a></li>
 									</ul>';
 									}
@@ -113,6 +113,7 @@ session_start();
 											$lastname = strtoupper($_SESSION['lastname']);
 											echo '<a href="#">'.$lastname.'</a>
 											<ul class="dropdown">
+											<li><a href="profile.php">Profile</a></li>
 											<li><a href="editProfile.php">Edit Profile</a></li>
 												<li><a href="logoutProcess.php">Logout</a></li>
 											</ul>';
@@ -214,18 +215,92 @@ session_start();
 							</div>
 						</div>
 						<div class="col-three-forth animate-box">
-							<h2>This Is Your Profile</h2>
+							<h2>Your Profile</h2>
 							<?php
 							if(isset($_SESSION["user_id"])){
 								$firstname = strtoupper($_SESSION['firstname']); 
 								$lastname = strtoupper($_SESSION['lastname']);
-								echo '<h2>'.$firstname.' '.$lastname.'</h2>';}?>
+								$gender = $_SESSION["gender"];
+								$phone = $_SESSION["phone"];
+								$DOB = $_SESSION["DOB"];
+								$email = $_SESSION["email"];
+								echo '<h2>'.$firstname.' '.$lastname.'</h2>';
+								echo '<h3>'.$gender.'</h3>';
+								echo '<h3>'.$email.'</h3>';
+								echo '<h3>'.$phone.'</h3>';
+								echo '<h3>'.$DOB.'</h3>';
+
+
+
+								}
+							?>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+						<!-- lala -->
+		<div class="colorlib-wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="wrap-division">
+									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
+										<h2>Your Bookings</h2>
+									</div>
+									<div class="row">
+
+										<?php
+								            include("connection.php");
+								            $userid = $_SESSION['user_id'];
+								            //$restname = $_SESSION['rest_name'];
+								            $sql = "SELECT * FROM booking WHERE user_id='$userid'";
+								            $result = mysqli_query($con,$sql);
+								            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+								            	$restid = $row['rest_id'];
+								            	$bookid = $row['book_id'];
+								            	$sql_getrest = "SELECT * FROM restaurant WHERE rest_id='$restid'";
+								            	$result_getrest = mysqli_query($con,$sql_getrest);
+								            	$row_getrest = mysqli_fetch_array($result_getrest,MYSQLI_ASSOC);
+									            echo "
+									            <div class='col-md-12 animate-box'>
+													<div class='room-wrap'>
+														<div class='row'>
+															<div class='col-md-6 col-sm-6'>
+																<div class='room-img' style='background-image: url(images/$row_getrest[rest_image]);'></div>
+															</div>
+															<div class='col-md-6 col-sm-6'>
+																<div class='desc'>
+																	<h1>$row_getrest[rest_name]</h1>
+																	<p class='price'><span>Date: $row[book_date]</span> <small></small></p>
+																	<p class='price'><span>Time: $row[book_time1]:00 - $row[book_time2]:00</span> <small></small></p>
+																	<p class='price'><span>Table Size: $row[book_size]</span> <small></small></p>
+																	<p>$row_getrest[rest_description]</p>
+																	<p>
+																	<a href='cancelBookingPage.php?bookid=$bookid&restid=$restid' class='btn btn-primary' name='cancelBookingButton'>Cancel Booking</a>
+																	</p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												";
+								            }//href='cancelBookingPage.php?restid=$restid&restname=$restname' 
+
+								        ?>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
+						<!-- lala end -->
 		<footer id="colorlib-footer" role="contentinfo">
 			<div class="container">
 				<div class="row row-pb-md">

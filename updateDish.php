@@ -1,19 +1,14 @@
 <?php
 include("header.php");
-
-  if (isset($_POST['viewDishButton'])){
-    $_SESSION['rest_id'] = $_POST['restid'];
-    $restid = $_POST['restid'];
-    $_SESSION["restname"] = $_POST['restname'];
-    $restname = $_SESSION["restname"];
-  }
+  if (isset($_POST['updateDishButton'])){
+    $_SESSION['dishid'] = $_POST['dishid'];}
 
 ?>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dish</title>
+  <title>Update Dish</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="" />
   <meta name="keywords" content="" />
@@ -62,10 +57,9 @@ include("header.php");
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
-    <form method="POST" enctype="multipart/form-data">
-      <center>
-        <br>
-        <?php 
+  <br><br><br>
+  <center>
+    <?php 
           if($_SESSION["user_type"] == 'staff'){
             include("connection.php");
             $restid = $_SESSION['rest_id'];
@@ -80,84 +74,68 @@ include("header.php");
             <h2>List of Dishes for Restaurant ".$_SESSION['restname'].";?></h2>";
           }
         ?>
-        
-      <!-- <h2>List of Dishes for Restaurant <?php echo $_SESSION['restname'];?></h2> -->
-      <h2>List of Dishes for Restaurant <?php echo $_SESSION['rest_id'];?></h2>
-      <h3>Where you are <?php echo $_SESSION["user_type"];?></h3>
-
+  </center>
+  <div id="register-box">
+    <form method="POST" action="updateDishProcess.php" enctype="multipart/form-data">
+      <center>
+        <br><br>
+      <h2>Update Dish</h2>
       <br>
+      <?php
+        include("connection.php");
+        $dishid=$_SESSION['dishid'];
+        $sql = "SELECT * FROM dish WHERE dish_id='$dishid'";
+        $result = mysqli_query($con,$sql);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $dishname=$row['dish_name'];
+        $dishdescription=$row['dish_description'];
+        $dishprice=$row['dish_price'];
+        $dishtype=$row['dish_type'];
+        $dishimage=$row['dish_image'];
 
-      <table>
-        <tr>
-          <td>Dish Name&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>Dish Price&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>Dish Type&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>Dish Description&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>Update Dish&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>Delete Dish</td>
-        </tr>
-        <!-- the following tr is for debugging purpose, please keep -->
-        <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td> <form action='updateDish.php' method='POST'>
-                  <input type='hidden' name='dishid' value='$row[dish_id]'>
-                </form></td>
-              <td> <form action='deleteDishProcess.php' method='POST'>
-                  <input type='hidden' name='dishid' value='$row[dish_id]'>
-                </form></td>
-              </tr>
-        <?php
-            include("connection.php");
-            $restid = $_SESSION['rest_id'];
-            $sql = "SELECT * FROM dish WHERE rest_id='$restid'";
-            $result = mysqli_query($con,$sql);
-            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-              echo "
-              <tr>
-              <td>$row[dish_name]</td>
-              <td>$row[dish_price]</td>
-              <td>$row[dish_type]</td>
-              <td>$row[dish_description]</td>
-              <td> <form action='updateDish.php' method='POST'>
-                  <input type='hidden' name='dishid' value='$row[dish_id]'>
-                  <button type='submit' name='updateDishButton'>Update</button>
-                </form></td>
-              <td> <form action='deleteDishProcess.php' method='POST'>
-                  <input type='hidden' name='dishid' value='$row[dish_id]'>
-                  <button type='submit' name='deleteDishButton'>Delete</button>
-                </form></td>
-              </tr>
-              ";
-            }
+        echo "<label>Name</label><input type='text' name='dishname' value='".$dishname."'/>
+        <label>Description</label><br><textarea  rows='5' cols='50' name='description' >".$dishdescription."</textarea>
+        <br><br>
+        <label>Price (HKD)</label><br><input type='number' value='".(int)$dishprice."'min='0' step='0.01' data-number-to-fixed='2' data-number-stepfactor='100' name='price'/>
+        <br><br>
+        <label>Type of Dish</label><br> <select name='dishtype'>";
+
+        if(strcmp($dishdescription, "appetizers")==0)echo "<option selected='selected' >appetizers</option>";
+        else echo "<option>appetizers</option>";
+        if(strcmp($dishdescription, "main dishes")==0)echo "<option selected='selected' >main dishes</option>";
+        else echo "<option>main dishes</option>";
+        if(strcmp($dishdescription, "side dishes")==0)echo "<option selected='selected' >side dishes</option>";
+        else echo "<option>side dishes</option>";
+        if(strcmp($dishdescription, "beverages")==0)echo "<option selected='selected' >beverages</option>";
+        else echo "<option>beverages</option>";
 
 
-          ?>
-      </table><br><br>
+        echo "
+        </select>  
+       <br><br>
+       <label>Image</label><br> <input type='file' name='dishImage' id='dishImage'> ";
+
+      ?>
+      <!-- selected="selected" -->
+      <!-- <label>Name</label><input type="text" placeholder="" name="dishname">
+      <label>Description</label><br><textarea  rows="5" cols="50" name="description" ></textarea>
+      <br><br>
+      <label>Price ($HKD)</label><br><input type="number" value="100.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" name="price"/>
+      <br><br>
+      <label>Type of Dish</label><br> <select name="dishtype">
+        <option>appetizers</option>
+        <option>main dishes</option>
+        <option>side dishes</option>
+        <option>beverages</option>
+        <option>desserts</option> </select>  
+       <br><br>
+      <label>Image</label><br> <input type="file" name="dishImage" id="dishImage">  -->
+      <p style="color: red;">* to select multiple files, hold down the CTRL or SHIFT key while selecting </p>
+      <br>
+      <button type="submit" class="btn">Update!</button>
       </center>
     </form>
-
-    <form method="POST" action="registerDish.php" >
-      <center>
-        <button type='submit' name='registerDishButton'>Add Dish</button><br><br>
-      </center>
-      </form>
-      <?php 
-          if($_SESSION["user_type"] == 'staff'){
-            echo "<form method='POST' action='staffHomepage.php' >";
-          }
-          else if($_SESSION["user_type"] == 'admin'){
-            echo "<form method='POST' action='viewRestaurant.php' >";
-          }
-        ?>
-
-    <!-- <form method="POST" action="viewRestaurant.php" > -->
-      <center>
-        <button type='submit' name='backButton'>Back</button>
-      </center>
-      </form>
+  </div>
 </body>
 <!-- jQuery -->
 <script src="js/jquery.min.js"></script>

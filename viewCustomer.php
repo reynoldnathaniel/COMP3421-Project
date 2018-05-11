@@ -1,13 +1,5 @@
 <?php
 include("header.php");
-
-  if (isset($_POST['viewDishButton'])){
-    $_SESSION['rest_id'] = $_POST['restid'];
-    $restid = $_POST['restid'];
-    $_SESSION["restname"] = $_POST['restname'];
-    $restname = $_SESSION["restname"];
-  }
-
 ?>
 <html>
 <head>
@@ -67,68 +59,54 @@ include("header.php");
         <br>
         <?php 
           if($_SESSION["user_type"] == 'staff'){
-            include("connection.php");
-            $restid = $_SESSION['rest_id'];
-            $sql = "SELECT * FROM restaurant WHERE rest_id='$restid'";
-            $result = mysqli_query($con,$sql);
-            $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-            echo "<a href='staffHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a><br><br>
-            <h2>List of Dishes for Restaurant ".$row['rest_name']."</h2>";
+            echo "<a href='staffHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a>";
           }
           else if($_SESSION["user_type"] == 'admin'){
-            echo "<a href='adminHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a><br><br>
-            <h2>List of Dishes for Restaurant ".$_SESSION['restname'].";?></h2>";
+            echo "<a href='adminHomepage.php'><h1>Homepage ".$_SESSION["user_type"]."</h1></a>";
           }
         ?>
-        
-      <!-- <h2>List of Dishes for Restaurant <?php echo $_SESSION['restname'];?></h2> -->
-      <h2>List of Dishes for Restaurant <?php echo $_SESSION['rest_id'];?></h2>
+        <br><br>
+      <h2>Customer Information</h2>
       <h3>Where you are <?php echo $_SESSION["user_type"];?></h3>
 
       <br>
 
       <table>
         <tr>
-          <td>Dish Name&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>Dish Price&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>Dish Type&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>Dish Description&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>Update Dish&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>Delete Dish</td>
+          <td>First Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Last Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Contact Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>Birthday<td><br>
+
         </tr>
         <!-- the following tr is for debugging purpose, please keep -->
+        <br>
         <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td> <form action='updateDish.php' method='POST'>
-                  <input type='hidden' name='dishid' value='$row[dish_id]'>
-                </form></td>
-              <td> <form action='deleteDishProcess.php' method='POST'>
+              <td><br></td>
+              <td><br></td>
+              <td><br></td>
+              <td><br></td>
+              <td><br></td>
+              <td><br> <form action='deleteDishProcess.php' method='POST'>
                   <input type='hidden' name='dishid' value='$row[dish_id]'>
                 </form></td>
               </tr>
         <?php
+            $userid = $_GET['userid'];
             include("connection.php");
-            $restid = $_SESSION['rest_id'];
-            $sql = "SELECT * FROM dish WHERE rest_id='$restid'";
+            $sql = "SELECT * FROM users WHERE user_id='$userid'";
             $result = mysqli_query($con,$sql);
             while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
               echo "
               <tr>
-              <td>$row[dish_name]</td>
-              <td>$row[dish_price]</td>
-              <td>$row[dish_type]</td>
-              <td>$row[dish_description]</td>
-              <td> <form action='updateDish.php' method='POST'>
-                  <input type='hidden' name='dishid' value='$row[dish_id]'>
-                  <button type='submit' name='updateDishButton'>Update</button>
-                </form></td>
-              <td> <form action='deleteDishProcess.php' method='POST'>
-                  <input type='hidden' name='dishid' value='$row[dish_id]'>
-                  <button type='submit' name='deleteDishButton'>Delete</button>
-                </form></td>
+              <td>$row[user_fname]</td>
+              <td>$row[user_lname]</td>
+              <td>$row[user_email]</td>
+              <td>$row[user_gender]</td>
+              <td>$row[user_phone]</td>
+              <td>$row[user_DOB]</td>
               </tr>
               ";
             }
@@ -139,17 +117,13 @@ include("header.php");
       </center>
     </form>
 
-    <form method="POST" action="registerDish.php" >
-      <center>
-        <button type='submit' name='registerDishButton'>Add Dish</button><br><br>
-      </center>
-      </form>
+    
       <?php 
           if($_SESSION["user_type"] == 'staff'){
-            echo "<form method='POST' action='staffHomepage.php' >";
+            echo "<form method='POST' action='viewBooking.php' >";
           }
           else if($_SESSION["user_type"] == 'admin'){
-            echo "<form method='POST' action='viewRestaurant.php' >";
+            echo "<form method='POST' action='viewBooking.php' >";
           }
         ?>
 

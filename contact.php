@@ -6,7 +6,7 @@ session_start();
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Book</title>
+	<title>Restaurant</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -63,18 +63,7 @@ session_start();
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-  <style>
-  table{
-    width: 90%; border:1px solid black;
-  }
-  td{
-    padding: 15px;border:1px solid black;
-  }
-  tr:nth-child(even){
-    background-color: #f2f2f2;
-  }
-  tr:hover {background-color: #f5f5f5;}
-</style>
+
 	</head>
 	<body>
 		
@@ -103,7 +92,7 @@ session_start();
 									if(isset($_SESSION["user_id"])){
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
-										<li><a href="hotels.php">Restaurant</a></li>
+										<li><a href="restaurantsPage.php">Restaurant</a></li>
 										<li><a href="#">News</a></li>
 									</ul>';
 									}
@@ -205,178 +194,48 @@ session_start();
 			  	</ul>
 		  	</div>
 		</aside>
-		<!--  check avaliability section start -->
+
+
+		<!-- contact info start -->
 		<div id="colorlib-contact">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1 animate-box">
-						<?php
-						$restid  = $_GET['restid'];
-						$restname = $_GET['restname'];
-						$_SESSION['rest_id'] = $restid;
-						$_SESSION['rest_name'] = $restname;
-						echo "<h3>Check Avaliability For $restname</h3>";
-						$localdate = date('Y-m-d');
-						//echo $localdate."<br>";
-						// if($localdate>="2018-05-09")echo "true";
-						// else echo "false";
-						?>
-						
-						<form method="POST" enctype="multipart/form-data">
-							<!-- action="checkingProcess.php"  -->
+						<h3>Get In Touch</h3>
+						<form action="#">
 							<div class="row form-group">
 								<div class="col-md-6 padding-bottom">
-									<label for="message">Select Your Date Of Arrival</label><br>
-									<input type="date" placeholder="" name="date"><br>
-								</div>
-								<div class="col-md-6 padding-bottom">
-									<label for="subject">Number of Guests</label>
-									<input type="text" id="subject" name="numberofguests" class="form-control" placeholder="Number of Guests">
-								</div>
-							</div>
-							<div class="form-group text-center">
-								<input type="submit" value="Check" name="checkButton" class="btn btn-primary">
-							</div>
-						</form>		
-						<?php
-						if (isset($_POST['checkButton'])){
-							
-							$date = $_POST['date'];
-							$numberofguests = $_POST['numberofguests'];
-							//echo $date."    ".$numberofguests."   ";
-							if($date==""||$numberofguests==""){
-								echo "<h4 style{text-color:red;}>*Please Enter All The Fields</h4>";
-							}
-							else if($localdate>=$date){
-								echo "<h4>*Please choose a date in the future</h4>";
-
-							}
-							else {
-								//get restaurant details
-								include("connection.php");
-								$restid=$_SESSION['rest_id'];
-							      $query = "SELECT * FROM restaurant WHERE rest_id='$restid'";
-							      $result = mysqli_query($con,$query);
-							      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-
-							        $opentime = (int)$row["rest_opentime"];
-							      //  echo $row['rest_opentime'];
-							        $closetime = (int)$row["rest_closetime"]; 
-							       // echo $row['rest_closetime']; 
-							        $seats = (int)$row["rest_seats"];
-							       // echo $row['rest_seats'];
-							        echo "<br>";
-							        echo "<h3>Showing Vacancy On ".$date." For A Party Of ".$numberofguests." Guests<h3><br>";
-							      $avaliability = array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);//hour 0 to hour 23 on that day
-							      $localdate = date('Y-m-d');
-							    $query = "SELECT * FROM booking WHERE rest_id='$restid' AND book_date='$date'";
-      							$result = mysqli_query($con,$query);
-      							while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-      								//echo "here ".$row['book_time1']." ".$row['book_time2']."<br>";
-      								for ($i = (int)$row['book_time1']; $i < (int)$row['book_time2']; $i++){
-      									$avaliability[$i]+=$row['book_size'];
-      								}
-      							}
-
-      							for ($i = 0; $i < 24; $i++){
-      							//echo $avaliability[$i]." ";
-      							}
-
-      							echo "<table><tr>
-							          <td>Time</td>
-							          <td>Vacancy</td></tr>";
-							    for($i=$opentime;$i<$closetime;$i++){
-							    	$j=$i+1;
-							    	$vacancy = $seats-$avaliability[$i];
-							    	if($vacancy>$numberofguests){
-								    	echo "<tr><td>".$i.":00 - ".$j.":00</td>"."<td>".$vacancy."</td></tr>";
-								    }
-							    }
-
-
-      							echo "</table>";
-      							
-
-
-							}
-						}
-						?>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!--  check avaliability ssection end-->
-
-
-		<!-- booking section start -->
-
-		<div id="colorlib-contact">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1 animate-box">
-						<?php
-						$restid  = $_GET['restid'];
-						$restname = $_GET['restname'];
-						$_SESSION['rest_id'] = $restid;
-						$_SESSION['rest_name'] = $restname;
-						echo "<h3>Book $restname</h3>";
-						$localdate = date('Y-m-d');
-						// echo $localdate."<br>";
-						// if($localdate>="2018-05-09")echo "true";
-						// else echo "false";
-						?>
-						
-						<form method="POST" action="bookingProcess.php" enctype="multipart/form-data">
-							<div class="row form-group">
-								<div class="col-md-6 padding-bottom">
-									<label for="fname">First Name</label><br>
-									<!-- <input type="text" id="fname" name="firstname" class="form-control" placeholder="Yo -->
-									<h3><?php echo $_SESSION["firstname"];?></h3>
+									<label for="fname">First Name</label>
+									<input type="text" id="fname" class="form-control" placeholder="Your firstname">
 								</div>
 								<div class="col-md-6">
 									<label for="lname">Last Name</label>
-									<h3><?php echo $_SESSION["lastname"];?></h3>
+									<input type="text" id="lname" class="form-control" placeholder="Your lastname">
 								</div>
 							</div>
 
 							<div class="row form-group">
-								<div class="col-md-6 padding-bottom">
+								<div class="col-md-12">
 									<label for="email">Email</label>
-									<h3><?php echo $_SESSION["email"];?></h3>
-								</div>
-								<div class="col-md-6">
-									<label for="subject">Contact Number</label>
-									<h3><?php echo $_SESSION["phone"];?></h3>
+									<input type="text" id="email" class="form-control" placeholder="Your email address">
 								</div>
 							</div>
 
 							<div class="row form-group">
-								<div class="col-md-6 padding-bottom">
-									<label for="message">Date</label><br>
-									<input type="date" placeholder="" name="date"><br>
-								</div>
-								<div class="col-md-6">
-									<label for="subject">Time</label><br>
-									<input type="time" placeholder="" name="time1">&nbsp;to&nbsp;
-									<input type="time" placeholder="" name="time2">
+								<div class="col-md-12">
+									<label for="subject">Subject</label>
+									<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
 								</div>
 							</div>
 
 							<div class="row form-group">
-								<div class="col-md-6 padding-bottom">
-									<label for="subject">Number of Guests</label>
-									<input type="text" id="subject" name="numberofguests" class="form-control" placeholder="Number of Guests">
-								</div>
-								<div class="col-md-6">
-									<label for="subject">Special Request</label>
-									<input type="text" id="subject" name="request" class="form-control" placeholder="Special Request">
+								<div class="col-md-12">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
 								</div>
 							</div>
-
-
 							<div class="form-group text-center">
-								<input type="submit" value="Book" name="bookButton" class="btn btn-primary">
+								<input type="submit" value="Send Message" class="btn btn-primary">
 							</div>
 
 						</form>		
@@ -401,9 +260,32 @@ session_start();
 				</div>
 			</div>
 		</div>
-				        
-		<!-- booking section end -->
 
+		<div id="map" class="colorlib-map"></div>
+	
+		<div id="colorlib-subscribe" style="background-image: url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
+						<h2>Sign Up for a Newsletter</h2>
+						<p>Sign up for our mailing list to get latest updates and offers.</p>
+						<form class="form-inline qbstp-header-subscribe">
+							<div class="row">
+								<div class="col-md-12 col-md-offset-0">
+									<div class="form-group">
+										<input type="text" class="form-control" id="email" placeholder="Enter your email">
+										<button type="submit" class="btn btn-primary">Subscribe</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- contact info end -->
 		<footer id="colorlib-footer" role="contentinfo">
 			<div class="container">
 				<div class="row row-pb-md">
