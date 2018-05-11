@@ -71,7 +71,7 @@ include("header.php");
       <select name="rest_name" id="name" class="form-control">
         <?php
           include("connection.php");
-          $sql = "SELECT rest_name FROM resturant";
+          $sql = "SELECT rest_name FROM restaurant";
           $result = mysqli_query($con, $sql);
           while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
             echo "<option value='$row[rest_name]'>$row[rest_name]</option>";
