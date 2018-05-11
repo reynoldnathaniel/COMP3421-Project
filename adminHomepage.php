@@ -76,6 +76,7 @@ include("header.php");
 			<a href="viewStaff.php">View Staff</a><br>
 			<a href="viewBooking.php">View Bookings</a><br>
 			<a href="logoutProcess.php">Logout</a><br>
+            <a href="index.php">Home Page</a><br>
 		</div>
 
 	</body>
