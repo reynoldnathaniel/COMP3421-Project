@@ -1,3 +1,7 @@
+<?php
+include("header.php");
+?>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
@@ -62,6 +66,10 @@
       <button type="submit" class="btn">Sign Up</button>
       </center>
     </form>
+    <br><br><br><br><br><br><br>
+      <center>
+        <a href="index.php" style="color:blue;">Back to Home Page</a>
+      </center>
   </div>
 </body>
 <!-- jQuery -->

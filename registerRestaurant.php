@@ -1,7 +1,7 @@
 <?php
 include("header.php");
-
 ?>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -52,15 +52,20 @@ include("header.php");
 
   <!-- Modernizr JS -->
   <script src="js/modernizr-2.6.2.min.js"></script>
+  <style type="text/css">
+      #register-box{
+          height: auto;
+      }
+  </style>
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
-  <br><br><br>
+  <br>
   <center><a href="adminHomepage.php"><h1>Homepage Admin</h1></a></center>
   <div id="register-box">
     <form method="POST" action="registerRestaurantProcess.php" enctype="multipart/form-data">
       <center>
-        <br><br>
+        <br>
       <h2>Registration Restaurant</h2>
 <br>
       <input type="text" placeholder="Restaurant Name" name="rest_name">
@@ -125,12 +130,15 @@ include("header.php");
       <input type="text" placeholder="Number of Seats" name="rest_seats">
       Description<br>
       <textarea  rows="3" cols="50" name="description" placeholder="Please write down the menu description here... "></textarea>
-      <br><br>
+      <br>
       <label>Image</label><br> <input type="file" name="restaurantImage" id="restaurantImage"> 
       <button type="submit" class="btn">Register!</button>
       <p style="color: red;">*Max 5MB</p>
       </center>
     </form>
+    <center>
+        <a href="index.php" style="color:blue;">Back to Home Page</a>
+      </center>
   </div>
 </body>
 <!-- jQuery -->
