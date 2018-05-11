@@ -93,7 +93,6 @@ session_start();
 									<ul class="dropdown">
 										<li><a href="restaurantsPage.php">Restaurants</a></li>
 										<li><a href="dishesPage.php">Dishes</a></li>
-										<li><a href="#">News</a></li>
 									</ul>';
 									}
 									else{
