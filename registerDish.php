@@ -59,6 +59,7 @@ include("header.php");
 </head>
 <body class="colorlib-light-grey">
 	<div class="colorlib-loader"></div>
+    <center><a href="staffHomepage.php"><h1>Homepage Staff</h1></a></center>
   <div id="register-box">
     <form method="POST" action="registerDishProcess.php" enctype="multipart/form-data">
       <center>
@@ -82,10 +83,6 @@ include("header.php");
       <button type="submit" class="btn">Add!</button>
       </center>
     </form>
-      <br>
-      <center>
-        <a href="staffHomepage.php" style="color:blue;">Back to Staff Home Page</a>
-      </center>
   </div>
 </body>
 <!-- jQuery -->
