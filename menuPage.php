@@ -244,6 +244,7 @@ session_start();
 											</div>
 											";
 								            }
+								            mysqli_close($con);
 
 								        ?>
 									</div>

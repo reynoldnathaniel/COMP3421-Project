@@ -448,81 +448,80 @@ body .container__content > div.section4 {
                                     </div>
 
                                 
-<!-- Nav -->                                    
-<div class="row">
-<div class="col-md-12 animate-box">
-<header class="static-header">
-    <nav>
-        <a href="#section1">Overview</a>
-        <a href="#section2">Menu</a>
-        <a href="#section3">Reviews</a>
-        <a href="#section4"></a>
-    </nav>
-</header>
-<hr>
+                                    <!-- Nav -->                                    
+                                    <div class="row">
+                                      <div class="col-md-12 animate-box">
+                                        <header class="static-header">
+                                          <nav>
+                                            <a href="#section1">Overview</a>
+                                            <a href="#section2">Menu</a>
+                                            <a href="#section3">Reviews</a>
+                                            <a href="#section4"></a>
+                                          </nav>
+                                        </header>
 
-<!-- Overview - restaurant description -->   
+                                    <!-- Overview - restaurant description -->   
 
-<div class="container__content">
-    <div id="section1" class="section1">
-        <h2>Overview</h2>
-        <?php
-        include("connection.php");
-        $restid=$_SESSION['rest_id'];
-        $sql = "SELECT * FROM restaurant WHERE rest_id='$restid'";
-        $result = mysqli_query($con,$sql);
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-        echo "<p>".$row['rest_description']."</p>";
-        mysqli_close($con);
-        ?>
-    </div>
+                                      <div class="container__content">
+                                        <div id="section1" class="section1">
+                                            <h2>Overview</h2>
+                                            <?php
+                                            include("connection.php");
+                                            $restid=$_SESSION['rest_id'];
+                                            $sql = "SELECT * FROM restaurant WHERE rest_id='$restid'";
+                                            $result = mysqli_query($con,$sql);
+                                            $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                                            echo "<p>".$row['rest_description']."</p>";
+                                            mysqli_close($con);
+                                            ?>
+                                        </div>
 
-    <!-- MENU -->   
+                                        <!-- MENU -->   
 
-    <div id="section2" class="section2">
-        <?php
-        $restid = $_SESSION['rest_id'];
-        $restname = $_SESSION['rest_name'];
-        echo "<h2><a href='menuPage.php?restid=$restid&restname=$restname'>Menu</a></h2>";
+                                        <div id="section2" class="section2">
+                                            <?php
+                                            $restid = $_SESSION['rest_id'];
+                                            $restname = $_SESSION['rest_name'];
+                                            echo "<h2><a href='menuPage.php?restid=$restid&restname=$restname'>Menu</a></h2>";
 
-        include("connection.php");
-        $restid=$_SESSION['rest_id'];
-        $sql = "SELECT * FROM dish WHERE rest_id='$restid'";
-        $result = mysqli_query($con,$sql);
-        while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-            echo "
-        <div class='row'>
-            <div class='col-md-12 animate-box'>
-                <div class='room-wrap'>
-                    <div class='row'>
-                        <div class='col-md-10 col-sm-10'>
-                            <h2>$row[dish_name]</h2>
-                            <p>$row[dish_description]</p>
-                        </div>
-                        <div class='col-md-2 col-sm-2'>
-                            <div class='desc'>
-                                <h2>$$row[dish_price]</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>";
+                                            include("connection.php");
+                                            $restid=$_SESSION['rest_id'];
+                                            $sql = "SELECT * FROM dish WHERE rest_id='$restid'";
+                                            $result = mysqli_query($con,$sql);
+                                            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                                                echo "
+                                            <div class='row'>
+                                                <div class='col-md-12 animate-box'>
+                                                    <div class='room-wrap'>
+                                                        <div class='row'>
+                                                            <div class='col-md-10 col-sm-10'>
+                                                                <h2>$row[dish_name]</h2>
+                                                                <p>$row[dish_description]</p>
+                                                            </div>
+                                                            <div class='col-md-2 col-sm-2'>
+                                                                <div class='desc'>
+                                                                    <h2>$$row[dish_price]</h2>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>";
 
 
-        }
-        mysqli_close($con);
-        ?>
-        
-       <?php
-       $restid = $_SESSION['rest_id'];
-        $restname = $_SESSION['rest_name'];
-        echo "<h4><a href='menuPage.php?restid=$restid&restname=$restname'>View Menu</a></h4>";
-       ?>
-<br><br><br>
-    <div id="section3" class="section3">
-        <h2>Reviews</h2>
-    </div>
+                                            }
+                                            mysqli_close($con);
+                                            ?>
+                                            
+                                           <?php
+                                           $restid = $_SESSION['rest_id'];
+                                            $restname = $_SESSION['rest_name'];
+                                            echo "<h4><a href='menuPage.php?restid=$restid&restname=$restname'>View Menu</a></h4>";
+                                           ?>
+                                    <br><br><br>
+                                        <div id="section3" class="section3">
+                                            <h2>Reviews</h2>
+                                        </div>
 
 
 
@@ -586,7 +585,6 @@ body .container__content > div.section4 {
 </div>
 
 <br><br><br>
-<hr>
 
 
 <?php
@@ -649,6 +647,44 @@ mysqli_close($con);
 
                         </div>
                     </div>
+                    <br><br><br>
+
+
+
+          <div class="col-md-3">
+            <div class="sidebar-wrap">
+              <div class="side search-wrap animate-box">
+                <h1 style='color:white;'>News</h1>
+                <?php
+                include("connection.php");
+                $restis=$_SESSION['rest_id'];
+                $sql = "SELECT * FROM news WHERE rest_id='$restid'";
+                $result = mysqli_query($con,$sql);
+                while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                  echo "<h1 style='color:white;'>- - - - - - - - -</h1>";
+                  echo "<h4 style='color:white;'>".$row['news_type']."</h4>";
+                  if($row['news_discount']!=0){
+                    echo "<h3 style='color:red;'>".$row['news_discount']." % OFF</h3>";
+                  }
+                  echo "<h5 style='color:white;'>".$row['news_msg']."</h5>";
+
+
+                }
+
+
+
+
+                mysqli_close($con);
+                ?>
+                
+              </div>
+            </div>
+          </div>
+              
+
+
+
+                    <!-- end side bar -->
                 </div>
             </div>
         </div>
