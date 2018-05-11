@@ -132,6 +132,7 @@ include("header.php");
               </tr>
               ";
             }
+            mysqli_close($con);
 
 
           ?>

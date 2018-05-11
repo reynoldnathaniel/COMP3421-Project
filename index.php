@@ -92,7 +92,8 @@ session_start();
 									if(isset($_SESSION["user_id"])){
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
-										<li><a href="restaurantsPage.php">Restaurant</a></li>
+										<li><a href="restaurantsPage.php">Restaurants</a></li>
+										<li><a href="dishesPage.php">Dishes</a></li>
 										<li><a href="#">News</a></li>
 									</ul>';
 									}
@@ -202,7 +203,7 @@ session_start();
 							<ul class="nav nav-tabs">
 								<li class="active"><a data-toggle="tab" href="#flight"><i class="flaticon-food-1"></i> By Cuisine & location</a></li>
 								
-								<li><a data-toggle="tab" href="#hotel"><i class="flaticon-restaurant"></i> By Restaurant</a></li>
+								<li><a data-toggle="tab" href="#hotel"><i class="flaticon-restaurant"></i> By Dishes</a></li>
 								
 							</ul>
 						</div>
@@ -262,91 +263,48 @@ session_start();
 				            </form>
 				         </div>
 				         <div id="hotel" class="tab-pane fade">
-						      <form method="post" class="colorlib-form">
+						      <form method="post" class="colorlib-form" action="dishesPage.php">
 				              	<div class="row">
 				              	 <div class="col-md-2">
 				              	 	<div class="booknow">
-				              	 		<h2>Book Now</h2>
-					              	 	<span>Best Restaurant</span>
+				              	 		<h2>Search for dishes!</h2>
 				              	 	</div>
 				              	 </div>
 				                <div class="col-md-3">
 				                  <div class="form-group">
-				                    <label for="date">Date</label>
+				                    <label for="date">Dish Type</label>
 				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Booking date">
+				                      <i class="icon icon-arrow-down3"></i>
+				                      <select name="dish_type" class="form-control">
+				                      	<option value="">Please select dish</option>
+								        <option value="appetizers">Appetizers</option>
+								        <option value="main dishes">Main dishes</option>
+								        <option value="side dishes">Side dishes</option>
+								        <option value="beverages">Beverages</option>
+								        <option value="desserts">Desserts</option>
+								      </select>
 				                    </div>
 				                  </div>
 				                </div>
 				 
 				                <div class="col-md-3">
 				                  <div class="form-group">
-				                    <label for="guests">Guest</label>
+				                    <label for="guests">Price Range</label>
 				                    <div class="form-field">
-				                      <i class="icon icon-user"></i>
-				                      <select name="people" id="people" class="form-control">
-				                        <option value="1">1</option>
-				                        <option value="2">2</option>
-				                        <option value="3">3</option>
-				                        <option value="4">4</option>
-				                        <option value="5">5</option>
-				                        <option value="6">6</option>
-				                        <option value="7">7</option>
-				                        <option value="8">8</option>
-				                        <option value="9">9</option>
+				                      <i class="icon icon-arrow-down3"></i>
+				                      <select name="dish_price" id="people" class="form-control">
+				                      	<option value="">Please select dish</option>
+				                        <option value="1">$1-$50</option>
+				                        <option value="2">$51-$100</option>
+				                        <option value="3">$101-150</option>
+				                        <option value="4">$151-$200</option>
+				                        <option value="5">$201-$250</option>
+				                        <option value="6">$251-$300</option>
 				                      </select>
 				                    </div>
 				                  </div>
 				                </div>
 
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="guests">Time</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-time"></i>
-				                      <select name="time" id="time" class="form-control">
-				                      	<option value="9">09:00</option>
-				                        <option value="10">10:00</option>
-				                        <option value="11">11:00</option>
-				                        <option value="12">12:00</option>
-				                        <option value="13">13:00</option>
-				                        <option value="14">14:00</option>
-				                        <option value="15">15:00</option>
-				                        <option value="16">16:00</option>
-				                        <option value="17">17:00</option>
-				                        <option value="18">18:00</option>
-				                        <option value="19">19:00</option>
-				                        <option value="20">20:00</option>
-				                        <option value="21">21:00</option>
-				                        <option value="22">22:00</option>
-				                        <option value="23">23:00</option>
-				                      </select>
-				                    </div>
-				                  </div>
-				                </div>
-
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="guests">Search Restaurant</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-search"></i>
-				                      <select class="selectpicker" title="Search Restaurant" data-live-search="true"">
-				                        <option value="#">example1</option>
-				                        <option value="#">example2</option>
-				                        <option value="#">example3</option>
-				                        <option value="#">example4</option>
-				                        <option value="#">example5</option>
-				                        <option value="#">example6</option>
-				                        <option value="#">example7</option>
-				                        <option value="#">example8</option>
-				                        <option value="#">example9</option>
-				                        <option value="#">example10</option>
-				                        <option value="#">example11</option>
-				                      </select>
-				                    </div>
-				                  </div>
-				                </div>
 				                <div class="col-md-1">
 				                  <input type="submit" name="submit" id="submit" value="Search" class="btn  ">
 				                </div>
