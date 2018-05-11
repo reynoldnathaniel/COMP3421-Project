@@ -209,85 +209,30 @@ session_start();
 
 						<div class="tab-content">
 							<div id="flight" class="tab-pane fade in active">
-								<form method="post" class="colorlib-form">
+								<form method="post" class="colorlib-form" action="restaurantsPage.php">
 				              	<div class="row">
 				              	 <div class="col-md-2">
 				              	 	<div class="booknow">
-				              	 		<h2>Book Now</h2>
-					              	 	<span>Best Restaurant</span>
+				              	 		<h2>Search for your favorite cuisine!</h2>
 				              	 	</div>
 				              	 </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="date">Date</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Booking date">
-				                    </div>
-				                  </div>
-				                </div>
-				 
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="guests">Guest</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-user"></i>
-				                      <select name="people" id="people" class="form-control">
-				                        <option value="1">1</option>
-				                        <option value="2">2</option>
-				                        <option value="3">3</option>
-				                        <option value="4">4</option>
-				                        <option value="5">5</option>
-				                        <option value="6">6</option>
-				                        <option value="7">7</option>
-				                        <option value="8">8</option>
-				                        <option value="9">9</option>
-				                      </select>
-				                    </div>
-				                  </div>
-				                </div>
-
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="guests">Time</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-time"></i>
-				                      <select name="time" id="time" class="form-control">
-				                      	<option value="9">09:00</option>
-				                        <option value="10">10:00</option>
-				                        <option value="11">11:00</option>
-				                        <option value="12">12:00</option>
-				                        <option value="13">13:00</option>
-				                        <option value="14">14:00</option>
-				                        <option value="15">15:00</option>
-				                        <option value="16">16:00</option>
-				                        <option value="17">17:00</option>
-				                        <option value="18">18:00</option>
-				                        <option value="19">19:00</option>
-				                        <option value="20">20:00</option>
-				                        <option value="21">21:00</option>
-				                        <option value="22">22:00</option>
-				                        <option value="23">23:00</option>
-				                      </select>
-				                    </div>
-				                  </div>
-				                </div>
 				                
 				                <div class="col-md-3">
 				                  <div class="form-group">
 				                    <label for="guests">Any Cuisine</label>
 				                    <div class="form-field">
-				                      <i class="icon icon-arrow-down3"></i>
-				                      <select name="category" id="category" class="form-control">
-				                        <option value="#">japanese</option>
-				                        <option value="#">bbq</option>
-				                        <option value="#">american</option>
-				                        <option value="#">bar</option>
-				                        <option value="#">european</option>
-				                        <option value="#">italian</option>
-				                        <option value="#">thai</option>
-				                        <option value="#">dessert</option>
-				                      </select>
+				                    	<i class="icon icon-arrow-down3"></i>
+				                      <select name="rest_type" id="category" class="form-control">
+				                      	<option value="">Select your cuisine</option>
+								        <option value="Japanese">Japanese</option>
+								        <option value="BBQ">BBQ</option>
+								        <option value="American">American</option>
+								        <option value="Bar">Bar</option>
+								        <option value="European">European</option>
+								        <option value="Italian">Italian</option>
+								        <option value="Thai">Thai</option>
+								        <option value="Dessert">Dessert</option>
+								      </select>
 				                    </div>
 				                  </div>
 				                </div>
@@ -297,15 +242,15 @@ session_start();
 				                    <label for="guests">Any Location</label>
 				                    <div class="form-field">
 				                      <i class="icon icon-arrow-down3"></i>
-				                      <select name="category" id="category" class="form-control">
-
-				                        <option value="#">central</option>
-				                        <option value="#">hung hom</option>
-				                        <option value="#">tsim sha tsui</option>
-				                        <option value="#">wan chai</option>
-				                        <option value="#">soho</option>
-				                        <option value="#">north point</option>
-				                      </select>
+				                      <select name="rest_region" id="category" class="form-control">
+				                      	<option value="">Select your region</option>
+										<option value="Central">Central</option>
+										<option value="Hung Hom">Hung Hom</option>
+										<option value="Tsim Sha Tsui">Tsim Sha Tsui</option>
+										<option value="Wan Chai">Wan Chai</option>
+										<option value="Soho">Soho</option>
+										<option value="North Point">North Point</option>
+									  </select>
 				                    </div>
 				                  </div>
 				                </div>
