@@ -78,7 +78,7 @@ include("header.php");
         ?>
         <br><br>
         <input type="text" placeholder="Booking ID" name="book_id" value="">
-        <input type="text" placeholder="Customer" name="user_id" value="">
+        <input type="text" placeholder="Customer ID" name="user_id" value="">
         <input type="text" placeholder="Booking Date" name="book_date" value="">
         <button type="submit" class="btn">Browse</button>
         <br><br>
@@ -113,24 +113,26 @@ include("header.php");
               <td></td>
               <td></td>
               <td> <form action='cancelBooking.php' method='POST'>
-                  <input type='hidden' name='restname' value='$row[rest_name]'>
-                    <input type='hidden' name='restid' value='$row[rest_id]'>
-                </form></td>
+                  <input type='hidden' name='restname' value=''>
+                    <input type='hidden' name='restid' value=''>
+                </form>
+              </td>
              
               </tr>
         <?php
             include("connection.php");
             if(isset($_POST["book_id"])){
-              $book_id = $_POST['book_id'];
-              $user_id = $_POST['user_id'];
+              $book_id = (int)$_POST['book_id'];
+              $user_id = (int)$_POST['user_id'];
               $book_date = $_POST['book_date'];
              }
-
-            if(isset($_POST['book_id']) && isset($_POST['user_id']) && isset($_POST['book_date'])){
-              if($_SESSION["user_type"] == 'admin'){
+             if(isset($_POST['book_id'])&&isset($_POST['user_id'])&&isset($_POST['book_date'])){
+            if($_POST['book_id']!="" && $_POST['user_id']!="" && $_POST['book_date']!=""){
+              // echo "2 bookid".$_POST['book_id'];
+              if($_SESSION["user_type"] == "admin"){
                 $sql = "SELECT * FROM booking WHERE book_id='$book_id' AND user_id='$user_id' AND book_date LIKE '%$book_date%'";
               }
-              else if($_SESSION["user_type"] == 'staff'){
+              else if($_SESSION["user_type"] == "staff"){
                 $rest_id=$_SESSION["rest_id"];
                 $sql = "SELECT * FROM booking WHERE book_id='$book_id' AND user_id='$user_id' AND book_date LIKE '%$book_date%' AND rest_id='$rest_id'";
               }
@@ -146,7 +148,7 @@ include("header.php");
                 <tr>
                 <td>$row[book_id]</td>";
 
-                if($_SESSION["user_type"] == 'admin'){
+                if($_SESSION["user_type"] == "admin"){
                   echo "<td><a href='viewRestaurant.php'>$row_getrest[rest_name]</a></td>";
                 }
                 echo "
@@ -163,11 +165,11 @@ include("header.php");
                 ";
               }
             }
-            else if(isset($_POST['book_id'])){
-              if($_SESSION["user_type"] == 'admin'){
+            else if($_POST['book_id']!=""){
+              if($_SESSION["user_type"] == "admin"){
                 $sql = "SELECT * FROM booking WHERE book_id='$book_id'";
               }
-              else if($_SESSION["user_type"] == 'staff'){
+              else if($_SESSION["user_type"] == "staff"){
                 $rest_id=$_SESSION["rest_id"];
                 $sql = "SELECT * FROM booking WHERE book_id='$book_id' AND rest_id='$rest_id'";
               }
@@ -184,7 +186,7 @@ include("header.php");
                 <tr>
                 <td>$row[book_id]</td>";
 
-                if($_SESSION["user_type"] == 'admin'){
+                if($_SESSION["user_type"] == "admin"){
                   echo "<td><a href='viewRestaurant.php'>$row_getrest[rest_name]</a></td>";
                 }
                 echo "
@@ -201,11 +203,11 @@ include("header.php");
                 ";
               }
             }
-            else if(isset($_POST['user_id'])){
-              if($_SESSION["user_type"] == 'admin'){
+            else if($_POST['user_id']!=""){
+              if($_SESSION["user_type"] == "admin"){
                 $sql = "SELECT * FROM booking WHERE user_id='$user_id'";
               }
-              else if($_SESSION["user_type"] == 'staff'){
+              else if($_SESSION["user_type"] == "staff"){
                 $rest_id=$_SESSION["rest_id"];
                 $sql = "SELECT * FROM booking WHERE user_id='$user_id' AND rest_id='$rest_id'";
               }
@@ -222,7 +224,7 @@ include("header.php");
                 <tr>
                 <td>$row[book_id]</td>";
 
-                if($_SESSION["user_type"] == 'admin'){
+                if($_SESSION["user_type"] == "admin"){
                   echo "<td><a href='viewRestaurant.php'>$row_getrest[rest_name]</a></td>";
                 }
                 echo "
@@ -239,11 +241,11 @@ include("header.php");
                 ";
               }
             }
-            else if(isset($_POST['book_date'])){
-              if($_SESSION["user_type"] == 'admin'){
+            else if($_POST['book_date']!=""){
+              if($_SESSION["user_type"] == "admin"){
                 $sql = "SELECT * FROM booking WHERE book_date LIKE '%$book_date%'";
               }
-              else if($_SESSION["user_type"] == 'staff'){
+              else if($_SESSION["user_type"] == "staff"){
                 $rest_id=$_SESSION["rest_id"];
                 $sql = "SELECT * FROM booking WHERE book_date LIKE '%$book_date%' AND rest_id='$rest_id'";
               }
@@ -260,7 +262,7 @@ include("header.php");
                 <tr>
                 <td>$row[book_id]</td>";
 
-                if($_SESSION["user_type"] == 'admin'){
+                if($_SESSION["user_type"] == "admin"){
                   echo "<td><a href='viewRestaurant.php'>$row_getrest[rest_name]</a></td>";
                 }
                 echo "
@@ -278,10 +280,10 @@ include("header.php");
               }
             }
             else{//nothing is set
-              if($_SESSION["user_type"] == 'admin'){
+              if($_SESSION["user_type"] == "admin"){
                 $sql = "SELECT * FROM booking";
               }
-              else if($_SESSION["user_type"] == 'staff'){
+              else if($_SESSION["user_type"] == "staff"){
                 $rest_id=$_SESSION["rest_id"];
                // echo $rest_id."!!!!!!!!!!!!!!!!!";
                 $sql = "SELECT * FROM booking WHERE rest_id='$rest_id'";
@@ -316,7 +318,49 @@ include("header.php");
                 ";
               }
             }
+            }
+            else {
+              if($_SESSION["user_type"] == "admin"){
+                $sql = "SELECT * FROM booking";
+              }
+              else if($_SESSION["user_type"] == "staff"){
+                $rest_id=$_SESSION["rest_id"];
+               // echo $rest_id."!!!!!!!!!!!!!!!!!";
+                $sql = "SELECT * FROM booking WHERE rest_id='$rest_id'";
+              }
+              
+              $result = mysqli_query($con,$sql);
+              while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                $sql_getuser = "SELECT * FROM users WHERE user_id='$row[user_id]'";
+                $result_getuser = mysqli_query($con,$sql_getuser);
+                $row_getuser = mysqli_fetch_array($result_getuser,MYSQLI_ASSOC);
+                $sql_getrest = "SELECT * FROM restaurant WHERE rest_id='$row[rest_id]'";
+                $result_getrest = mysqli_query($con,$sql_getrest);
+                $row_getrest = mysqli_fetch_array($result_getrest,MYSQLI_ASSOC);
+                echo "
+                <tr>
+                <td>$row[book_id]</td>";
 
+                if($_SESSION["user_type"] == 'admin'){
+                  echo "<td><a href='viewRestaurant.php'>$row_getrest[rest_name]</a></td>";
+                }
+                echo "
+                <td><a href='viewCustomer.php?userid=$row_getuser[user_id]'>$row_getuser[user_lname]</a></td>
+                <td>$row[book_date]</td>
+                <td>$row[book_time1]</td>
+                <td>$row[book_time2]</td>
+                <td>$row[book_size]</td>
+               <td> <form action='cancelBooking.php' method='POST'>
+                  <input type='hidden' name='bookid' value='$row[book_id]'>
+                  <button type='submit' name='cancelBookingButton'>Cancel</button>
+                </form></td>
+                </tr>
+                ";
+              }
+
+
+
+            }
           ?>
            <!-- <a href=notes.php? $_SESSION["ID"]= $row["ID"] ?> -->
       </table>
