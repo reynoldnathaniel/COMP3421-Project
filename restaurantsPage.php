@@ -218,12 +218,12 @@ session_start();
 									echo "
 									<div class='col-md-6 col-sm-6 animate-box'>
 									<div class='hotel-entry'>
-										<a href='menuPage.php?restid=$row[rest_id]&restname=$row[rest_name]' class='hotel-img' style='background-image: url(images/$row[rest_image]);'>
+										<a href='restaurantDetailPage.php?restid=$row[rest_id]&restname=$row[rest_name]' class='hotel-img' style='background-image: url(images/$row[rest_image]);'>
 											<p class='price'><span>$120</span><small> /night</small></p>
 										</a>
 										<div class='desc'>
 											<p class='star'><span><i class='icon-star-full'></i><i class='icon-star-full'></i><i class='icon-star-full'></i><i class='icon-star-full'></i><i class='icon-star-full'></i></span> 545 Reviews</p>
-											<h3><a href='menuPage.php?restid=$row[rest_id]&restname=$row[rest_name]'>$row[rest_name]</a></h3>
+											<h3><a href='restaurantDetailPage.php?restid=$row[rest_id]&restname=$row[rest_name]'>$row[rest_name]</a></h3>
 											<span class='place'>$row[rest_region]</span>
 											<p>$row[rest_description]</p>
 										</div>

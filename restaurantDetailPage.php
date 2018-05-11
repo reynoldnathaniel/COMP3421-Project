@@ -1,4 +1,7 @@
 <!DOCTYPE HTML>
+<?php
+session_start();
+?>
 <html>
     <head>
     <meta charset="utf-8">
@@ -359,8 +362,14 @@ body .container__content > div.section4 {
                                 <div class="slider-text-inner text-center">
                                
                                <!-- Restaurant Name -->   
+                                    <?php
+                                    $restid  = $_GET['restid'];
+                                    $restname = $_GET['restname'];
+                                    $_SESSION['rest_id'] = $restid;
+                                    $_SESSION['rest_name'] = $restname;
 
-                                    <h1>ENOTECA</h1>
+                                    echo "<h1>".$_SESSION['rest_name']."</h1>";
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -381,7 +390,10 @@ body .container__content > div.section4 {
                             <div class="col-md-12">
                                 <div class="wrap-division">
                                     <div class="col-md-12 col-md-offset-0 heading2 animate-box">
-                                        <h2>ENOTECA</h2>
+                                        <?php
+                                        
+                                        echo "<h2>".$_SESSION['rest_name']."</h2>";
+                                        ?>
                                         <h4>G/F, 47 Elgin Street SoHo, Central, Hong Kong</h4>
                                     </div>
 
@@ -411,9 +423,11 @@ Enoteca roughly translates to 'wine library' or 'wine bar'. They have been part 
     <!-- MENU -->   
 
     <div id="section2" class="section2">
-
-        <h2>Menu</h2>
-        <hr>
+        <?php
+        $restid = $_SESSION['rest_id'];
+        $restname = $_SESSION['rest_name'];
+        echo "<h2><a href='menuPage.php?restid=$restid&restname=$restname'>Menu</a></h2>";
+        ?>
         <div class="row">
             <div class="col-md-12 animate-box">
                 <div class="room-wrap">
