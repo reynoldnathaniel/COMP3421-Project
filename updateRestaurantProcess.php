@@ -73,5 +73,6 @@ if($uploadOk==1)
   WHERE rest_id='$restid' ");
     echo "<script type='text/javascript'>alert('Restaurant Updated!');window.location.replace(\"viewRestaurant.php\");</script>";
 }
+mysqli_close($con);
 
 ?>

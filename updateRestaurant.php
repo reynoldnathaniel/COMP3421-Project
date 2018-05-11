@@ -150,6 +150,7 @@ include("header.php");
       <label>Description</label><br><textarea  rows='5' cols='50' name='description' >".$description."</textarea>
         <br><br>
       ";
+      mysqli_close($con);
       ?>
       <p style="color: red;">*Max 5MB</p>
       <button type="submit" class="btn">Update!</button>
