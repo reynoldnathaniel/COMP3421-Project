@@ -549,65 +549,41 @@ body .container__content > div.section4 {
 <br><br><br>
 <hr>
 
-<div class="row">
-<div class="reviews">
-  <div class="row blockquote review-item">
-    <div class="col-md-3 text-center">
-      <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-      <div class="caption">
-        <small>by <a href="#joe">Name</a></small>
+
+<?php
+    $restid = $_SESSION['rest_id'];
+    $restname = $_SESSION['rest_name'];
+    include("connection.php");
+    $restid=$_SESSION['rest_id'];
+    $sql = "SELECT * FROM comment WHERE rest_id='$restid'";
+    $result = mysqli_query($con,$sql);
+    while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+        $sql_getuser = "SELECT * FROM users WHERE user_id='$row[user_id]'";
+        $result_getuser = mysqli_query($con,$sql_getuser);
+        $row_getuser = mysqli_fetch_array($result_getuser,MYSQLI_ASSOC);
+        //$name=$row_getuser['user_lname'];
+        echo "
+<div class='row'>
+<div class='reviews'>
+  <div class='row blockquote review-item'>
+    <div class='col-md-3 text-center'>
+      <img class='rounded-circle reviewer' src='http://standaloneinstaller.com/upload/avatar.png'>
+      <div class='caption'>
+        <small>by <a href='#joe'>$row_getuser[user_lname]</a></small>
       </div>
 
     </div>
-    <div class="col-md-9">
-     <h2>Rating: 4.4/5.0</h2>
-      <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac nibh sed mi ullamcorper rhoncus. Curabitur pulvinar vel augue sit amet vestibulum. Proin tempus lacus porta lorem blandit aliquam eget quis ipsum. Vivamus accumsan consequat ligula non volutpat.</p>
-
-      <small class="review-date">March 26, 2017</small>
+    <div class='col-md-9'>
+     <h2>Rating: $row[cmnt_rating]/5.0</h2>
+      <p class='review-text'>$row[cmnt_msg]</p>
     </div>                          
   </div>  
 </div>
 </div>
+        ";
+    }
 
-<div class="row">
-<div class="reviews">
-  <div class="row blockquote review-item">
-    <div class="col-md-3 text-center">
-      <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-      <div class="caption">
-        <small>by <a href="#joe">Name</a></small>
-      </div>
-
-    </div>
-    <div class="col-md-9">
-     <h2>Rating: 4.4/5.0</h2>
-      <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac nibh sed mi ullamcorper rhoncus. Curabitur pulvinar vel augue sit amet vestibulum. Proin tempus lacus porta lorem blandit aliquam eget quis ipsum. Vivamus accumsan consequat ligula non volutpat.</p>
-
-      <small class="review-date">March 26, 2017</small>
-    </div>                          
-  </div>  
-</div>
-</div>
-
-<div class="row">
-<div class="reviews">
-  <div class="row blockquote review-item">
-    <div class="col-md-3 text-center">
-      <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-      <div class="caption">
-        <small>by <a href="#joe">Name</a></small>
-      </div>
-
-    </div>
-    <div class="col-md-9">
-     <h2>Rating: 4.4/5.0</h2>
-      <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac nibh sed mi ullamcorper rhoncus. Curabitur pulvinar vel augue sit amet vestibulum. Proin tempus lacus porta lorem blandit aliquam eget quis ipsum. Vivamus accumsan consequat ligula non volutpat.</p>
-
-      <small class="review-date">March 26, 2017</small>
-    </div>                          
-  </div>  
-</div>
-</div>
+?>
 
 </div> <!-- end of section3 -->
 
