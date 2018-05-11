@@ -92,15 +92,15 @@ session_start();
 									if(isset($_SESSION["user_id"])){
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
-										<li><a href="hotels.php">Restaurant</a></li>
-										
+										<li><a href="restaurantsPage.php">Restaurant</a></li>
+										<li><a href="#">News</a></li>
 									</ul>';
 									}
 									else{
 										echo '<a href="#">Booking</a>
 									<ul class="dropdown">
 										<li><a href="loginPage.php">Restaurant</a></li>
-										
+										<li><a href="loginPage.php">News</a></li>
 									</ul>';
 									}
 									?>
@@ -113,8 +113,9 @@ session_start();
 											$lastname = strtoupper($_SESSION['lastname']);
 											echo '<a href="#">'.$lastname.'</a>
 											<ul class="dropdown">
-											<li><a href="profile.php">Profile</a></li>
-											<li><a href="editProfile.php">Edit Profile</a></li>
+												<li><a href="profile.php">Profile</a></li>
+												<li><a href="editProfile.php">Edit Profile</a></li>
+												<li><a href="favorite.php">Favorite Restaurant</a></li>
 												<li><a href="logoutProcess.php">Logout</a></li>
 											</ul>';
 										}
@@ -195,99 +196,75 @@ session_start();
 		  	</div>
 		</aside>
 
-		<div id="colorlib-contact">
+		<div id="colorlib-about">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-10 col-md-offset-1 animate-box">
-						<h3>Edit Profile</h3>
-						<form method="POST" action="editProfileProcess.php">
-							<div class="row form-group">
-								<div class="col-md-6 padding-bottom">
+                    <?php
+                        if(isset($_SESSION["user_id"])){
+                            $firstname = $_SESSION['firstname']; 
+                            $lastname = $_SESSION['lastname'];
+                            $gender = $_SESSION["gender"];
+                            $phone = $_SESSION["phone"];
+                            $DOB = $_SESSION["DOB"];
+                            $email = $_SESSION["email"];
+                        }
+                    ?>
+				</div>
+			</div>
+		</div>
+						<!-- lala -->
+		<div class="colorlib-wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="wrap-division">
+									<div class="col-md-12 col-md-offset-0 heading2 animate-box">
+										<h2>Your Favorite Restaurant</h2>
+									</div>
+									<div class="row">
 
+										<?php
+								            include("connection.php");
+								            $userid = $_SESSION['user_id'];
+								            $sql = "SELECT * FROM favorite WHERE user_id='$userid'";
+								            $result = mysqli_query($con,$sql);
+								            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+								            	$restid = $row['rest_id'];
+								            	$sql_getrest = "SELECT * FROM restaurant WHERE rest_id='$restid'";
+								            	$result_getrest = mysqli_query($con,$sql_getrest);
+								            	$row_getrest = mysqli_fetch_array($result_getrest,MYSQLI_ASSOC);
+									            echo "
+									            <div class='col-md-12 animate-box'>
+													<div class='room-wrap'>
+														<div class='row'>
+															<div class='col-md-6 col-sm-6'>
+																<div class='room-img' style='background-image: url(images/$row_getrest[rest_image]);'></div>
+															</div>
+															<div class='col-md-6 col-sm-6'>
+																<div class='desc'>
+																	<h1>$row_getrest[rest_name]</h1>
+																	<p>$row_getrest[rest_description]</p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												";
+								            }
 
-									<?php
-							if(isset($_SESSION["user_id"])){
-								$firstname = strtoupper($_SESSION["firstname"]); 
-								$lastname = strtoupper($_SESSION["lastname"]);
-								$email = strtoupper($_SESSION["email"]);
-								$phone = strtoupper($_SESSION["phone"]);
-								$DOB = strtoupper($_SESSION["DOB"]);
-
-								echo '<label for="fname">First Name</label>
-									<input type="text" name="firstname" class="form-control" value="'.$firstname.'">
+								        ?>
 									</div>
-									<div class="col-md-6">
-									<label for="lname">Last Name</label>
-									<input type="text" name="lastname" class="form-control" value="'.$lastname.'">
-									</div>
-									</div>
-									<div class="row form-group">
-									<div class="col-md-6 padding-bottom">
-									<label for="fname">Email</label>
-									<input type="text" name="email" class="form-control" value="'.$email.'">
-									</div>
-									<div class="col-md-6">
-									<label for="lname">Phone Number</label>
-									<input type="text" name="phonenumber" class="form-control" value="'.$phone.'">
-									</div>
-									</div>
-									<div class="row form-group">
-									<div class="col-md-6 padding-bottom">
-									<label for="subject">Date of Birth</label>
-									<input type="date" name="dateofbirth" class="form-control" value="'.$DOB.'">
-									</div>
-									</div>';}?>
-
-								<!-- '<a href="#">'.$lastname.'</a>
-											<ul class="dropdown">
-												<li><a href="profile.php">Profile</a></li>
-											<li><a href="editProfile.php">Edit Profile</a></li>
-												<li><a href="logoutProcess.php">Logout</a></li>
-											</ul>'
-								-->
-									<!-- <label for="fname">First Name</label>
-									<input type="text" name="firstname" class="form-control" value="default value"> -->
-								<!-- </div>
-								<div class="col-md-6">
-									<label for="lname">Last Name</label>
-									<input type="text" name="lastname" class="form-control" value="default value">
 								</div>
-							</div> -->
-
-							<!-- <div class="row form-group">
-								<div class="col-md-6 padding-bottom">
-									<label for="fname">Email</label>
-									<input type="text" name="email" class="form-control" value="default value">
-								</div>
-								<div class="col-md-6">
-									<label for="lname">Phone Number</label>
-									<input type="text" name="phonenumber" class="form-control" value="default value">
-								</div>
-							</div> -->
-
-							<!-- div class="row form-group">
-								<div class="col-md-6 padding-bottom">
-									<label for="subject">Date of Birth</label>
-									<input type="date" name="dateofbirth" class="form-control" value="2013-01-08">
-								</div>
-							</div> -->
-
-							<!-- <div class="row form-group">
-								<div class="col-md-12">
-									<label for="message">Message</label>
-									<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
-								</div>
-							</div> -->
-							<div class="form-group text-center">
-								<input type="submit" value="Submit" class="btn btn-primary">
 							</div>
-
-						</form>		
-					</div>	
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
+						<!-- lala end -->
 		<footer id="colorlib-footer" role="contentinfo">
 			<div class="container">
 				<div class="row row-pb-md">
