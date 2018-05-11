@@ -66,4 +66,5 @@ if($uploadOk==1)
   VALUES('$rest_name','$rest_address','$rest_region','$rest_type','$rest_opentime','$rest_closetime','$rest_seats','$tmp_name','3','$description')");
     echo "<script type='text/javascript'>alert('Restaurant Added!');window.location.replace(\"adminHomepage.php\");</script>";
 }
+mysqli_close($con);
 ?>

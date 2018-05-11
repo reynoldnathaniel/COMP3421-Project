@@ -7,7 +7,11 @@ echo "<script>var user_id = $_SESSION[user_id];</script>";
     <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Tour Template</title>
+    <?php $restname = $_GET['restname'];
+    $_SESSION['rest_name'] = $restname;
+    echo "<title>$restname</title>";
+    ?>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -395,35 +399,68 @@ body .container__content > div.section4 {
                     <?php
                     $restid  = $_GET['restid'];
                     echo "<script>var rest_id = $restid;</script>";
-                    $restname = $_GET['restname'];
+                    //$restname = $_GET['restname'];
                     $_SESSION['rest_id'] = $restid;
-                    $_SESSION['rest_name'] = $restname;
+                    $restname=$_SESSION['rest_name'];
                     include("connection.php");
                     $sql = "SELECT * FROM restaurant WHERE rest_id='$restid'";
                     $result = mysqli_query($con,$sql);
                     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-                    echo "<li style='background-image: url(images/$row[rest_image]);'>";
-                    mysqli_close($con);
-                    ?>
-                    <div class="overlay"></div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-                                <div class="slider-text-inner text-center">
-                               
-                               <!-- Restaurant Name -->   
-                                    <?php
-                                    
-                                    echo "<h1>".$_SESSION['rest_name']."</h1>";
-                                    ?>
+                    echo "<li style='background-image: url(images/$row[rest_image]);'>
+                    <div class='overlay'></div>
+                    <div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text'>
+                                <div class='slider-text-inner text-center'>
+                                  <h1>$restname</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
+
+
+
+                    ";
+
+                    $sql = "SELECT * FROM photo WHERE rest_id='$restid'";
+                    $result = mysqli_query($con,$sql);
+                    while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                    echo "<li style='background-image: url(images/$row[photo_image]);'>
+                    <div class='overlay'></div>
+                    <div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text'>
+                                <div class='slider-text-inner text-center'>
+                                  <h1>$restname</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+
+                      ";
+                    }
+
+                    mysqli_close($con);
+                    ?>
+
+
+
                 </ul>
             </div>
         </aside>
+        <?php
+        $restid = $_SESSION['rest_id'];
+        $restname = $_SESSION['rest_name'];
+        echo "<center><h3><a href='addPhoto.php?restid=$restid&restname=$restname' style='color:#bc8816;'>View Gallery</a></h3></center>";
+        ?>
+        
+        
+
 
 
 <!-- Restaurant name & addr -->    
@@ -653,6 +690,7 @@ mysqli_close($con);
                                 else if($row_getfavorite==1){
                                   echo "<input type='button' value='Unfavorite' id='favorite' onclick='favoriteProcess()'>";
                                 }
+                                mysqli_close($con);
                               ?>
                               <script>
                                 function favoriteProcess(){
