@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 session_start();
+include("header.php");
 ?>
 <html>
     <head>
@@ -364,6 +365,7 @@ body .container__content > div.section4 {
                     $result = mysqli_query($con,$sql);
                     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
                     echo "<li style='background-image: url(images/$row[rest_image]);'>";
+                    mysqli_close($con);
                     ?>
                     <div class="overlay"></div>
                     <div class="container-fluid">
@@ -405,6 +407,7 @@ body .container__content > div.section4 {
                                         $result = mysqli_query($con,$sql);
                                         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
                                         echo "<h4>".$row['rest_address']."</h4>";
+                                        mysqli_close($con);
                                         ?>
                                     </div>
 
@@ -434,7 +437,7 @@ body .container__content > div.section4 {
         $result = mysqli_query($con,$sql);
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
         echo "<p>".$row['rest_description']."</p>";
-
+        mysqli_close($con);
         ?>
     </div>
 
@@ -472,7 +475,7 @@ body .container__content > div.section4 {
 
 
         }
-
+        mysqli_close($con);
         ?>
         
        <?php
@@ -582,7 +585,7 @@ body .container__content > div.section4 {
 </div>
         ";
     }
-
+mysqli_close($con);
 ?>
 
 </div> <!-- end of section3 -->
