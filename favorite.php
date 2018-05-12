@@ -239,11 +239,11 @@ session_start();
 													<div class='room-wrap'>
 														<div class='row'>
 															<div class='col-md-6 col-sm-6'>
-																<div class='room-img' style='background-image: url(images/$row_getrest[rest_image]);'></div>
+																<a href='restaurantDetailPage.php?restid=$restid&restname=$row_getrest[rest_name]'><div class='room-img' style='background-image: url(images/$row_getrest[rest_image]);'></div></a>
 															</div>
 															<div class='col-md-6 col-sm-6'>
 																<div class='desc'>
-																	<h1>$row_getrest[rest_name]</h1>
+																	<h1><a href='restaurantDetailPage.php?restid=$restid&restname=$row_getrest[rest_name]'>$row_getrest[rest_name]</a></h1>
 																	<p>$row_getrest[rest_description]</p>
 																</div>
 															</div>
