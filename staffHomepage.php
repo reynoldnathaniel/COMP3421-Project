@@ -75,6 +75,7 @@ include("header.php");
 			<a href="viewReviews.php">View Reviews</a><br>
 			<a href="viewNews.php">View News</a><br>
 			<a href="addNews.php">Add News</a><br>
+			<a href="chart.php">View Statistics</a><br>
 			<a href="logoutProcess.php">Logout</a><br>
 		</div>
 
